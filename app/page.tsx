@@ -225,7 +225,7 @@ export default function PbdSuplemedStore() {
       </header>
 
       {/* Premium Carousel */}
-      <section className="relative h-[550px] sm:h-[600px] md:h-[700px] overflow-hidden">
+      <section className="relative h-[650px] sm:h-[680px] md:h-[700px] overflow-hidden">
         <div className="relative h-full">
           {products.map((product, index) => {
             // Background personalizado para cada produto
@@ -262,10 +262,10 @@ export default function PbdSuplemedStore() {
 
                 {/* Content Container */}
                 <div className="relative z-20 container mx-auto px-6 h-full flex items-center">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-16 items-center w-full min-h-[450px] sm:min-h-[500px] md:min-h-[600px]">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-16 items-center w-full min-h-[550px] sm:min-h-[580px] md:min-h-[600px]">
                     {/* Texto - Lado Esquerdo */}
-                    <div className="text-center lg:text-left space-y-4 lg:space-y-8 order-2 lg:order-1 flex flex-col justify-center">
-                      <div className="space-y-3 lg:space-y-6">
+                    <div className="text-center lg:text-left space-y-3 sm:space-y-4 lg:space-y-8 order-2 lg:order-1 flex flex-col justify-center">
+                      <div className="space-y-2 sm:space-y-3 lg:space-y-6">
                         <Badge
                           className={`text-sm lg:text-base px-4 lg:px-6 py-2 lg:py-3 shadow-2xl ${getBadgeColor(product.badge)}`}
                         >
@@ -315,7 +315,7 @@ export default function PbdSuplemedStore() {
                     {/* Imagem do produto - Lado Direito - AUMENTADA E POR CIMA */}
                     <div className="flex justify-center lg:justify-center order-1 lg:order-2 relative z-50">
                       <div className="relative group">
-                        <div className="w-[240px] h-[240px] sm:w-[280px] sm:h-[280px] md:w-[450px] md:h-[450px] lg:w-[550px] lg:h-[550px] xl:w-[600px] xl:h-[600px] relative flex items-center justify-center">
+                        <div className="w-[220px] h-[220px] sm:w-[260px] sm:h-[260px] md:w-[450px] md:h-[450px] lg:w-[550px] lg:h-[550px] xl:w-[600px] xl:h-[600px] relative flex items-center justify-center">
                           <Image
                             src={product.image || "/placeholder.svg"}
                             alt={product.name}
