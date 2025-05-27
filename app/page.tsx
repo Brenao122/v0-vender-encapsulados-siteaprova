@@ -164,19 +164,25 @@ export default function PbdSuplemedStore() {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
       {/* Header Premium */}
       <header className="bg-white/80 backdrop-blur-xl shadow-xl border-b border-white/20 z-50">
-        <div className="container mx-auto px-6 py-5">
+        <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-5">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <Image src="/images/pbd-logo.png" alt="PBD SUPLEMED" width={140} height={45} className="h-12 w-auto" />
+            <div className="flex items-center space-x-2 sm:space-x-4">
+              <Image
+                src="/images/pbd-logo.png"
+                alt="PBD SUPLEMED"
+                width={120}
+                height={40}
+                className="h-8 sm:h-12 w-auto"
+              />
               <div className="hidden md:block">
-                <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                <h1 className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
                   PBD SUPLEMED
                 </h1>
-                <p className="text-sm text-slate-600 font-medium">Excelência em Suplementação</p>
+                <p className="text-xs lg:text-sm text-slate-600 font-medium">Excelência em Suplementação</p>
               </div>
             </div>
 
-            <nav className="hidden lg:flex space-x-10">
+            <nav className="hidden lg:flex space-x-8 xl:space-x-10">
               <a
                 href="#produtos"
                 className="text-slate-700 hover:text-blue-600 font-semibold transition-all duration-300 relative group"
@@ -212,10 +218,10 @@ export default function PbdSuplemedStore() {
               </a>
             </nav>
 
-            <div className="flex items-center space-x-6">
+            <div className="flex items-center space-x-3 sm:space-x-6">
               <div className="text-right">
-                <p className="text-sm text-slate-600 font-medium">Atendimento</p>
-                <p className="text-xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                <p className="text-xs sm:text-sm text-slate-600 font-medium">Atendimento</p>
+                <p className="text-lg sm:text-xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
                   Premium
                 </p>
               </div>
@@ -224,8 +230,8 @@ export default function PbdSuplemedStore() {
         </div>
       </header>
 
-      {/* Premium Carousel - LAYOUT COMPLETAMENTE REORGANIZADO */}
-      <section className="relative h-[900px] sm:h-[950px] md:h-[700px] overflow-hidden">
+      {/* Premium Carousel - OTIMIZADO PARA IPHONE 12 */}
+      <section className="relative h-[800px] sm:h-[850px] md:h-[700px] overflow-hidden">
         <div className="relative h-full">
           {products.map((product, index) => {
             // Background personalizado para cada produto
@@ -262,12 +268,12 @@ export default function PbdSuplemedStore() {
 
                 {/* Content Container */}
                 <div className="relative z-20 container mx-auto px-4 sm:px-6 h-full">
-                  {/* LAYOUT MOBILE (até md) - VERTICAL */}
-                  <div className="md:hidden flex flex-col h-full py-8">
-                    {/* Imagem do produto - TOPO */}
-                    <div className="flex justify-center mb-6 relative z-50">
+                  {/* LAYOUT MOBILE (até md) - COMPACTO PARA IPHONE 12 */}
+                  <div className="md:hidden flex flex-col h-full py-4">
+                    {/* Imagem do produto - TOPO - REDUZIDA */}
+                    <div className="flex justify-center mb-3 relative z-50">
                       <div className="relative group">
-                        <div className="w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] relative flex items-center justify-center">
+                        <div className="w-[200px] h-[200px] sm:w-[220px] sm:h-[220px] relative flex items-center justify-center">
                           <Image
                             src={product.image || "/placeholder.svg"}
                             alt={product.name}
@@ -275,61 +281,59 @@ export default function PbdSuplemedStore() {
                             className="object-contain group-hover:scale-105 transition-all duration-700 relative z-50"
                             style={{
                               filter:
-                                "drop-shadow(0 20px 40px rgba(0, 0, 0, 0.6)) brightness(1.05) contrast(1.05) saturate(1.0)",
+                                "drop-shadow(0 15px 30px rgba(0, 0, 0, 0.5)) brightness(1.05) contrast(1.05) saturate(1.0)",
                             }}
                             priority={index === currentSlide}
                             quality={100}
                           />
                         </div>
-                        {/* Efeitos de brilho personalizados por produto */}
+                        {/* Efeitos de brilho reduzidos */}
                         <div
-                          className={`absolute inset-0 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-700 z-40 ${
+                          className={`absolute inset-0 rounded-2xl blur-xl transition-all duration-700 z-40 ${
                             product.name === "GLUTA IMUNITY"
-                              ? "bg-gradient-to-r from-emerald-400/40 to-green-400/40"
+                              ? "bg-gradient-to-r from-emerald-400/30 to-green-400/30"
                               : product.name === "LARANJA MORO"
-                                ? "bg-gradient-to-r from-orange-400/40 to-amber-400/40"
+                                ? "bg-gradient-to-r from-orange-400/30 to-amber-400/30"
                                 : product.name === "RED SIZE"
-                                  ? "bg-gradient-to-r from-red-400/40 to-rose-400/40"
-                                  : "bg-gradient-to-r from-blue-400/40 to-cyan-400/40"
+                                  ? "bg-gradient-to-r from-red-400/30 to-rose-400/30"
+                                  : "bg-gradient-to-r from-blue-400/30 to-cyan-400/30"
                           }`}
                         ></div>
                       </div>
                     </div>
 
-                    {/* Conteúdo de texto - CENTRO */}
-                    <div className="text-center space-y-4 flex-1 flex flex-col justify-center px-4">
-                      <Badge className={`text-sm px-4 py-2 shadow-2xl mx-auto ${getBadgeColor(product.badge)}`}>
+                    {/* Conteúdo de texto - CENTRO - COMPACTO */}
+                    <div className="text-center space-y-2 flex-1 flex flex-col justify-center px-3">
+                      <Badge className={`text-xs px-3 py-1 shadow-xl mx-auto ${getBadgeColor(product.badge)}`}>
                         {product.badge}
                       </Badge>
 
-                      <h3 className="text-3xl sm:text-4xl font-black text-white leading-tight drop-shadow-2xl">
+                      <h3 className="text-2xl sm:text-3xl font-black text-white leading-tight drop-shadow-2xl">
                         {product.name}
                       </h3>
 
-                      <p className="text-base sm:text-lg text-white/95 leading-relaxed drop-shadow-lg max-w-md mx-auto">
-                        {product.description}
+                      <p className="text-sm sm:text-base text-white/95 leading-snug drop-shadow-lg max-w-xs mx-auto">
+                        {product.description.length > 100
+                          ? product.description.substring(0, 100) + "..."
+                          : product.description}
                       </p>
 
-                      <div className="flex flex-wrap gap-2 justify-center">
-                        {product.benefits.slice(0, 2).map((benefit, idx) => (
-                          <span
-                            key={idx}
-                            className="text-xs sm:text-sm bg-white/20 backdrop-blur-md px-3 py-2 rounded-full text-white border border-white/30 shadow-xl"
-                          >
-                            {benefit}
-                          </span>
-                        ))}
+                      {/* Apenas 1 benefício no mobile */}
+                      <div className="flex justify-center">
+                        <span className="text-xs bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-white border border-white/30 shadow-lg">
+                          {product.benefits[0]}
+                        </span>
                       </div>
                     </div>
 
-                    {/* Preços e botão - PARTE INFERIOR */}
-                    <div className="text-center space-y-4 pb-8">
-                      <div className="flex items-center gap-4 justify-center">
-                        <span className="text-3xl sm:text-4xl font-black text-white drop-shadow-xl">
+                    {/* Preços e botão - PARTE INFERIOR - COMPACTO */}
+                    <div className="text-center space-y-3 pb-4">
+                      <div className="flex items-center gap-3 justify-center">
+                        <span className="text-2xl sm:text-3xl font-black text-white drop-shadow-xl">
                           R$ {product.price.toFixed(2)}
                         </span>
                         {product.originalPrice > product.price && (
-                          <span className="text-xl text-white/60 line-through drop-shadow-lg">
+                          <span className="text-lg text-white/60 line-through drop-shadow-lg">
                             R$ {product.originalPrice.toFixed(2)}
                           </span>
                         )}
@@ -337,49 +341,49 @@ export default function PbdSuplemedStore() {
 
                       <Button
                         onClick={() => buyProduct(product.id)}
-                        size="lg"
-                        className="bg-white/20 backdrop-blur-md hover:bg-white/30 text-white border border-white/30 px-8 py-4 text-lg font-black transition-all duration-500 hover:scale-105 shadow-2xl group w-full max-w-sm mx-auto"
+                        size="sm"
+                        className="bg-white/20 backdrop-blur-md hover:bg-white/30 text-white border border-white/30 px-6 py-3 text-base font-black transition-all duration-500 hover:scale-105 shadow-2xl group w-full max-w-xs mx-auto"
                       >
-                        <ShoppingCart className="w-6 h-6 mr-3 group-hover:rotate-12 transition-transform" />
+                        <ShoppingCart className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
                         COMPRAR AGORA
-                        <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                        <ChevronRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                       </Button>
                     </div>
                   </div>
 
-                  {/* LAYOUT DESKTOP (md+) - HORIZONTAL */}
+                  {/* LAYOUT DESKTOP (md+) - MANTIDO ORIGINAL */}
                   <div className="hidden md:grid md:grid-cols-2 gap-16 items-center w-full h-full">
                     {/* Texto - Lado Esquerdo */}
-                    <div className="text-center lg:text-left space-y-8 flex flex-col justify-center">
-                      <div className="space-y-6">
+                    <div className="text-center lg:text-left space-y-6 lg:space-y-8 flex flex-col justify-center">
+                      <div className="space-y-4 lg:space-y-6">
                         <Badge className={`text-base px-6 py-3 shadow-2xl ${getBadgeColor(product.badge)}`}>
                           {product.badge}
                         </Badge>
-                        <h3 className="text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-tight drop-shadow-2xl">
+                        <h3 className="text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-black text-white leading-tight drop-shadow-2xl">
                           {product.name}
                         </h3>
-                        <p className="text-xl lg:text-2xl text-white/95 leading-relaxed drop-shadow-lg max-w-2xl">
+                        <p className="text-lg lg:text-xl xl:text-2xl text-white/95 leading-relaxed drop-shadow-lg max-w-2xl">
                           {product.description}
                         </p>
                       </div>
 
-                      <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
+                      <div className="flex flex-wrap gap-3 lg:gap-4 justify-center lg:justify-start">
                         {product.benefits.slice(0, 3).map((benefit, idx) => (
                           <span
                             key={idx}
-                            className="text-base bg-white/20 backdrop-blur-md px-6 py-3 rounded-full text-white border border-white/30 shadow-xl hover:bg-white/30 transition-all duration-300"
+                            className="text-sm lg:text-base bg-white/20 backdrop-blur-md px-4 lg:px-6 py-2 lg:py-3 rounded-full text-white border border-white/30 shadow-xl hover:bg-white/30 transition-all duration-300"
                           >
                             {benefit}
                           </span>
                         ))}
                       </div>
 
-                      <div className="flex items-center gap-8 justify-center lg:justify-start">
-                        <span className="text-5xl font-black text-white drop-shadow-xl">
+                      <div className="flex items-center gap-6 lg:gap-8 justify-center lg:justify-start">
+                        <span className="text-4xl lg:text-5xl font-black text-white drop-shadow-xl">
                           R$ {product.price.toFixed(2)}
                         </span>
                         {product.originalPrice > product.price && (
-                          <span className="text-2xl text-white/60 line-through drop-shadow-lg">
+                          <span className="text-xl lg:text-2xl text-white/60 line-through drop-shadow-lg">
                             R$ {product.originalPrice.toFixed(2)}
                           </span>
                         )}
@@ -388,18 +392,18 @@ export default function PbdSuplemedStore() {
                       <Button
                         onClick={() => buyProduct(product.id)}
                         size="lg"
-                        className="bg-white/20 backdrop-blur-md hover:bg-white/30 text-white border border-white/30 px-12 py-6 text-xl font-black transition-all duration-500 hover:scale-105 shadow-2xl group w-full lg:w-auto"
+                        className="bg-white/20 backdrop-blur-md hover:bg-white/30 text-white border border-white/30 px-8 lg:px-12 py-4 lg:py-6 text-lg lg:text-xl font-black transition-all duration-500 hover:scale-105 shadow-2xl group w-full lg:w-auto"
                       >
-                        <ShoppingCart className="w-7 h-7 mr-4 group-hover:rotate-12 transition-transform" />
+                        <ShoppingCart className="w-6 lg:w-7 h-6 lg:h-7 mr-3 lg:mr-4 group-hover:rotate-12 transition-transform" />
                         COMPRAR AGORA
-                        <ChevronRight className="w-6 h-6 ml-2 group-hover:translate-x-1 transition-transform" />
+                        <ChevronRight className="w-5 lg:w-6 h-5 lg:h-6 ml-2 group-hover:translate-x-1 transition-transform" />
                       </Button>
                     </div>
 
                     {/* Imagem do produto - Lado Direito */}
                     <div className="flex justify-center relative z-50">
                       <div className="relative group">
-                        <div className="w-[450px] h-[450px] lg:w-[550px] lg:h-[550px] xl:w-[600px] xl:h-[600px] relative flex items-center justify-center">
+                        <div className="w-[400px] h-[400px] lg:w-[500px] lg:h-[500px] xl:w-[550px] xl:h-[550px] 2xl:w-[600px] 2xl:h-[600px] relative flex items-center justify-center">
                           <Image
                             src={product.image || "/placeholder.svg"}
                             alt={product.name}
@@ -448,10 +452,10 @@ export default function PbdSuplemedStore() {
         {/* Enhanced Navigation */}
         <button
           onClick={prevSlide}
-          className="absolute left-4 lg:left-6 top-1/2 -translate-y-1/2 bg-white/15 backdrop-blur-md hover:bg-white/25 p-3 lg:p-4 rounded-2xl shadow-2xl transition-all duration-300 border border-white/30 group hover:scale-110 z-60"
+          className="absolute left-2 sm:left-4 lg:left-6 top-1/2 -translate-y-1/2 bg-white/15 backdrop-blur-md hover:bg-white/25 p-2 sm:p-3 lg:p-4 rounded-xl lg:rounded-2xl shadow-2xl transition-all duration-300 border border-white/30 group hover:scale-110 z-60"
         >
           <svg
-            className="w-6 lg:w-8 h-6 lg:h-8 text-white group-hover:scale-110 transition-transform"
+            className="w-5 sm:w-6 lg:w-8 h-5 sm:h-6 lg:h-8 text-white group-hover:scale-110 transition-transform"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -461,10 +465,10 @@ export default function PbdSuplemedStore() {
         </button>
         <button
           onClick={nextSlide}
-          className="absolute right-4 lg:right-6 top-1/2 -translate-y-1/2 bg-white/15 backdrop-blur-md hover:bg-white/25 p-3 lg:p-4 rounded-2xl shadow-2xl transition-all duration-300 border border-white/30 group hover:scale-110 z-60"
+          className="absolute right-2 sm:right-4 lg:right-6 top-1/2 -translate-y-1/2 bg-white/15 backdrop-blur-md hover:bg-white/25 p-2 sm:p-3 lg:p-4 rounded-xl lg:rounded-2xl shadow-2xl transition-all duration-300 border border-white/30 group hover:scale-110 z-60"
         >
           <svg
-            className="w-6 lg:w-8 h-6 lg:h-8 text-white group-hover:scale-110 transition-transform"
+            className="w-5 sm:w-6 lg:w-8 h-5 sm:h-6 lg:h-8 text-white group-hover:scale-110 transition-transform"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -474,12 +478,12 @@ export default function PbdSuplemedStore() {
         </button>
 
         {/* Enhanced Indicators */}
-        <div className="absolute bottom-6 lg:bottom-8 left-1/2 -translate-x-1/2 flex space-x-3 lg:space-x-4 z-60">
+        <div className="absolute bottom-4 sm:bottom-6 lg:bottom-8 left-1/2 -translate-x-1/2 flex space-x-2 sm:space-x-3 lg:space-x-4 z-60">
           {products.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`w-3 lg:w-4 h-3 lg:h-4 rounded-full transition-all duration-500 ${
+              className={`w-2 sm:w-3 lg:w-4 h-2 sm:h-3 lg:h-4 rounded-full transition-all duration-500 ${
                 index === currentSlide
                   ? "bg-white scale-125 lg:scale-150 shadow-2xl"
                   : "bg-white/50 hover:bg-white/80 hover:scale-110 lg:hover:scale-125"
@@ -498,19 +502,19 @@ export default function PbdSuplemedStore() {
       </section>
 
       {/* Enhanced Hero Section */}
-      <section className="py-32 px-6 relative overflow-hidden">
+      <section className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl"></div>
         </div>
 
         <div className="container mx-auto text-center relative z-10">
-          <div className="space-y-8 max-w-5xl mx-auto">
-            <Badge className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-3 text-lg font-semibold shadow-2xl">
+          <div className="space-y-6 sm:space-y-8 max-w-5xl mx-auto">
+            <Badge className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 sm:px-8 py-2 sm:py-3 text-base sm:text-lg font-semibold shadow-2xl">
               LINHA PREMIUM EXCLUSIVA
             </Badge>
 
-            <h2 className="text-6xl lg:text-7xl font-black text-slate-900 leading-tight">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-slate-900 leading-tight">
               Potencialize Sua{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600">
                 Performance
@@ -519,7 +523,7 @@ export default function PbdSuplemedStore() {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">Saúde</span>
             </h2>
 
-            <p className="text-2xl text-slate-600 leading-relaxed max-w-4xl mx-auto">
+            <p className="text-lg sm:text-xl lg:text-2xl text-slate-600 leading-relaxed max-w-4xl mx-auto">
               Descubra a linha PBD SUPLEMED de suplementos premium desenvolvidos com{" "}
               <span className="font-bold text-blue-600">tecnologia avançada</span> e{" "}
               <span className="font-bold text-cyan-600">ingredientes de alta qualidade</span> para maximizar seus
@@ -527,36 +531,36 @@ export default function PbdSuplemedStore() {
             </p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-12 my-16">
+          <div className="flex flex-wrap justify-center gap-8 sm:gap-12 my-12 sm:my-16">
             {[
               { icon: Shield, text: "Qualidade Garantida", color: "text-emerald-600" },
               { icon: Truck, text: "Entrega Express", color: "text-blue-600" },
               { icon: Award, text: "Fórmulas Exclusivas", color: "text-cyan-600" },
             ].map((item, index) => (
-              <div key={index} className="flex items-center space-x-4 group">
-                <div className="w-16 h-16 bg-gradient-to-r from-slate-100 to-white rounded-2xl flex items-center justify-center shadow-xl group-hover:scale-110 transition-all duration-300">
-                  <item.icon className={`w-8 h-8 ${item.color}`} />
+              <div key={index} className="flex items-center space-x-3 sm:space-x-4 group">
+                <div className="w-12 sm:w-16 h-12 sm:h-16 bg-gradient-to-r from-slate-100 to-white rounded-xl sm:rounded-2xl flex items-center justify-center shadow-xl group-hover:scale-110 transition-all duration-300">
+                  <item.icon className={`w-6 sm:w-8 h-6 sm:h-8 ${item.color}`} />
                 </div>
-                <span className="text-xl text-slate-700 font-bold">{item.text}</span>
+                <span className="text-lg sm:text-xl text-slate-700 font-bold">{item.text}</span>
               </div>
             ))}
           </div>
 
           <Button
             size="lg"
-            className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-12 py-6 text-xl font-bold rounded-2xl shadow-2xl hover:scale-105 transition-all duration-300 group"
+            className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-8 sm:px-12 py-4 sm:py-6 text-lg sm:text-xl font-bold rounded-xl sm:rounded-2xl shadow-2xl hover:scale-105 transition-all duration-300 group"
             onClick={() => document.getElementById("produtos")?.scrollIntoView({ behavior: "smooth" })}
           >
             Explorar Produtos Premium
-            <ChevronRight className="w-6 h-6 ml-3 group-hover:translate-x-1 transition-transform" />
+            <ChevronRight className="w-5 sm:w-6 h-5 sm:h-6 ml-2 sm:ml-3 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>
       </section>
 
       {/* Enhanced Filter Section */}
-      <section className="py-12 px-6 bg-gradient-to-r from-slate-50 to-blue-50">
+      <section className="py-8 sm:py-12 px-4 sm:px-6 bg-gradient-to-r from-slate-50 to-blue-50">
         <div className="container mx-auto">
-          <div className="flex flex-wrap justify-center gap-6">
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-6">
             {[
               { key: "all", label: "Todos os Produtos", icon: null, color: "bg-slate-600" },
               { key: "immunity", label: "Imunidade", icon: Leaf, color: "bg-emerald-600" },
@@ -567,14 +571,15 @@ export default function PbdSuplemedStore() {
                 key={category.key}
                 variant={selectedCategory === category.key ? "default" : "outline"}
                 onClick={() => setSelectedCategory(category.key)}
-                className={`px-8 py-4 text-lg font-semibold rounded-2xl transition-all duration-300 hover:scale-105 shadow-lg ${
+                className={`px-4 sm:px-8 py-3 sm:py-4 text-sm sm:text-lg font-semibold rounded-xl sm:rounded-2xl transition-all duration-300 hover:scale-105 shadow-lg ${
                   selectedCategory === category.key
                     ? `${category.color} hover:${category.color.replace("600", "700")} text-white shadow-2xl`
                     : "bg-white/80 backdrop-blur-sm border-slate-200 hover:bg-white text-slate-700"
                 }`}
               >
-                {category.icon && <category.icon className="w-5 h-5 mr-3" />}
-                {category.label}
+                {category.icon && <category.icon className="w-4 sm:w-5 h-4 sm:h-5 mr-2 sm:mr-3" />}
+                <span className="hidden sm:inline">{category.label}</span>
+                <span className="sm:hidden">{category.label.split(" ")[0]}</span>
               </Button>
             ))}
           </div>
@@ -582,28 +587,28 @@ export default function PbdSuplemedStore() {
       </section>
 
       {/* Enhanced Products Section */}
-      <section id="produtos" className="py-24 px-6">
+      <section id="produtos" className="py-16 sm:py-24 px-4 sm:px-6">
         <div className="container mx-auto">
-          <div className="text-center mb-20 space-y-6">
-            <Badge className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-3 text-lg font-semibold shadow-2xl">
+          <div className="text-center mb-16 sm:mb-20 space-y-4 sm:space-y-6">
+            <Badge className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 sm:px-8 py-2 sm:py-3 text-base sm:text-lg font-semibold shadow-2xl">
               COLEÇÃO PREMIUM
             </Badge>
-            <h3 className="text-5xl lg:text-6xl font-black text-slate-900">Linha PBD SUPLEMED</h3>
-            <p className="text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+            <h3 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900">Linha PBD SUPLEMED</h3>
+            <p className="text-lg sm:text-xl lg:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
               Suplementos desenvolvidos com tecnologia avançada e ingredientes premium para resultados superiores.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6 sm:gap-8">
             {filteredProducts.map((product) => (
               <Card
                 key={product.id}
-                className="group hover:shadow-2xl transition-all duration-500 border-0 shadow-xl bg-white/80 backdrop-blur-sm rounded-3xl overflow-hidden hover:scale-105"
+                className="group hover:shadow-2xl transition-all duration-500 border-0 shadow-xl bg-white/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl overflow-hidden hover:scale-105"
               >
                 <CardHeader className="relative p-0">
                   {product.badge && (
                     <Badge
-                      className={`absolute top-4 left-4 z-10 px-4 py-2 text-sm font-bold shadow-2xl ${getBadgeColor(product.badge)}`}
+                      className={`absolute top-3 sm:top-4 left-3 sm:left-4 z-10 px-3 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm font-bold shadow-2xl ${getBadgeColor(product.badge)}`}
                     >
                       {product.badge}
                     </Badge>
@@ -611,11 +616,11 @@ export default function PbdSuplemedStore() {
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="absolute top-4 right-4 z-10 h-10 w-10 p-0 bg-white/80 backdrop-blur-sm hover:bg-white rounded-full shadow-lg"
+                    className="absolute top-3 sm:top-4 right-3 sm:right-4 z-10 h-8 w-8 sm:h-10 sm:w-10 p-0 bg-white/80 backdrop-blur-sm hover:bg-white rounded-full shadow-lg"
                     onClick={() => toggleFavorite(product.id)}
                   >
                     <Heart
-                      className={`w-5 h-5 ${favorites.includes(product.id) ? "fill-red-500 text-red-500" : "text-slate-600"}`}
+                      className={`w-4 sm:w-5 h-4 sm:h-5 ${favorites.includes(product.id) ? "fill-red-500 text-red-500" : "text-slate-600"}`}
                     />
                   </Button>
                   <div className="aspect-square overflow-hidden">
@@ -629,52 +634,56 @@ export default function PbdSuplemedStore() {
                   </div>
                 </CardHeader>
 
-                <CardContent className="p-6 space-y-4">
-                  <div className="flex items-center space-x-2 mb-3">
+                <CardContent className="p-4 sm:p-6 space-y-3 sm:space-y-4">
+                  <div className="flex items-center space-x-2 mb-2 sm:mb-3">
                     {[...Array(5)].map((_, i) => (
                       <Star
                         key={i}
-                        className={`w-5 h-5 ${i < Math.floor(product.rating) ? "fill-yellow-400 text-yellow-400" : "text-slate-300"}`}
+                        className={`w-4 sm:w-5 h-4 sm:h-5 ${i < Math.floor(product.rating) ? "fill-yellow-400 text-yellow-400" : "text-slate-300"}`}
                       />
                     ))}
-                    <span className="text-sm text-slate-600 ml-2 font-medium">({product.reviews})</span>
+                    <span className="text-xs sm:text-sm text-slate-600 ml-2 font-medium">({product.reviews})</span>
                   </div>
 
-                  <CardTitle className="text-xl font-bold text-blue-700 leading-tight">{product.name}</CardTitle>
-                  <p className="text-sm text-slate-500 font-medium">{product.subtitle}</p>
-                  <CardDescription className="text-base text-slate-600 leading-relaxed line-clamp-2">
+                  <CardTitle className="text-lg sm:text-xl font-bold text-blue-700 leading-tight">
+                    {product.name}
+                  </CardTitle>
+                  <p className="text-xs sm:text-sm text-slate-500 font-medium">{product.subtitle}</p>
+                  <CardDescription className="text-sm sm:text-base text-slate-600 leading-relaxed line-clamp-2">
                     {product.description}
                   </CardDescription>
 
                   <div className="space-y-2">
                     {product.benefits.slice(0, 3).map((benefit, index) => (
-                      <div key={index} className="flex items-center text-sm text-slate-600">
+                      <div key={index} className="flex items-center text-xs sm:text-sm text-slate-600">
                         <div className="w-2 h-2 bg-blue-500 rounded-full mr-3 flex-shrink-0"></div>
                         <span className="line-clamp-1">{benefit}</span>
                       </div>
                     ))}
                   </div>
 
-                  <div className="text-sm text-slate-500 space-y-1">
+                  <div className="text-xs sm:text-sm text-slate-500 space-y-1">
                     <p className="font-semibold">Apresentação:</p>
                     <p className="line-clamp-1">{product.presentation}</p>
                   </div>
 
-                  <div className="flex items-center space-x-3">
-                    <span className="text-3xl font-black text-blue-600">R$ {product.price.toFixed(2)}</span>
+                  <div className="flex items-center space-x-2 sm:space-x-3">
+                    <span className="text-2xl sm:text-3xl font-black text-blue-600">R$ {product.price.toFixed(2)}</span>
                     {product.originalPrice > product.price && (
-                      <span className="text-lg text-slate-500 line-through">R$ {product.originalPrice.toFixed(2)}</span>
+                      <span className="text-base sm:text-lg text-slate-500 line-through">
+                        R$ {product.originalPrice.toFixed(2)}
+                      </span>
                     )}
                   </div>
                 </CardContent>
 
-                <CardFooter className="p-6 pt-0">
+                <CardFooter className="p-4 sm:p-6 pt-0">
                   <div className="w-full">
                     <Button
                       onClick={() => buyProduct(product.id)}
-                      className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white py-4 lg:py-5 text-lg lg:text-xl font-black rounded-2xl shadow-xl hover:scale-105 transition-all duration-300 group"
+                      className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white py-3 sm:py-4 lg:py-5 text-sm sm:text-lg lg:text-xl font-black rounded-xl sm:rounded-2xl shadow-xl hover:scale-105 transition-all duration-300 group"
                     >
-                      <ShoppingCart className="w-5 lg:w-6 h-5 lg:h-6 mr-3 group-hover:rotate-12 transition-transform" />
+                      <ShoppingCart className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6 mr-2 sm:mr-3 group-hover:rotate-12 transition-transform" />
                       COMPRAR AGORA
                     </Button>
                   </div>
@@ -686,34 +695,37 @@ export default function PbdSuplemedStore() {
       </section>
 
       {/* Enhanced About Section with New Image */}
-      <section id="sobre" className="py-24 px-6 bg-gradient-to-br from-slate-50 to-blue-50 relative overflow-hidden">
+      <section
+        id="sobre"
+        className="py-16 sm:py-24 px-4 sm:px-6 bg-gradient-to-br from-slate-50 to-blue-50 relative overflow-hidden"
+      >
         <div className="absolute inset-0">
           <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl"></div>
         </div>
 
         <div className="container mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
-              <div className="space-y-6">
-                <Badge className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-3 text-lg font-semibold shadow-2xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 items-center">
+            <div className="space-y-6 sm:space-y-8">
+              <div className="space-y-4 sm:space-y-6">
+                <Badge className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 sm:px-8 py-2 sm:py-3 text-base sm:text-lg font-semibold shadow-2xl">
                   EXCELÊNCIA CIENTÍFICA
                 </Badge>
-                <h3 className="text-5xl lg:text-6xl font-black text-slate-900 leading-tight">
+                <h3 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 leading-tight">
                   Por que escolher{" "}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600">
                     PBD SUPLEMED
                   </span>
                   ?
                 </h3>
-                <p className="text-xl text-slate-600 leading-relaxed">
+                <p className="text-lg sm:text-xl text-slate-600 leading-relaxed">
                   A PBD SUPLEMED é referência em desenvolver suplementos de alta performance com fórmulas exclusivas e
                   ingredientes premium, comprometida em oferecer produtos que realmente transformam resultados através
                   da ciência nutricional avançada.
                 </p>
               </div>
 
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 {[
                   {
                     title: "Fórmulas Exclusivas",
@@ -731,13 +743,13 @@ export default function PbdSuplemedStore() {
                     icon: "🛡️",
                   },
                 ].map((item, index) => (
-                  <div key={index} className="flex items-start space-x-4 group">
-                    <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-xl group-hover:scale-110 transition-all duration-300">
-                      <span className="text-2xl">{item.icon}</span>
+                  <div key={index} className="flex items-start space-x-3 sm:space-x-4 group">
+                    <div className="w-12 sm:w-16 h-12 sm:h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0 shadow-xl group-hover:scale-110 transition-all duration-300">
+                      <span className="text-xl sm:text-2xl">{item.icon}</span>
                     </div>
-                    <div className="space-y-2">
-                      <h4 className="text-xl font-bold text-slate-900">{item.title}</h4>
-                      <p className="text-slate-600 leading-relaxed">{item.description}</p>
+                    <div className="space-y-1 sm:space-y-2">
+                      <h4 className="text-lg sm:text-xl font-bold text-slate-900">{item.title}</h4>
+                      <p className="text-sm sm:text-base text-slate-600 leading-relaxed">{item.description}</p>
                     </div>
                   </div>
                 ))}
@@ -745,7 +757,7 @@ export default function PbdSuplemedStore() {
             </div>
 
             <div className="relative group">
-              <div className="relative overflow-hidden rounded-3xl shadow-2xl">
+              <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl">
                 <Image
                   src="/images/pbd-about-lab.png"
                   alt="Laboratório PBD SUPLEMED - Ciência e Inovação"
@@ -756,7 +768,7 @@ export default function PbdSuplemedStore() {
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent"></div>
               </div>
               {/* Enhanced Glow Effects */}
-              <div className="absolute -inset-4 rounded-3xl bg-gradient-to-r from-blue-500/20 to-cyan-500/20 blur-2xl group-hover:blur-3xl transition-all duration-700"></div>
+              <div className="absolute -inset-4 rounded-2xl sm:rounded-3xl bg-gradient-to-r from-blue-500/20 to-cyan-500/20 blur-2xl group-hover:blur-3xl transition-all duration-700"></div>
             </div>
           </div>
         </div>
@@ -764,7 +776,7 @@ export default function PbdSuplemedStore() {
 
       <section
         id="contato"
-        className="py-32 px-6 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 relative overflow-hidden"
+        className="py-20 sm:py-32 px-4 sm:px-6 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 relative overflow-hidden"
       >
         {/* Background Effects */}
         <div className="absolute inset-0">
@@ -773,27 +785,32 @@ export default function PbdSuplemedStore() {
         </div>
 
         <div className="container mx-auto relative z-10">
-          <div className="text-center mb-20 space-y-8">
-            <Badge className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-8 py-4 text-lg font-bold shadow-2xl">
+          <div className="text-center mb-16 sm:mb-20 space-y-6 sm:space-y-8">
+            <Badge className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-bold shadow-2xl">
               ATENDIMENTO VIP EXCLUSIVO
             </Badge>
-            <h3 className="text-6xl lg:text-7xl font-black text-white leading-tight">
+            <h3 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-tight">
               Suporte{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Premium</span>{" "}
               Personalizado
             </h3>
-            <p className="text-2xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl lg:text-2xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
               Consultoria nutricional personalizada com nossos especialistas certificados. Atendimento diferenciado para
               resultados excepcionais e transformação garantida.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-10 mb-16 sm:mb-20">
             {/* Alessandro - Consultor Premium */}
-            <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-10 border border-white/20 hover:bg-white/15 transition-all duration-500 group hover:scale-105">
-              <div className="text-center space-y-6">
-                <div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform shadow-2xl">
-                  <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-white/10 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-10 border border-white/20 hover:bg-white/15 transition-all duration-500 group hover:scale-105">
+              <div className="text-center space-y-4 sm:space-y-6">
+                <div className="w-16 sm:w-20 h-16 sm:h-20 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform shadow-2xl">
+                  <svg
+                    className="w-8 sm:w-10 h-8 sm:h-10 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -802,19 +819,24 @@ export default function PbdSuplemedStore() {
                     />
                   </svg>
                 </div>
-                <div className="space-y-3">
-                  <h4 className="text-3xl font-bold text-white">Alessandro</h4>
-                  <p className="text-blue-300 font-semibold text-lg">Consultor Nutricional Premium</p>
-                  <p className="text-slate-300 leading-relaxed">
+                <div className="space-y-2 sm:space-y-3">
+                  <h4 className="text-2xl sm:text-3xl font-bold text-white">Alessandro</h4>
+                  <p className="text-blue-300 font-semibold text-base sm:text-lg">Consultor Nutricional Premium</p>
+                  <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
                     Especialista em suplementação esportiva e performance. Atendimento personalizado para atletas e
                     entusiastas fitness com mais de 10 anos de experiência.
                   </p>
                 </div>
                 <a
                   href="tel:+5562996114758"
-                  className="inline-flex items-center bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white px-8 py-4 rounded-2xl font-bold transition-all duration-300 hover:scale-105 shadow-2xl group"
+                  className="inline-flex items-center bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-bold transition-all duration-300 hover:scale-105 shadow-2xl group text-sm sm:text-base"
                 >
-                  <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg
+                    className="w-5 sm:w-6 h-5 sm:h-6 mr-2 sm:mr-3"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -823,16 +845,21 @@ export default function PbdSuplemedStore() {
                     />
                   </svg>
                   (62) 9 9611-4758
-                  <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                  <ChevronRight className="w-4 sm:w-5 h-4 sm:h-5 ml-1 sm:ml-2 group-hover:translate-x-1 transition-transform" />
                 </a>
               </div>
             </div>
 
             {/* Breno - Especialista Técnico */}
-            <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-10 border border-white/20 hover:bg-white/15 transition-all duration-500 group hover:scale-105">
-              <div className="text-center space-y-6">
-                <div className="w-20 h-20 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform shadow-2xl">
-                  <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-white/10 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-10 border border-white/20 hover:bg-white/15 transition-all duration-500 group hover:scale-105">
+              <div className="text-center space-y-4 sm:space-y-6">
+                <div className="w-16 sm:w-20 h-16 sm:h-20 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform shadow-2xl">
+                  <svg
+                    className="w-8 sm:w-10 h-8 sm:h-10 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -841,19 +868,24 @@ export default function PbdSuplemedStore() {
                     />
                   </svg>
                 </div>
-                <div className="space-y-3">
-                  <h4 className="text-3xl font-bold text-white">Breno Amancio</h4>
-                  <p className="text-emerald-300 font-semibold text-lg">Especialista Técnico</p>
-                  <p className="text-slate-300 leading-relaxed">
+                <div className="space-y-2 sm:space-y-3">
+                  <h4 className="text-2xl sm:text-3xl font-bold text-white">Breno Amancio</h4>
+                  <p className="text-emerald-300 font-semibold text-base sm:text-lg">Especialista Técnico</p>
+                  <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
                     Expert em formulações e desenvolvimento de produtos. Orientação técnica sobre composição, benefícios
                     e protocolos de uso personalizados.
                   </p>
                 </div>
                 <a
                   href="tel:+5562981912294"
-                  className="inline-flex items-center bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white px-8 py-4 rounded-2xl font-bold transition-all duration-300 hover:scale-105 shadow-2xl group"
+                  className="inline-flex items-center bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-bold transition-all duration-300 hover:scale-105 shadow-2xl group text-sm sm:text-base"
                 >
-                  <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg
+                    className="w-5 sm:w-6 h-5 sm:h-6 mr-2 sm:mr-3"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -862,16 +894,21 @@ export default function PbdSuplemedStore() {
                     />
                   </svg>
                   (62) 9 8191-2294
-                  <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                  <ChevronRight className="w-4 sm:w-5 h-4 sm:h-5 ml-1 sm:ml-2 group-hover:translate-x-1 transition-transform" />
                 </a>
               </div>
             </div>
 
             {/* Email Premium */}
-            <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-10 border border-white/20 hover:bg-white/15 transition-all duration-500 group hover:scale-105">
-              <div className="text-center space-y-6">
-                <div className="w-20 h-20 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform shadow-2xl">
-                  <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-white/10 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-10 border border-white/20 hover:bg-white/15 transition-all duration-500 group hover:scale-105">
+              <div className="text-center space-y-4 sm:space-y-6">
+                <div className="w-16 sm:w-20 h-16 sm:h-20 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform shadow-2xl">
+                  <svg
+                    className="w-8 sm:w-10 h-8 sm:h-10 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -880,19 +917,24 @@ export default function PbdSuplemedStore() {
                     />
                   </svg>
                 </div>
-                <div className="space-y-3">
-                  <h4 className="text-3xl font-bold text-white">Suporte Premium</h4>
-                  <p className="text-purple-300 font-semibold text-lg">Atendimento Especializado</p>
-                  <p className="text-slate-300 leading-relaxed">
+                <div className="space-y-2 sm:space-y-3">
+                  <h4 className="text-2xl sm:text-3xl font-bold text-white">Suporte Premium</h4>
+                  <p className="text-purple-300 font-semibold text-base sm:text-lg">Atendimento Especializado</p>
+                  <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
                     Canal direto para dúvidas, pedidos especiais e suporte técnico. Resposta garantida em até 2 horas
                     úteis com nossa equipe especializada.
                   </p>
                 </div>
                 <a
                   href="mailto:contatosuplemed@gmail.com"
-                  className="inline-flex items-center bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-8 py-4 rounded-2xl font-bold transition-all duration-300 hover:scale-105 shadow-2xl group"
+                  className="inline-flex items-center bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-bold transition-all duration-300 hover:scale-105 shadow-2xl group text-sm sm:text-base"
                 >
-                  <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg
+                    className="w-5 sm:w-6 h-5 sm:h-6 mr-2 sm:mr-3"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -900,15 +942,16 @@ export default function PbdSuplemedStore() {
                       d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                     />
                   </svg>
-                  contatosuplemed@gmail.com
-                  <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                  <span className="hidden sm:inline">contatosuplemed@gmail.com</span>
+                  <span className="sm:hidden">Email</span>
+                  <ChevronRight className="w-4 sm:w-5 h-4 sm:h-5 ml-1 sm:ml-2 group-hover:translate-x-1 transition-transform" />
                 </a>
               </div>
             </div>
           </div>
 
           {/* Premium Services */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {[
               {
                 icon: Clock,
@@ -932,12 +975,12 @@ export default function PbdSuplemedStore() {
             ].map((service, index) => (
               <div key={index} className="text-center group">
                 <div
-                  className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-300 shadow-2xl`}
+                  className={`w-12 sm:w-16 h-12 sm:h-16 bg-gradient-to-r ${service.color} rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:scale-110 transition-all duration-300 shadow-2xl`}
                 >
-                  <service.icon className="w-8 h-8 text-white" />
+                  <service.icon className="w-6 sm:w-8 h-6 sm:h-8 text-white" />
                 </div>
-                <h5 className="text-white font-bold text-xl mb-3">{service.title}</h5>
-                <p className="text-slate-400">{service.desc}</p>
+                <h5 className="text-white font-bold text-lg sm:text-xl mb-2 sm:mb-3">{service.title}</h5>
+                <p className="text-slate-400 text-sm sm:text-base">{service.desc}</p>
               </div>
             ))}
           </div>
@@ -945,25 +988,25 @@ export default function PbdSuplemedStore() {
       </section>
 
       {/* Premium Guarantees Section */}
-      <section className="py-24 px-6 bg-gradient-to-br from-slate-50 to-blue-50">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 bg-gradient-to-br from-slate-50 to-blue-50">
         <div className="container mx-auto">
-          <div className="text-center mb-16 space-y-6">
-            <Badge className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-8 py-3 text-lg font-semibold shadow-2xl">
+          <div className="text-center mb-12 sm:mb-16 space-y-4 sm:space-y-6">
+            <Badge className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-6 sm:px-8 py-2 sm:py-3 text-base sm:text-lg font-semibold shadow-2xl">
               GARANTIAS PREMIUM
             </Badge>
-            <h3 className="text-5xl lg:text-6xl font-black text-slate-900">
+            <h3 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900">
               Compromisso com a{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600">
                 Excelência
               </span>
             </h3>
-            <p className="text-2xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl lg:text-2xl text-slate-600 max-w-3xl mx-auto">
               Garantias exclusivas que demonstram nossa confiança total na qualidade e eficácia dos nossos produtos
               premium
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10">
             {[
               {
                 icon: Shield,
@@ -989,16 +1032,16 @@ export default function PbdSuplemedStore() {
             ].map((guarantee, index) => (
               <div
                 key={index}
-                className="bg-white rounded-3xl p-10 shadow-2xl border border-slate-100 hover:shadow-3xl transition-all duration-500 group hover:scale-105"
+                className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-10 shadow-2xl border border-slate-100 hover:shadow-3xl transition-all duration-500 group hover:scale-105"
               >
-                <div className="text-center space-y-6">
+                <div className="text-center space-y-4 sm:space-y-6">
                   <div
-                    className={`w-20 h-20 bg-gradient-to-r ${guarantee.color} rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform shadow-2xl`}
+                    className={`w-16 sm:w-20 h-16 sm:h-20 bg-gradient-to-r ${guarantee.color} rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:scale-110 transition-transform shadow-2xl`}
                   >
-                    <guarantee.icon className="w-10 h-10 text-white" />
+                    <guarantee.icon className="w-8 sm:w-10 h-8 sm:h-10 text-white" />
                   </div>
-                  <h4 className="text-2xl font-bold text-slate-900">{guarantee.title}</h4>
-                  <p className="text-slate-600 leading-relaxed text-lg">{guarantee.description}</p>
+                  <h4 className="text-xl sm:text-2xl font-bold text-slate-900">{guarantee.title}</h4>
+                  <p className="text-slate-600 leading-relaxed text-base sm:text-lg">{guarantee.description}</p>
                 </div>
               </div>
             ))}
@@ -1007,7 +1050,7 @@ export default function PbdSuplemedStore() {
       </section>
 
       {/* Enhanced Footer */}
-      <footer className="bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900 text-white py-20 px-6 relative overflow-hidden">
+      <footer className="bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900 text-white py-16 sm:py-20 px-4 sm:px-6 relative overflow-hidden">
         {/* Background Effects */}
         <div className="absolute inset-0">
           <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
@@ -1015,25 +1058,25 @@ export default function PbdSuplemedStore() {
         </div>
 
         <div className="container mx-auto relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-            <div className="md:col-span-2 space-y-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 sm:gap-12 mb-12 sm:mb-16">
+            <div className="md:col-span-2 space-y-6 sm:space-y-8">
               <div className="flex items-center space-x-4">
                 <Image
                   src="/images/pbd-logo.png"
                   alt="PBD SUPLEMED"
-                  width={140}
-                  height={45}
-                  className="h-12 w-auto brightness-0 invert"
+                  width={120}
+                  height={40}
+                  className="h-10 sm:h-12 w-auto brightness-0 invert"
                 />
               </div>
-              <div className="space-y-4">
-                <h4 className="text-3xl font-bold">PBD SUPLEMED</h4>
-                <p className="text-slate-300 text-lg leading-relaxed max-w-lg">
+              <div className="space-y-3 sm:space-y-4">
+                <h4 className="text-2xl sm:text-3xl font-bold">PBD SUPLEMED</h4>
+                <p className="text-slate-300 text-base sm:text-lg leading-relaxed max-w-lg">
                   Referência em suplementos premium no Brasil. Transformando vidas através da ciência nutricional
                   avançada e atendimento personalizado de excelência mundial.
                 </p>
               </div>
-              <div className="flex space-x-4">
+              <div className="flex space-x-3 sm:space-x-4">
                 {[
                   { platform: "Instagram", color: "from-pink-500 to-purple-500" },
                   { platform: "Facebook", color: "from-blue-500 to-cyan-500" },
@@ -1042,17 +1085,17 @@ export default function PbdSuplemedStore() {
                 ].map((social, index) => (
                   <div
                     key={index}
-                    className={`w-14 h-14 bg-gradient-to-r ${social.color} rounded-2xl flex items-center justify-center hover:scale-110 transition-transform cursor-pointer shadow-xl`}
+                    className={`w-12 sm:w-14 h-12 sm:h-14 bg-gradient-to-r ${social.color} rounded-xl sm:rounded-2xl flex items-center justify-center hover:scale-110 transition-transform cursor-pointer shadow-xl`}
                   >
-                    <span className="text-white font-bold text-lg">{social.platform[0]}</span>
+                    <span className="text-white font-bold text-base sm:text-lg">{social.platform[0]}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="space-y-6">
-              <h4 className="font-bold text-2xl">Linha Premium</h4>
-              <ul className="space-y-4 text-slate-300">
+            <div className="space-y-4 sm:space-y-6">
+              <h4 className="font-bold text-xl sm:text-2xl">Linha Premium</h4>
+              <ul className="space-y-3 sm:space-y-4 text-slate-300">
                 {[
                   { name: "Imunidade Avançada", color: "bg-emerald-400" },
                   { name: "Termogênicos Elite", color: "bg-amber-400" },
@@ -1060,9 +1103,12 @@ export default function PbdSuplemedStore() {
                   { name: "Antioxidantes Pro", color: "bg-purple-400" },
                 ].map((product, index) => (
                   <li key={index}>
-                    <a href="#" className="hover:text-blue-400 transition-colors flex items-center group">
+                    <a
+                      href="#"
+                      className="hover:text-blue-400 transition-colors flex items-center group text-sm sm:text-base"
+                    >
                       <span
-                        className={`w-3 h-3 ${product.color} rounded-full mr-4 group-hover:scale-125 transition-transform`}
+                        className={`w-3 h-3 ${product.color} rounded-full mr-3 sm:mr-4 group-hover:scale-125 transition-transform`}
                       ></span>
                       {product.name}
                     </a>
@@ -1071,18 +1117,23 @@ export default function PbdSuplemedStore() {
               </ul>
             </div>
 
-            <div className="space-y-6">
-              <h4 className="font-bold text-2xl">Contato VIP</h4>
-              <div className="space-y-6 text-slate-300">
+            <div className="space-y-4 sm:space-y-6">
+              <h4 className="font-bold text-xl sm:text-2xl">Contato VIP</h4>
+              <div className="space-y-4 sm:space-y-6 text-slate-300">
                 {[
                   { name: "Alessandro - Consultor", phone: "(62) 9 9611-4758", color: "bg-blue-500" },
                   { name: "Breno - Especialista", phone: "(62) 9 8191-2294", color: "bg-emerald-500" },
                 ].map((contact, index) => (
-                  <div key={index} className="flex items-start space-x-4">
+                  <div key={index} className="flex items-start space-x-3 sm:space-x-4">
                     <div
-                      className={`w-8 h-8 ${contact.color} rounded-xl flex items-center justify-center flex-shrink-0 mt-1 shadow-lg`}
+                      className={`w-6 sm:w-8 h-6 sm:h-8 ${contact.color} rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0 mt-1 shadow-lg`}
                     >
-                      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg
+                        className="w-4 sm:w-5 h-4 sm:h-5 text-white"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
@@ -1092,10 +1143,10 @@ export default function PbdSuplemedStore() {
                       </svg>
                     </div>
                     <div>
-                      <p className="font-semibold text-white text-lg">{contact.name}</p>
+                      <p className="font-semibold text-white text-base sm:text-lg">{contact.name}</p>
                       <a
                         href={`tel:+55${contact.phone.replace(/\D/g, "")}`}
-                        className="hover:text-blue-400 transition-colors"
+                        className="hover:text-blue-400 transition-colors text-sm sm:text-base"
                       >
                         {contact.phone}
                       </a>
@@ -1103,9 +1154,14 @@ export default function PbdSuplemedStore() {
                   </div>
                 ))}
 
-                <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-purple-500 rounded-xl flex items-center justify-center flex-shrink-0 mt-1 shadow-lg">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="flex items-start space-x-3 sm:space-x-4">
+                  <div className="w-6 sm:w-8 h-6 sm:h-8 bg-purple-500 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0 mt-1 shadow-lg">
+                    <svg
+                      className="w-4 sm:w-5 h-4 sm:h-5 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -1115,19 +1171,24 @@ export default function PbdSuplemedStore() {
                     </svg>
                   </div>
                   <div>
-                    <p className="font-semibold text-white text-lg">Suporte Premium</p>
+                    <p className="font-semibold text-white text-base sm:text-lg">Suporte Premium</p>
                     <a
                       href="mailto:contatosuplemed@gmail.com"
-                      className="hover:text-blue-400 transition-colors text-sm"
+                      className="hover:text-blue-400 transition-colors text-xs sm:text-sm"
                     >
                       contatosuplemed@gmail.com
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-cyan-500 rounded-xl flex items-center justify-center flex-shrink-0 mt-1 shadow-lg">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="flex items-start space-x-3 sm:space-x-4">
+                  <div className="w-6 sm:w-8 h-6 sm:h-8 bg-cyan-500 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0 mt-1 shadow-lg">
+                    <svg
+                      className="w-4 sm:w-5 h-4 sm:h-5 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -1143,23 +1204,25 @@ export default function PbdSuplemedStore() {
                     </svg>
                   </div>
                   <div>
-                    <p className="font-semibold text-white text-lg">Sede Premium</p>
-                    <p className="text-sm">Goiânia, GO - Brasil</p>
+                    <p className="font-semibold text-white text-base sm:text-lg">Sede Premium</p>
+                    <p className="text-xs sm:text-sm">Goiânia, GO - Brasil</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="border-t border-slate-700 pt-10">
-            <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+          <div className="border-t border-slate-700 pt-8 sm:pt-10">
+            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 sm:space-y-6 md:space-y-0">
               <div className="text-center md:text-left">
-                <p className="text-slate-400 text-lg">&copy; 2024 PBD SUPLEMED. Todos os direitos reservados.</p>
-                <p className="text-sm text-slate-500 mt-2">
+                <p className="text-slate-400 text-base sm:text-lg">
+                  &copy; 2024 PBD SUPLEMED. Todos os direitos reservados.
+                </p>
+                <p className="text-xs sm:text-sm text-slate-500 mt-2">
                   Produtos premium com certificação internacional. Este produto não é um medicamento.
                 </p>
               </div>
-              <div className="flex space-x-8 text-sm text-slate-400">
+              <div className="flex space-x-6 sm:space-x-8 text-xs sm:text-sm text-slate-400">
                 <a href="#" className="hover:text-white transition-colors">
                   Política de Privacidade
                 </a>
