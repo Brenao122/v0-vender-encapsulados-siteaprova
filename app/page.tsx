@@ -225,7 +225,7 @@ export default function PbdSuplemedStore() {
       </header>
 
       {/* Premium Carousel */}
-      <section className="relative h-[600px] md:h-[700px] overflow-hidden">
+      <section className="relative h-[550px] sm:h-[600px] md:h-[700px] overflow-hidden">
         <div className="relative h-full">
           {products.map((product, index) => {
             // Background personalizado para cada produto
@@ -262,7 +262,7 @@ export default function PbdSuplemedStore() {
 
                 {/* Content Container */}
                 <div className="relative z-20 container mx-auto px-6 h-full flex items-center">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-16 items-center w-full min-h-[500px] md:min-h-[600px]">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-16 items-center w-full min-h-[450px] sm:min-h-[500px] md:min-h-[600px]">
                     {/* Texto - Lado Esquerdo */}
                     <div className="text-center lg:text-left space-y-4 lg:space-y-8 order-2 lg:order-1 flex flex-col justify-center">
                       <div className="space-y-3 lg:space-y-6">
@@ -271,7 +271,7 @@ export default function PbdSuplemedStore() {
                         >
                           {product.badge}
                         </Badge>
-                        <h3 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-tight drop-shadow-2xl">
+                        <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-tight drop-shadow-2xl">
                           {product.name}
                         </h3>
                         <p className="text-lg md:text-xl lg:text-2xl text-white/95 leading-relaxed drop-shadow-lg max-w-2xl">
@@ -291,7 +291,7 @@ export default function PbdSuplemedStore() {
                       </div>
 
                       <div className="flex items-center gap-6 lg:gap-8 justify-center lg:justify-start">
-                        <span className="text-4xl lg:text-5xl font-black text-white drop-shadow-xl">
+                        <span className="text-3xl sm:text-4xl lg:text-5xl font-black text-white drop-shadow-xl">
                           R$ {product.price.toFixed(2)}
                         </span>
                         {product.originalPrice > product.price && (
@@ -315,7 +315,7 @@ export default function PbdSuplemedStore() {
                     {/* Imagem do produto - Lado Direito - AUMENTADA E POR CIMA */}
                     <div className="flex justify-center lg:justify-center order-1 lg:order-2 relative z-50">
                       <div className="relative group">
-                        <div className="w-[280px] h-[280px] md:w-[450px] md:h-[450px] lg:w-[550px] lg:h-[550px] xl:w-[600px] xl:h-[600px] relative flex items-center justify-center">
+                        <div className="w-[240px] h-[240px] sm:w-[280px] sm:h-[280px] md:w-[450px] md:h-[450px] lg:w-[550px] lg:h-[550px] xl:w-[600px] xl:h-[600px] relative flex items-center justify-center">
                           <Image
                             src={product.image || "/placeholder.svg"}
                             alt={product.name}
