@@ -224,8 +224,8 @@ export default function PbdSuplemedStore() {
         </div>
       </header>
 
-      {/* Premium Carousel */}
-      <section className="relative h-[650px] sm:h-[680px] md:h-[700px] overflow-hidden">
+      {/* Premium Carousel - LAYOUT COMPLETAMENTE REORGANIZADO */}
+      <section className="relative h-[900px] sm:h-[950px] md:h-[700px] overflow-hidden">
         <div className="relative h-full">
           {products.map((product, index) => {
             // Background personalizado para cada produto
@@ -261,41 +261,75 @@ export default function PbdSuplemedStore() {
                 </div>
 
                 {/* Content Container */}
-                <div className="relative z-20 container mx-auto px-6 h-full flex items-center">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-16 items-center w-full min-h-[550px] sm:min-h-[580px] md:min-h-[600px]">
-                    {/* Texto - Lado Esquerdo */}
-                    <div className="text-center lg:text-left space-y-3 sm:space-y-4 lg:space-y-8 order-2 lg:order-1 flex flex-col justify-center">
-                      <div className="space-y-2 sm:space-y-3 lg:space-y-6">
-                        <Badge
-                          className={`text-sm lg:text-base px-4 lg:px-6 py-2 lg:py-3 shadow-2xl ${getBadgeColor(product.badge)}`}
-                        >
-                          {product.badge}
-                        </Badge>
-                        <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-tight drop-shadow-2xl">
-                          {product.name}
-                        </h3>
-                        <p className="text-lg md:text-xl lg:text-2xl text-white/95 leading-relaxed drop-shadow-lg max-w-2xl">
-                          {product.description}
-                        </p>
+                <div className="relative z-20 container mx-auto px-4 sm:px-6 h-full">
+                  {/* LAYOUT MOBILE (até md) - VERTICAL */}
+                  <div className="md:hidden flex flex-col h-full py-8">
+                    {/* Imagem do produto - TOPO */}
+                    <div className="flex justify-center mb-6 relative z-50">
+                      <div className="relative group">
+                        <div className="w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] relative flex items-center justify-center">
+                          <Image
+                            src={product.image || "/placeholder.svg"}
+                            alt={product.name}
+                            fill
+                            className="object-contain group-hover:scale-105 transition-all duration-700 relative z-50"
+                            style={{
+                              filter:
+                                "drop-shadow(0 20px 40px rgba(0, 0, 0, 0.6)) brightness(1.05) contrast(1.05) saturate(1.0)",
+                            }}
+                            priority={index === currentSlide}
+                            quality={100}
+                          />
+                        </div>
+                        {/* Efeitos de brilho personalizados por produto */}
+                        <div
+                          className={`absolute inset-0 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-700 z-40 ${
+                            product.name === "GLUTA IMUNITY"
+                              ? "bg-gradient-to-r from-emerald-400/40 to-green-400/40"
+                              : product.name === "LARANJA MORO"
+                                ? "bg-gradient-to-r from-orange-400/40 to-amber-400/40"
+                                : product.name === "RED SIZE"
+                                  ? "bg-gradient-to-r from-red-400/40 to-rose-400/40"
+                                  : "bg-gradient-to-r from-blue-400/40 to-cyan-400/40"
+                          }`}
+                        ></div>
                       </div>
+                    </div>
 
-                      <div className="flex flex-wrap gap-3 lg:gap-4 justify-center lg:justify-start">
-                        {product.benefits.slice(0, 3).map((benefit, idx) => (
+                    {/* Conteúdo de texto - CENTRO */}
+                    <div className="text-center space-y-4 flex-1 flex flex-col justify-center px-4">
+                      <Badge className={`text-sm px-4 py-2 shadow-2xl mx-auto ${getBadgeColor(product.badge)}`}>
+                        {product.badge}
+                      </Badge>
+
+                      <h3 className="text-3xl sm:text-4xl font-black text-white leading-tight drop-shadow-2xl">
+                        {product.name}
+                      </h3>
+
+                      <p className="text-base sm:text-lg text-white/95 leading-relaxed drop-shadow-lg max-w-md mx-auto">
+                        {product.description}
+                      </p>
+
+                      <div className="flex flex-wrap gap-2 justify-center">
+                        {product.benefits.slice(0, 2).map((benefit, idx) => (
                           <span
                             key={idx}
-                            className="text-sm lg:text-base bg-white/20 backdrop-blur-md px-4 lg:px-6 py-2 lg:py-3 rounded-full text-white border border-white/30 shadow-xl hover:bg-white/30 transition-all duration-300"
+                            className="text-xs sm:text-sm bg-white/20 backdrop-blur-md px-3 py-2 rounded-full text-white border border-white/30 shadow-xl"
                           >
                             {benefit}
                           </span>
                         ))}
                       </div>
+                    </div>
 
-                      <div className="flex items-center gap-6 lg:gap-8 justify-center lg:justify-start">
-                        <span className="text-3xl sm:text-4xl lg:text-5xl font-black text-white drop-shadow-xl">
+                    {/* Preços e botão - PARTE INFERIOR */}
+                    <div className="text-center space-y-4 pb-8">
+                      <div className="flex items-center gap-4 justify-center">
+                        <span className="text-3xl sm:text-4xl font-black text-white drop-shadow-xl">
                           R$ {product.price.toFixed(2)}
                         </span>
                         {product.originalPrice > product.price && (
-                          <span className="text-xl lg:text-2xl text-white/60 line-through drop-shadow-lg">
+                          <span className="text-xl text-white/60 line-through drop-shadow-lg">
                             R$ {product.originalPrice.toFixed(2)}
                           </span>
                         )}
@@ -304,18 +338,68 @@ export default function PbdSuplemedStore() {
                       <Button
                         onClick={() => buyProduct(product.id)}
                         size="lg"
-                        className="bg-white/20 backdrop-blur-md hover:bg-white/30 text-white border border-white/30 px-8 lg:px-12 py-5 lg:py-6 text-lg lg:text-xl font-black transition-all duration-500 hover:scale-105 shadow-2xl group w-full lg:w-auto"
+                        className="bg-white/20 backdrop-blur-md hover:bg-white/30 text-white border border-white/30 px-8 py-4 text-lg font-black transition-all duration-500 hover:scale-105 shadow-2xl group w-full max-w-sm mx-auto"
                       >
-                        <ShoppingCart className="w-6 lg:w-7 h-6 lg:h-7 mr-3 lg:mr-4 group-hover:rotate-12 transition-transform" />
+                        <ShoppingCart className="w-6 h-6 mr-3 group-hover:rotate-12 transition-transform" />
                         COMPRAR AGORA
-                        <ChevronRight className="w-5 lg:w-6 h-5 lg:h-6 ml-2 group-hover:translate-x-1 transition-transform" />
+                        <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                      </Button>
+                    </div>
+                  </div>
+
+                  {/* LAYOUT DESKTOP (md+) - HORIZONTAL */}
+                  <div className="hidden md:grid md:grid-cols-2 gap-16 items-center w-full h-full">
+                    {/* Texto - Lado Esquerdo */}
+                    <div className="text-center lg:text-left space-y-8 flex flex-col justify-center">
+                      <div className="space-y-6">
+                        <Badge className={`text-base px-6 py-3 shadow-2xl ${getBadgeColor(product.badge)}`}>
+                          {product.badge}
+                        </Badge>
+                        <h3 className="text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-tight drop-shadow-2xl">
+                          {product.name}
+                        </h3>
+                        <p className="text-xl lg:text-2xl text-white/95 leading-relaxed drop-shadow-lg max-w-2xl">
+                          {product.description}
+                        </p>
+                      </div>
+
+                      <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
+                        {product.benefits.slice(0, 3).map((benefit, idx) => (
+                          <span
+                            key={idx}
+                            className="text-base bg-white/20 backdrop-blur-md px-6 py-3 rounded-full text-white border border-white/30 shadow-xl hover:bg-white/30 transition-all duration-300"
+                          >
+                            {benefit}
+                          </span>
+                        ))}
+                      </div>
+
+                      <div className="flex items-center gap-8 justify-center lg:justify-start">
+                        <span className="text-5xl font-black text-white drop-shadow-xl">
+                          R$ {product.price.toFixed(2)}
+                        </span>
+                        {product.originalPrice > product.price && (
+                          <span className="text-2xl text-white/60 line-through drop-shadow-lg">
+                            R$ {product.originalPrice.toFixed(2)}
+                          </span>
+                        )}
+                      </div>
+
+                      <Button
+                        onClick={() => buyProduct(product.id)}
+                        size="lg"
+                        className="bg-white/20 backdrop-blur-md hover:bg-white/30 text-white border border-white/30 px-12 py-6 text-xl font-black transition-all duration-500 hover:scale-105 shadow-2xl group w-full lg:w-auto"
+                      >
+                        <ShoppingCart className="w-7 h-7 mr-4 group-hover:rotate-12 transition-transform" />
+                        COMPRAR AGORA
+                        <ChevronRight className="w-6 h-6 ml-2 group-hover:translate-x-1 transition-transform" />
                       </Button>
                     </div>
 
-                    {/* Imagem do produto - Lado Direito - AUMENTADA E POR CIMA */}
-                    <div className="flex justify-center lg:justify-center order-1 lg:order-2 relative z-50">
+                    {/* Imagem do produto - Lado Direito */}
+                    <div className="flex justify-center relative z-50">
                       <div className="relative group">
-                        <div className="w-[220px] h-[220px] sm:w-[260px] sm:h-[260px] md:w-[450px] md:h-[450px] lg:w-[550px] lg:h-[550px] xl:w-[600px] xl:h-[600px] relative flex items-center justify-center">
+                        <div className="w-[450px] h-[450px] lg:w-[550px] lg:h-[550px] xl:w-[600px] xl:h-[600px] relative flex items-center justify-center">
                           <Image
                             src={product.image || "/placeholder.svg"}
                             alt={product.name}
@@ -329,7 +413,7 @@ export default function PbdSuplemedStore() {
                             quality={100}
                           />
                         </div>
-                        {/* Efeitos de brilho personalizados por produto - ATRÁS DA IMAGEM */}
+                        {/* Efeitos de brilho personalizados por produto */}
                         <div
                           className={`absolute inset-0 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-700 z-40 ${
                             product.name === "GLUTA IMUNITY"
@@ -361,7 +445,7 @@ export default function PbdSuplemedStore() {
           })}
         </div>
 
-        {/* Enhanced Navigation - posicionadas para não sobrepor as imagens */}
+        {/* Enhanced Navigation */}
         <button
           onClick={prevSlide}
           className="absolute left-4 lg:left-6 top-1/2 -translate-y-1/2 bg-white/15 backdrop-blur-md hover:bg-white/25 p-3 lg:p-4 rounded-2xl shadow-2xl transition-all duration-300 border border-white/30 group hover:scale-110 z-60"
