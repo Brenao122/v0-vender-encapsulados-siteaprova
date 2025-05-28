@@ -2,7 +2,25 @@
 
 import { useState, useEffect, useCallback } from "react"
 import Image from "next/image"
-import { ShoppingCart, Shield, Truck, Award, Clock, Zap, Leaf, ChevronRight, Heart, Star } from "lucide-react"
+import {
+  ShoppingCart,
+  Shield,
+  Truck,
+  Award,
+  Clock,
+  Zap,
+  Leaf,
+  ChevronRight,
+  Heart,
+  Star,
+  MessageCircle,
+  Users,
+  Headphones,
+  Sparkles,
+  CheckCircle,
+  FlaskConical,
+  HeartHandshake,
+} from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
@@ -710,6 +728,238 @@ export default function PbdSuplemedStore() {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Seção Suporte Premium */}
+      <section className="py-16 sm:py-20 px-4 sm:px-6 bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="container mx-auto relative z-10">
+          <div className="text-center mb-12">
+            <Badge className="bg-amber-500 text-white px-6 py-2 text-lg font-semibold shadow-xl mb-6">
+              ATENDIMENTO VIP EXCLUSIVO
+            </Badge>
+            <h3 className="text-4xl sm:text-5xl lg:text-6xl font-black mb-4">
+              Suporte <span className="text-cyan-400">Premium</span> Personalizado
+            </h3>
+            <p className="text-xl text-white/80 max-w-3xl mx-auto">
+              Consultoria nutricional personalizada com nossos especialistas certificados. Atendimento diferenciado para
+              resultados excepcionais e transformação garantida.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            {/* Card Alessandro */}
+            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105">
+              <div className="w-20 h-20 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Users className="w-10 h-10 text-white" />
+              </div>
+              <h4 className="text-2xl font-bold mb-2">Alessandro</h4>
+              <p className="text-cyan-400 mb-4">Consultor Nutricional Premium</p>
+              <p className="text-white/80 mb-6">
+                Especialista em suplementação esportiva e performance. Atendimento personalizado para atletas e
+                entusiastas fitness com mais de 10 anos de experiência.
+              </p>
+              <Button className="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 rounded-xl">
+                <MessageCircle className="w-4 h-4 mr-2" />
+                (21) 9 9511-6736
+              </Button>
+            </div>
+
+            {/* Card Breno */}
+            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105">
+              <div className="w-20 h-20 bg-gradient-to-r from-emerald-400 to-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Headphones className="w-10 h-10 text-white" />
+              </div>
+              <h4 className="text-2xl font-bold mb-2">Breno Amancio</h4>
+              <p className="text-emerald-400 mb-4">Especialista Técnico</p>
+              <p className="text-white/80 mb-6">
+                Expert em formulações e desenvolvimento de produtos. Orientação técnica sobre composição, benefícios e
+                protocolos de uso personalizados.
+              </p>
+              <Button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 rounded-xl">
+                <MessageCircle className="w-4 h-4 mr-2" />
+                (21) 9 9191-2594
+              </Button>
+            </div>
+
+            {/* Card Suporte Premium */}
+            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105">
+              <div className="w-20 h-20 bg-gradient-to-r from-pink-400 to-rose-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Sparkles className="w-10 h-10 text-white" />
+              </div>
+              <h4 className="text-2xl font-bold mb-2">Suporte Premium</h4>
+              <p className="text-pink-400 mb-4">Atendimento Especializado</p>
+              <p className="text-white/80 mb-6">
+                Canal direto para dúvidas, pedidos especiais e suporte técnico. Resposta garantida em até 2 horas com
+                nossa equipe especializada.
+              </p>
+              <Button className="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 rounded-xl">
+                <MessageCircle className="w-4 h-4 mr-2" />
+                suporte@pbdsuplemed.com
+              </Button>
+            </div>
+          </div>
+
+          {/* Benefícios */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-orange-500/20 rounded-2xl flex items-center justify-center mx-auto mb-3">
+                <Zap className="w-8 h-8 text-orange-400" />
+              </div>
+              <h5 className="font-bold mb-1">Resposta Imediata</h5>
+              <p className="text-sm text-white/60">Atendimento em até 2 horas</p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-green-500/20 rounded-2xl flex items-center justify-center mx-auto mb-3">
+                <Award className="w-8 h-8 text-green-400" />
+              </div>
+              <h5 className="font-bold mb-1">Consultoria Gratuita</h5>
+              <p className="text-sm text-white/60">Orientação nutricional inclusa</p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center mx-auto mb-3">
+                <Truck className="w-8 h-8 text-blue-400" />
+              </div>
+              <h5 className="font-bold mb-1">Entrega Express</h5>
+              <p className="text-sm text-white/60">Receba em 24-48h</p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center mx-auto mb-3">
+                <Star className="w-8 h-8 text-purple-400" />
+              </div>
+              <h5 className="font-bold mb-1">Programa VIP</h5>
+              <p className="text-sm text-white/60">Benefícios exclusivos</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Seção Compromisso com a Excelência */}
+      <section className="py-16 sm:py-20 px-4 sm:px-6 bg-gradient-to-br from-slate-900 to-slate-800 text-white relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="container mx-auto relative z-10">
+          <div className="text-center mb-12">
+            <Badge className="bg-emerald-500 text-white px-6 py-2 text-lg font-semibold shadow-xl mb-6">
+              GARANTIAS PREMIUM
+            </Badge>
+            <h3 className="text-4xl sm:text-5xl lg:text-6xl font-black mb-4">
+              Compromisso com a <span className="text-blue-400">Excelência</span>
+            </h3>
+            <p className="text-xl text-white/80 max-w-3xl mx-auto">
+              Garantias exclusivas que demonstram nossa confiança total na qualidade e eficácia dos nossos produtos
+              premium.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Garantia de Resultados */}
+            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105">
+              <div className="w-20 h-20 bg-gradient-to-r from-emerald-500 to-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                <CheckCircle className="w-10 h-10 text-white" />
+              </div>
+              <h4 className="text-2xl font-bold mb-4">Garantia de Resultados</h4>
+              <p className="text-white/70 leading-relaxed">
+                30 dias para experimentar. Não ficou satisfeito? Devolvemos 100% do seu investimento sem
+                questionamentos.
+              </p>
+            </div>
+
+            {/* Pureza Certificada */}
+            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105">
+              <div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                <FlaskConical className="w-10 h-10 text-white" />
+              </div>
+              <h4 className="text-2xl font-bold mb-4">Pureza Certificada</h4>
+              <p className="text-white/70 leading-relaxed">
+                Produtos testados em laboratório internacional com certificação de pureza e potência garantidas.
+              </p>
+            </div>
+
+            {/* Suporte Vitalício */}
+            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105">
+              <div className="w-20 h-20 bg-gradient-to-r from-pink-500 to-rose-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                <HeartHandshake className="w-10 h-10 text-white" />
+              </div>
+              <h4 className="text-2xl font-bold mb-4">Suporte Vitalício</h4>
+              <p className="text-white/70 leading-relaxed">
+                Acompanhamento personalizado e suporte nutricional durante toda sua jornada de transformação.
+              </p>
+            </div>
+          </div>
+
+          {/* Informações Adicionais */}
+          <div className="mt-16 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h4 className="text-3xl font-bold mb-6">PBD SUPLEMED</h4>
+              <p className="text-white/70 leading-relaxed mb-6">
+                Referência em suplementos premium no Brasil. Transformando vidas através da ciência nutricional avançada
+                e atendimento personalizado de excelência mundial.
+              </p>
+              <div className="flex gap-4">
+                <Button className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold">
+                  <Award className="w-4 h-4 mr-2" />
+                  Linha Premium
+                </Button>
+                <Button variant="outline" className="border-white/30 text-white hover:bg-white/10">
+                  <MessageCircle className="w-4 h-4 mr-2" />
+                  Contato VIP
+                </Button>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-6">
+              <div>
+                <h5 className="font-bold mb-3 text-blue-400">Linha Premium</h5>
+                <ul className="space-y-2 text-white/70">
+                  <li className="flex items-center gap-2">
+                    <ChevronRight className="w-4 h-4 text-blue-400" />
+                    Imunidade Avançada
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <ChevronRight className="w-4 h-4 text-blue-400" />
+                    Termogênicos Elite
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <ChevronRight className="w-4 h-4 text-blue-400" />
+                    Energia Performance
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <ChevronRight className="w-4 h-4 text-blue-400" />
+                    Antioxidantes Pro
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h5 className="font-bold mb-3 text-cyan-400">Contato VIP</h5>
+                <ul className="space-y-2 text-white/70">
+                  <li className="flex items-center gap-2">
+                    <Users className="w-4 h-4 text-cyan-400" />
+                    Alessandro - Consultor
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Headphones className="w-4 h-4 text-cyan-400" />
+                    Breno - Especialista
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-cyan-400" />
+                    Suporte Premium
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Award className="w-4 h-4 text-cyan-400" />
+                    Sede Premium
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>
