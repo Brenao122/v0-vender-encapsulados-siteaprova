@@ -306,29 +306,63 @@ export default function PbdSuplemedStore() {
                   {/* Lado Direito - Imagem */}
                   <div className="w-full md:w-1/2 flex justify-center z-10">
                     <div className="relative w-full max-w-sm">
-                      <div className="aspect-square relative">
-                        <Image
-                          src={product.image || "/placeholder.svg"}
-                          alt={product.name}
-                          fill
-                          className="object-cover rounded-2xl shadow-2xl transition-transform duration-700 hover:scale-105"
-                          priority={index === currentSlide}
-                          quality={100}
-                        />
-                      </div>
+                      {/* Container da imagem com efeito flutuante */}
+                      <div className="relative group">
+                        {/* Sombra principal - mais distante */}
+                        <div
+                          className={`absolute inset-0 rounded-2xl blur-3xl opacity-60 transform translate-y-8 scale-110 transition-all duration-700 group-hover:translate-y-12 group-hover:scale-125 ${
+                            product.name === "GLUTA IMUNITY"
+                              ? "bg-gradient-to-br from-emerald-500/40 via-green-500/30 to-teal-500/40"
+                              : product.name === "LARANJA MORO"
+                                ? "bg-gradient-to-br from-orange-500/40 via-amber-500/30 to-yellow-500/40"
+                                : product.name === "RED SIZE"
+                                  ? "bg-gradient-to-br from-red-500/40 via-rose-500/30 to-pink-500/40"
+                                  : "bg-gradient-to-br from-blue-500/40 via-cyan-500/30 to-indigo-500/40"
+                          }`}
+                        ></div>
 
-                      {/* Efeito de brilho */}
-                      <div
-                        className={`absolute inset-0 -z-10 rounded-2xl blur-2xl opacity-50 transition-all duration-700 ${
-                          product.name === "GLUTA IMUNITY"
-                            ? "bg-emerald-400/30"
-                            : product.name === "LARANJA MORO"
-                              ? "bg-orange-400/30"
-                              : product.name === "RED SIZE"
-                                ? "bg-red-400/30"
-                                : "bg-blue-400/30"
-                        }`}
-                      ></div>
+                        {/* Sombra secundária - mais próxima */}
+                        <div
+                          className={`absolute inset-0 rounded-2xl blur-xl opacity-40 transform translate-y-4 scale-105 transition-all duration-500 group-hover:translate-y-6 group-hover:scale-110 ${
+                            product.name === "GLUTA IMUNITY"
+                              ? "bg-gradient-to-br from-emerald-600/50 to-green-600/50"
+                              : product.name === "LARANJA MORO"
+                                ? "bg-gradient-to-br from-orange-600/50 to-amber-600/50"
+                                : product.name === "RED SIZE"
+                                  ? "bg-gradient-to-br from-red-600/50 to-rose-600/50"
+                                  : "bg-gradient-to-br from-blue-600/50 to-cyan-600/50"
+                          }`}
+                        ></div>
+
+                        {/* Sombra de contato - mais próxima da imagem */}
+                        <div className="absolute inset-0 rounded-2xl bg-black/20 blur-lg transform translate-y-2 scale-102 transition-all duration-300 group-hover:translate-y-3"></div>
+
+                        {/* Container da imagem com animação de flutuação */}
+                        <div className="aspect-square relative transform transition-all duration-700 group-hover:-translate-y-2 group-hover:scale-105 animate-float">
+                          <Image
+                            src={product.image || "/placeholder.svg"}
+                            alt={product.name}
+                            fill
+                            className="object-cover rounded-2xl shadow-2xl relative z-10"
+                            style={{
+                              filter: "drop-shadow(0 25px 50px rgba(0, 0, 0, 0.3)) brightness(1.05) contrast(1.05)",
+                            }}
+                            priority={index === currentSlide}
+                            quality={100}
+                          />
+
+                          {/* Brilho interno da imagem */}
+                          <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-transparent via-transparent to-white/10 pointer-events-none"></div>
+
+                          {/* Reflexo sutil */}
+                          <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/20 via-transparent to-transparent opacity-30 pointer-events-none"></div>
+                        </div>
+
+                        {/* Partículas flutuantes ao redor */}
+                        <div className="absolute -top-4 -left-4 w-2 h-2 bg-white/40 rounded-full animate-ping"></div>
+                        <div className="absolute -top-2 -right-6 w-1 h-1 bg-white/60 rounded-full animate-pulse"></div>
+                        <div className="absolute -bottom-3 -left-2 w-1.5 h-1.5 bg-white/30 rounded-full animate-bounce"></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -502,6 +536,21 @@ export default function PbdSuplemedStore() {
           </div>
         </div>
       </section>
+
+      <style jsx>{`
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+      
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+    `}</style>
     </div>
   )
 }
