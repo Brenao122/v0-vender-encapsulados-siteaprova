@@ -20,13 +20,19 @@ import {
   CheckCircle,
   FlaskConical,
   HeartHandshake,
+  MapPin,
+  Instagram,
+  Facebook,
+  Youtube,
+  Linkedin,
+  ArrowRight,
+  Flame,
+  Brain,
+  Activity,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
-
-// Atualizar as imagens dos produtos para usar as mesmas do carrossel
-// Modificar o array de produtos para usar as imagens corretas
 
 const products = [
   {
@@ -206,9 +212,9 @@ export default function PbdSuplemedStore() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
       {/* Header Premium */}
-      <header className="bg-white/80 backdrop-blur-xl shadow-xl border-b border-white/20 sticky top-0 z-50">
+      <header className="bg-slate-900/80 backdrop-blur-xl shadow-xl border-b border-slate-800/50 sticky top-0 z-50">
         <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-5">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2 sm:space-x-4">
@@ -220,53 +226,53 @@ export default function PbdSuplemedStore() {
                 className="h-8 sm:h-12 w-auto"
               />
               <div className="hidden md:block">
-                <h1 className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                <h1 className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
                   PBD SUPLEMED
                 </h1>
-                <p className="text-xs lg:text-sm text-slate-600 font-medium">Excelência em Suplementação</p>
+                <p className="text-xs lg:text-sm text-slate-400 font-medium">Excelência em Suplementação</p>
               </div>
             </div>
 
             <nav className="hidden lg:flex space-x-8 xl:space-x-10">
               <a
                 href="#produtos"
-                className="text-slate-700 hover:text-blue-600 font-semibold transition-all duration-300 relative group"
+                className="text-slate-300 hover:text-blue-400 font-semibold transition-all duration-300 relative group"
                 onClick={(e) => {
                   e.preventDefault()
                   document.getElementById("produtos")?.scrollIntoView({ behavior: "smooth" })
                 }}
               >
                 Produtos
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
               </a>
               <a
                 href="#sobre"
-                className="text-slate-700 hover:text-blue-600 font-semibold transition-all duration-300 relative group"
+                className="text-slate-300 hover:text-blue-400 font-semibold transition-all duration-300 relative group"
                 onClick={(e) => {
                   e.preventDefault()
                   document.getElementById("sobre")?.scrollIntoView({ behavior: "smooth" })
                 }}
               >
                 Sobre
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
               </a>
               <a
                 href="#contato"
-                className="text-slate-700 hover:text-blue-600 font-semibold transition-all duration-300 relative group"
+                className="text-slate-300 hover:text-blue-400 font-semibold transition-all duration-300 relative group"
                 onClick={(e) => {
                   e.preventDefault()
                   document.getElementById("contato")?.scrollIntoView({ behavior: "smooth" })
                 }}
               >
                 Contato
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
               </a>
             </nav>
 
             <div className="flex items-center space-x-3 sm:space-x-6">
               <div className="text-right">
-                <p className="text-xs sm:text-sm text-slate-600 font-medium">Atendimento</p>
-                <p className="text-lg sm:text-xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                <p className="text-xs sm:text-sm text-slate-400 font-medium">Atendimento</p>
+                <p className="text-lg sm:text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
                   Premium
                 </p>
               </div>
@@ -524,7 +530,7 @@ export default function PbdSuplemedStore() {
       </section>
 
       {/* Enhanced Hero Section */}
-      <section className="py-8 sm:py-12 lg:py-16 px-4 sm:px-6 relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50">
+      <section className="py-16 sm:py-20 px-4 sm:px-6 relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl"></div>
@@ -533,37 +539,31 @@ export default function PbdSuplemedStore() {
         <div className="container mx-auto text-center relative z-10">
           <div className="space-y-6 sm:space-y-8 max-w-5xl mx-auto">
             <Badge className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 sm:px-8 py-2 sm:py-3 text-base sm:text-lg font-semibold shadow-2xl">
-              LINHA PREMIUM EXCLUSIVA
+              COLEÇÃO PREMIUM
             </Badge>
 
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-slate-900 leading-tight">
-              Potencialize Sua{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600">
-                Performance
-              </span>{" "}
-              e{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">Saúde</span>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-tight">
+              Linha PBD{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">SUPLEMED</span>
             </h2>
 
-            <p className="text-lg sm:text-xl lg:text-2xl text-slate-600 leading-relaxed max-w-4xl mx-auto">
-              Descubra a linha PBD SUPLEMED de suplementos premium desenvolvidos com{" "}
-              <span className="font-bold text-blue-600">tecnologia avançada</span> e{" "}
-              <span className="font-bold text-cyan-600">ingredientes de alta qualidade</span> para maximizar seus
-              resultados.
+            <p className="text-lg sm:text-xl lg:text-2xl text-slate-300 leading-relaxed max-w-4xl mx-auto">
+              Suplementos desenvolvidos com <span className="font-bold text-blue-400">tecnologia avançada</span> e{" "}
+              <span className="font-bold text-cyan-400">ingredientes premium</span> para resultados superiores.
             </p>
           </div>
 
           <div className="flex flex-wrap justify-center gap-8 sm:gap-12 my-12 sm:my-16">
             {[
-              { icon: Shield, text: "Qualidade Garantida", color: "text-emerald-600" },
-              { icon: Truck, text: "Entrega Express", color: "text-blue-600" },
-              { icon: Award, text: "Fórmulas Exclusivas", color: "text-cyan-600" },
+              { icon: Shield, text: "Qualidade Garantida", color: "text-emerald-400" },
+              { icon: Truck, text: "Entrega Express", color: "text-blue-400" },
+              { icon: Award, text: "Fórmulas Exclusivas", color: "text-cyan-400" },
             ].map((item, index) => (
               <div key={index} className="flex items-center space-x-3 sm:space-x-4 group">
-                <div className="w-12 sm:w-16 h-12 sm:h-16 bg-gradient-to-r from-slate-100 to-white rounded-xl sm:rounded-2xl flex items-center justify-center shadow-xl group-hover:scale-110 transition-all duration-300">
+                <div className="w-12 sm:w-16 h-12 sm:h-16 bg-gradient-to-r from-slate-800 to-slate-700 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-xl group-hover:scale-110 transition-all duration-300">
                   <item.icon className={`w-6 sm:w-8 h-6 sm:h-8 ${item.color}`} />
                 </div>
-                <span className="text-lg sm:text-xl text-slate-700 font-bold">{item.text}</span>
+                <span className="text-lg sm:text-xl text-white font-bold">{item.text}</span>
               </div>
             ))}
           </div>
@@ -580,7 +580,7 @@ export default function PbdSuplemedStore() {
       </section>
 
       {/* Enhanced Filter Section */}
-      <section className="py-4 sm:py-6 px-4 sm:px-6 bg-gradient-to-r from-slate-50 to-blue-50">
+      <section className="py-4 sm:py-6 px-4 sm:px-6 bg-gradient-to-r from-slate-900 to-slate-800">
         <div className="container mx-auto">
           <div className="flex flex-wrap justify-center gap-3 sm:gap-6">
             {[
@@ -596,7 +596,7 @@ export default function PbdSuplemedStore() {
                 className={`px-4 sm:px-8 py-3 sm:py-4 text-sm sm:text-lg font-semibold rounded-xl sm:rounded-2xl transition-all duration-300 hover:scale-105 shadow-lg ${
                   selectedCategory === category.key
                     ? `${category.color} hover:${category.color.replace("600", "700")} text-white shadow-2xl`
-                    : "bg-white/80 backdrop-blur-sm border-slate-200 hover:bg-white text-slate-700"
+                    : "bg-slate-800/80 backdrop-blur-sm border-slate-700 hover:bg-slate-700 text-slate-300"
                 }`}
               >
                 {category.icon && <category.icon className="w-4 sm:w-5 h-4 sm:h-5 mr-2 sm:mr-3" />}
@@ -611,22 +611,14 @@ export default function PbdSuplemedStore() {
       {/* SEÇÃO DE PRODUTOS COMPLETA */}
       <section
         id="produtos"
-        className="py-8 sm:py-12 px-4 sm:px-6 bg-gradient-to-br from-slate-50 via-white to-blue-50"
+        className="py-16 sm:py-20 px-4 sm:px-6 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
       >
         <div className="container mx-auto">
-          <div className="text-center mb-16 sm:mb-20 space-y-4 sm:space-y-6">
-            <Badge className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 sm:px-8 py-2 sm:py-3 text-base sm:text-lg font-semibold shadow-2xl">
-              COLEÇÃO PREMIUM
-            </Badge>
-            <h3 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900">Linha PBD SUPLEMED</h3>
-          </div>
-
-          {/* Grid de Produtos */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {filteredProducts.map((product) => (
               <Card
                 key={product.id}
-                className="group relative overflow-hidden bg-white/80 backdrop-blur-sm border-slate-200 hover:border-slate-300 transition-all duration-500 hover:scale-105 hover:shadow-2xl"
+                className="group relative overflow-hidden bg-slate-800/80 backdrop-blur-sm border-slate-700 hover:border-slate-600 transition-all duration-500 hover:scale-105 hover:shadow-2xl"
               >
                 {/* Badge do Produto */}
                 <Badge
@@ -638,7 +630,7 @@ export default function PbdSuplemedStore() {
                 {/* Botão de Favorito */}
                 <button
                   onClick={() => toggleFavorite(product.id)}
-                  className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all duration-300"
+                  className="absolute top-4 right-4 z-10 w-10 h-10 bg-slate-700/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all duration-300"
                   aria-label="Adicionar aos favoritos"
                 >
                   <Heart
@@ -649,7 +641,7 @@ export default function PbdSuplemedStore() {
                 </button>
 
                 {/* Imagem do Produto - Usando a mesma imagem do carrossel */}
-                <div className="relative h-64 overflow-hidden bg-gradient-to-br from-slate-100 to-slate-50">
+                <div className="relative h-64 overflow-hidden bg-gradient-to-br from-slate-900 to-slate-800">
                   <Image
                     src={product.image || "/placeholder.svg"}
                     alt={product.name}
@@ -657,14 +649,14 @@ export default function PbdSuplemedStore() {
                     className="object-contain p-4 group-hover:scale-110 transition-all duration-700"
                     quality={90}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
                 </div>
 
                 <CardContent className="p-6 space-y-4">
                   {/* Nome e Avaliação */}
                   <div>
-                    <h4 className="text-xl font-bold text-slate-900 mb-1">{product.name}</h4>
-                    <p className="text-sm text-slate-600 mb-2">{product.subtitle}</p>
+                    <h4 className="text-xl font-bold text-white mb-1">{product.name}</h4>
+                    <p className="text-sm text-slate-400 mb-2">{product.subtitle}</p>
                     <div className="flex items-center gap-2">
                       <div className="flex items-center">
                         {[...Array(5)].map((_, i) => (
@@ -673,37 +665,34 @@ export default function PbdSuplemedStore() {
                             className={`w-4 h-4 ${
                               i < Math.floor(product.rating)
                                 ? "fill-amber-400 text-amber-400"
-                                : "fill-slate-200 text-slate-200"
+                                : "fill-slate-700 text-slate-700"
                             }`}
                           />
                         ))}
                       </div>
-                      <span className="text-sm text-slate-600">
+                      <span className="text-sm text-slate-400">
                         {product.rating} ({product.reviews})
                       </span>
                     </div>
                   </div>
 
-                  {/* Descrição */}
-                  <p className="text-sm text-slate-600 line-clamp-2">{product.description}</p>
-
-                  {/* Benefícios */}
-                  <div className="flex flex-wrap gap-1">
-                    {product.benefits.slice(0, 2).map((benefit, idx) => (
-                      <span
-                        key={idx}
-                        className="text-xs bg-slate-100 px-2 py-1 rounded-full text-slate-600 border border-slate-200"
-                      >
-                        {benefit.length > 20 ? benefit.substring(0, 20) + "..." : benefit}
-                      </span>
+                  {/* Benefícios específicos */}
+                  <div className="space-y-2">
+                    {product.benefits.slice(0, 3).map((benefit, idx) => (
+                      <div key={idx} className="flex items-start gap-2">
+                        <div className="mt-0.5">
+                          <CheckCircle className="w-4 h-4 text-cyan-400" />
+                        </div>
+                        <p className="text-sm text-slate-300">{benefit}</p>
+                      </div>
                     ))}
                   </div>
 
                   {/* Preço e Botão */}
-                  <div className="space-y-3">
+                  <div className="space-y-3 pt-2">
                     <div className="flex items-center justify-between">
                       <div>
-                        <span className="text-2xl font-black text-slate-900">R$ {product.price.toFixed(2)}</span>
+                        <span className="text-2xl font-black text-white">R$ {product.price.toFixed(2)}</span>
                         {product.originalPrice > product.price && (
                           <span className="text-sm text-slate-500 line-through ml-2">
                             R$ {product.originalPrice.toFixed(2)}
@@ -767,7 +756,7 @@ export default function PbdSuplemedStore() {
               </p>
               <Button className="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 rounded-xl">
                 <MessageCircle className="w-4 h-4 mr-2" />
-                (21) 9 9511-6736
+                (62) 9 9611-4736
               </Button>
             </div>
 
@@ -784,7 +773,7 @@ export default function PbdSuplemedStore() {
               </p>
               <Button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 rounded-xl">
                 <MessageCircle className="w-4 h-4 mr-2" />
-                (21) 9 9191-2594
+                (62) 9 8191-2294
               </Button>
             </div>
 
@@ -801,7 +790,7 @@ export default function PbdSuplemedStore() {
               </p>
               <Button className="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 rounded-xl">
                 <MessageCircle className="w-4 h-4 mr-2" />
-                suporte@pbdsuplemed.com
+                contatosuplemed@gmail.com
               </Button>
             </div>
           </div>
@@ -921,19 +910,19 @@ export default function PbdSuplemedStore() {
                 <h5 className="font-bold mb-3 text-blue-400">Linha Premium</h5>
                 <ul className="space-y-2 text-white/70">
                   <li className="flex items-center gap-2">
-                    <ChevronRight className="w-4 h-4 text-blue-400" />
+                    <Leaf className="w-4 h-4 text-emerald-400" />
                     Imunidade Avançada
                   </li>
                   <li className="flex items-center gap-2">
-                    <ChevronRight className="w-4 h-4 text-blue-400" />
+                    <Flame className="w-4 h-4 text-amber-400" />
                     Termogênicos Elite
                   </li>
                   <li className="flex items-center gap-2">
-                    <ChevronRight className="w-4 h-4 text-blue-400" />
+                    <Activity className="w-4 h-4 text-blue-400" />
                     Energia Performance
                   </li>
                   <li className="flex items-center gap-2">
-                    <ChevronRight className="w-4 h-4 text-blue-400" />
+                    <Brain className="w-4 h-4 text-purple-400" />
                     Antioxidantes Pro
                   </li>
                 </ul>
@@ -954,8 +943,8 @@ export default function PbdSuplemedStore() {
                     Suporte Premium
                   </li>
                   <li className="flex items-center gap-2">
-                    <Award className="w-4 h-4 text-cyan-400" />
-                    Sede Premium
+                    <MapPin className="w-4 h-4 text-cyan-400" />
+                    Goiânia, GO - Brasil
                   </li>
                 </ul>
               </div>
@@ -965,32 +954,35 @@ export default function PbdSuplemedStore() {
       </section>
 
       {/* Seção Sobre */}
-      <section id="sobre" className="py-16 sm:py-20 px-4 sm:px-6 bg-gradient-to-br from-blue-50 via-white to-slate-50">
+      <section
+        id="sobre"
+        className="py-16 sm:py-20 px-4 sm:px-6 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800"
+      >
         <div className="container mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <Badge className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 py-2 text-lg font-semibold shadow-xl">
                 SOBRE NÓS
               </Badge>
-              <h3 className="text-4xl sm:text-5xl font-black text-slate-900">
+              <h3 className="text-4xl sm:text-5xl font-black text-white">
                 Excelência em{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
                   Suplementação
                 </span>
               </h3>
-              <p className="text-lg text-slate-600 leading-relaxed">
+              <p className="text-lg text-slate-300 leading-relaxed">
                 A PBD SUPLEMED é líder no mercado de suplementos premium, comprometida com a qualidade e inovação.
                 Nossos produtos são desenvolvidos com tecnologia de ponta e ingredientes selecionados para proporcionar
                 os melhores resultados.
               </p>
               <div className="grid grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <h4 className="text-2xl font-bold text-blue-600">10+</h4>
-                  <p className="text-slate-600">Anos de Experiência</p>
+                  <h4 className="text-2xl font-bold text-blue-400">10+</h4>
+                  <p className="text-slate-300">Anos de Experiência</p>
                 </div>
                 <div className="space-y-2">
-                  <h4 className="text-2xl font-bold text-cyan-600">50k+</h4>
-                  <p className="text-slate-600">Clientes Satisfeitos</p>
+                  <h4 className="text-2xl font-bold text-cyan-400">50k+</h4>
+                  <p className="text-slate-300">Clientes Satisfeitos</p>
                 </div>
               </div>
             </div>
@@ -1024,33 +1016,143 @@ export default function PbdSuplemedStore() {
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 hover:bg-white/20 transition-all duration-300">
               <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <ShoppingCart className="w-8 h-8 text-white" />
+                <MessageCircle className="w-8 h-8 text-white" />
               </div>
               <h4 className="text-xl font-bold mb-2">WhatsApp</h4>
-              <p className="text-white/80">(11) 99999-9999</p>
+              <p className="text-white/80">(62) 9 9611-4736</p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 hover:bg-white/20 transition-all duration-300">
               <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Shield className="w-8 h-8 text-white" />
               </div>
               <h4 className="text-xl font-bold mb-2">E-mail</h4>
-              <p className="text-white/80">contato@pbdsuplemed.com.br</p>
+              <p className="text-white/80">contatosuplemed@gmail.com</p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 hover:bg-white/20 transition-all duration-300">
               <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award className="w-8 h-8 text-white" />
+                <MapPin className="w-8 h-8 text-white" />
               </div>
-              <h4 className="text-xl font-bold mb-2">Horário</h4>
-              <p className="text-white/80">Seg-Sex: 8h às 18h</p>
+              <h4 className="text-xl font-bold mb-2">Sede</h4>
+              <p className="text-white/80">Goiânia, GO - Brasil</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-slate-950 text-white py-8 px-4">
-        <div className="container mx-auto text-center">
-          <p className="text-white/60">© 2024 PBD SUPLEMED. Todos os direitos reservados.</p>
+      <footer className="bg-slate-950 text-white py-12 px-4">
+        <div className="container mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 mb-8">
+            <div>
+              <div className="flex items-center space-x-2 mb-4">
+                <Image src="/images/pbd-logo.png" alt="PBD SUPLEMED" width={60} height={20} className="h-8 w-auto" />
+                <h4 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                  PBD SUPLEMED
+                </h4>
+              </div>
+              <p className="text-slate-400 mb-4">
+                Referência em suplementos premium no Brasil. Transformando vidas através da ciência nutricional
+                avançada.
+              </p>
+              <div className="flex space-x-3">
+                <a
+                  href="#"
+                  className="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors"
+                >
+                  <Instagram className="w-5 h-5 text-white" />
+                </a>
+                <a
+                  href="#"
+                  className="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors"
+                >
+                  <Facebook className="w-5 h-5 text-white" />
+                </a>
+                <a
+                  href="#"
+                  className="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors"
+                >
+                  <Youtube className="w-5 h-5 text-white" />
+                </a>
+                <a
+                  href="#"
+                  className="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors"
+                >
+                  <Linkedin className="w-5 h-5 text-white" />
+                </a>
+              </div>
+            </div>
+            <div>
+              <h5 className="text-lg font-bold mb-4 text-white">Linha Premium</h5>
+              <ul className="space-y-2">
+                <li>
+                  <a href="#" className="text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-2">
+                    <ArrowRight className="w-4 h-4" />
+                    Imunidade Avançada
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-2">
+                    <ArrowRight className="w-4 h-4" />
+                    Termogênicos Elite
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-2">
+                    <ArrowRight className="w-4 h-4" />
+                    Energia Performance
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-2">
+                    <ArrowRight className="w-4 h-4" />
+                    Antioxidantes Pro
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h5 className="text-lg font-bold mb-4 text-white">Contato VIP</h5>
+              <ul className="space-y-3">
+                <li className="flex items-center gap-2 text-slate-400">
+                  <Users className="w-4 h-4 text-blue-400" />
+                  Alessandro - Consultor
+                  <span className="text-sm text-slate-500">(62) 9 9611-4736</span>
+                </li>
+                <li className="flex items-center gap-2 text-slate-400">
+                  <Headphones className="w-4 h-4 text-blue-400" />
+                  Breno - Especialista
+                  <span className="text-sm text-slate-500">(62) 9 8191-2294</span>
+                </li>
+                <li className="flex items-center gap-2 text-slate-400">
+                  <Sparkles className="w-4 h-4 text-blue-400" />
+                  Suporte Premium
+                  <span className="text-sm text-slate-500">contatosuplemed@gmail.com</span>
+                </li>
+                <li className="flex items-center gap-2 text-slate-400">
+                  <MapPin className="w-4 h-4 text-blue-400" />
+                  Sede Premium
+                  <span className="text-sm text-slate-500">Goiânia, GO - Brasil</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-slate-800 pt-8 text-center">
+            <p className="text-slate-500 mb-2">© 2024 PBD SUPLEMED. Todos os direitos reservados.</p>
+            <p className="text-slate-600 text-sm">
+              Produtos premium com certificação internacional. Este produto não é um medicamento.
+            </p>
+            <div className="flex justify-center space-x-4 mt-4 text-sm text-slate-500">
+              <a href="#" className="hover:text-blue-400 transition-colors">
+                Política de Privacidade
+              </a>
+              <a href="#" className="hover:text-blue-400 transition-colors">
+                Termos de Uso
+              </a>
+              <a href="#" className="hover:text-blue-400 transition-colors">
+                Certificações
+              </a>
+            </div>
+          </div>
         </div>
       </footer>
 
