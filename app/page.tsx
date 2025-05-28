@@ -230,7 +230,7 @@ export default function PbdSuplemedStore() {
         </div>
       </header>
 
-      {/* Premium Carousel - COMPLETAMENTE REDESENHADO PARA MOBILE */}
+      {/* Premium Carousel - TEXTOS E BOTÕES REDUZIDOS EM 40% */}
       <section className="relative h-auto md:h-[625px] overflow-hidden">
         <div className="relative h-full">
           {products.map((product, index) => {
@@ -265,7 +265,7 @@ export default function PbdSuplemedStore() {
                   {/* Overlay sutil */}
                   <div className="absolute inset-0 bg-black/10"></div>
 
-                  {/* LAYOUT MOBILE (até md) - COMPLETAMENTE REDESENHADO */}
+                  {/* LAYOUT MOBILE (até md) - TEXTOS E BOTÕES REDUZIDOS EM 40% */}
                   <div className="md:hidden flex flex-col">
                     {/* Imagem do produto - Agora em tamanho completo no topo */}
                     <div className="w-full h-[40vh] relative">
@@ -282,42 +282,42 @@ export default function PbdSuplemedStore() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70"></div>
 
-                      {/* Badge posicionada no canto superior */}
+                      {/* Badge posicionada no canto superior - REDUZIDA 40% */}
                       <Badge
-                        className={`absolute top-4 left-4 text-xs px-3 py-1 shadow-xl ${getBadgeColor(product.badge)}`}
+                        className={`absolute top-4 left-4 text-[7px] px-2 py-0.5 shadow-xl ${getBadgeColor(product.badge)}`}
                       >
                         {product.badge}
                       </Badge>
                     </div>
 
-                    {/* Conteúdo de texto - Agora em card flutuante sobre a imagem */}
-                    <div className="bg-white/10 backdrop-blur-xl rounded-t-3xl -mt-6 relative z-10 px-5 pt-6 pb-8 flex flex-col items-center">
-                      <h3 className="text-2xl font-black text-white mb-2 text-center">{product.name}</h3>
+                    {/* Conteúdo de texto - Agora em card flutuante sobre a imagem - TEXTOS REDUZIDOS 40% */}
+                    <div className="bg-white/10 backdrop-blur-xl rounded-t-3xl -mt-6 relative z-10 px-3 pt-4 pb-5 flex flex-col items-center">
+                      <h3 className="text-sm font-black text-white mb-1 text-center">{product.name}</h3>
 
-                      <p className="text-sm text-white/90 mb-4 text-center max-w-xs">
-                        {product.description.length > 100
-                          ? product.description.substring(0, 100) + "..."
+                      <p className="text-[8px] text-white/90 mb-2 text-center max-w-xs">
+                        {product.description.length > 60
+                          ? product.description.substring(0, 60) + "..."
                           : product.description}
                       </p>
 
-                      {/* Benefícios em chips horizontais */}
-                      <div className="flex flex-wrap gap-2 justify-center mb-5">
+                      {/* Benefícios em chips horizontais - REDUZIDOS 40% */}
+                      <div className="flex flex-wrap gap-1 justify-center mb-3">
                         {product.benefits.slice(0, 2).map((benefit, idx) => (
                           <span
                             key={idx}
-                            className="text-xs bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-white border border-white/30 shadow-lg"
+                            className="text-[7px] bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full text-white border border-white/30 shadow-lg"
                           >
                             {benefit}
                           </span>
                         ))}
                       </div>
 
-                      {/* Preço e botão em layout horizontal */}
+                      {/* Preço e botão em layout horizontal - REDUZIDOS 40% */}
                       <div className="flex items-center justify-between w-full max-w-xs">
                         <div className="flex flex-col">
-                          <span className="text-xl font-black text-white">R$ {product.price.toFixed(2)}</span>
+                          <span className="text-sm font-black text-white">R$ {product.price.toFixed(2)}</span>
                           {product.originalPrice > product.price && (
-                            <span className="text-sm text-white/60 line-through">
+                            <span className="text-[8px] text-white/60 line-through">
                               R$ {product.originalPrice.toFixed(2)}
                             </span>
                           )}
@@ -326,48 +326,48 @@ export default function PbdSuplemedStore() {
                         <Button
                           onClick={() => buyProduct(product.id)}
                           size="sm"
-                          className="bg-white/20 backdrop-blur-md hover:bg-white/30 text-white border border-white/30 px-4 py-2 text-sm font-bold transition-all duration-300 hover:scale-105 shadow-xl"
+                          className="bg-white/20 backdrop-blur-md hover:bg-white/30 text-white border border-white/30 px-2 py-1 text-[8px] font-bold transition-all duration-300 hover:scale-105 shadow-xl"
                         >
-                          <ShoppingCart className="w-4 h-4 mr-2" />
+                          <ShoppingCart className="w-2.5 h-2.5 mr-1" />
                           COMPRAR
                         </Button>
                       </div>
                     </div>
                   </div>
 
-                  {/* LAYOUT DESKTOP (md+) - MANTIDO ORIGINAL */}
+                  {/* LAYOUT DESKTOP (md+) - TEXTOS E BOTÕES REDUZIDOS EM 40% */}
                   <div className="hidden md:grid md:grid-cols-2 gap-16 items-center w-full h-full container mx-auto px-4 sm:px-6">
-                    {/* Texto - Lado Esquerdo */}
-                    <div className="text-center lg:text-left space-y-6 lg:space-y-8 flex flex-col justify-center">
-                      <div className="space-y-4 lg:space-y-6">
-                        <Badge className={`text-base px-6 py-3 shadow-2xl ${getBadgeColor(product.badge)}`}>
+                    {/* Texto - Lado Esquerdo - REDUZIDO 40% */}
+                    <div className="text-center lg:text-left space-y-4 lg:space-y-5 flex flex-col justify-center">
+                      <div className="space-y-2 lg:space-y-4">
+                        <Badge className={`text-sm px-4 py-2 shadow-2xl ${getBadgeColor(product.badge)}`}>
                           {product.badge}
                         </Badge>
-                        <h3 className="text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black text-white leading-tight drop-shadow-2xl">
+                        <h3 className="text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-black text-white leading-tight drop-shadow-2xl">
                           {product.name}
                         </h3>
-                        <p className="text-base lg:text-lg xl:text-xl text-white/95 leading-relaxed drop-shadow-lg max-w-2xl">
+                        <p className="text-sm lg:text-base xl:text-lg text-white/95 leading-relaxed drop-shadow-lg max-w-2xl">
                           {product.description}
                         </p>
                       </div>
 
-                      <div className="flex flex-wrap gap-3 lg:gap-4 justify-center lg:justify-start">
+                      <div className="flex flex-wrap gap-2 lg:gap-3 justify-center lg:justify-start">
                         {product.benefits.slice(0, 3).map((benefit, idx) => (
                           <span
                             key={idx}
-                            className="text-sm lg:text-base bg-white/20 backdrop-blur-md px-4 lg:px-6 py-2 lg:py-3 rounded-full text-white border border-white/30 shadow-xl hover:bg-white/30 transition-all duration-300"
+                            className="text-xs lg:text-sm bg-white/20 backdrop-blur-md px-3 lg:px-4 py-1 lg:py-2 rounded-full text-white border border-white/30 shadow-xl hover:bg-white/30 transition-all duration-300"
                           >
                             {benefit}
                           </span>
                         ))}
                       </div>
 
-                      <div className="flex items-center gap-6 lg:gap-8 justify-center lg:justify-start">
-                        <span className="text-3xl lg:text-4xl font-black text-white drop-shadow-xl">
+                      <div className="flex items-center gap-4 lg:gap-5 justify-center lg:justify-start">
+                        <span className="text-xl lg:text-2xl font-black text-white drop-shadow-xl">
                           R$ {product.price.toFixed(2)}
                         </span>
                         {product.originalPrice > product.price && (
-                          <span className="text-xl lg:text-2xl text-white/60 line-through drop-shadow-lg">
+                          <span className="text-sm lg:text-lg text-white/60 line-through drop-shadow-lg">
                             R$ {product.originalPrice.toFixed(2)}
                           </span>
                         )}
@@ -376,11 +376,11 @@ export default function PbdSuplemedStore() {
                       <Button
                         onClick={() => buyProduct(product.id)}
                         size="lg"
-                        className="bg-white/20 backdrop-blur-md hover:bg-white/30 text-white border border-white/30 px-8 lg:px-12 py-4 lg:py-6 text-lg lg:text-xl font-black transition-all duration-500 hover:scale-105 shadow-2xl group w-full lg:w-auto"
+                        className="bg-white/20 backdrop-blur-md hover:bg-white/30 text-white border border-white/30 px-5 lg:px-7 py-2 lg:py-4 text-sm lg:text-base font-black transition-all duration-500 hover:scale-105 shadow-2xl group w-full lg:w-auto"
                       >
-                        <ShoppingCart className="w-6 lg:w-7 h-6 lg:h-7 mr-3 lg:mr-4 group-hover:rotate-12 transition-transform" />
+                        <ShoppingCart className="w-4 lg:w-5 h-4 lg:h-5 mr-2 lg:mr-3 group-hover:rotate-12 transition-transform" />
                         COMPRAR AGORA
-                        <ChevronRight className="w-5 lg:w-6 h-5 lg:h-6 ml-2 group-hover:translate-x-1 transition-transform" />
+                        <ChevronRight className="w-3 lg:w-4 h-3 lg:h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                       </Button>
                     </div>
 
@@ -478,8 +478,8 @@ export default function PbdSuplemedStore() {
         </button>
       </section>
 
-      {/* Enhanced Hero Section */}
-      <section className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 relative overflow-hidden">
+      {/* Enhanced Hero Section - CONTINUIDADE VISUAL */}
+      <section className="py-8 sm:py-12 lg:py-16 px-4 sm:px-6 relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50">
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl"></div>
@@ -534,8 +534,8 @@ export default function PbdSuplemedStore() {
         </div>
       </section>
 
-      {/* Enhanced Filter Section */}
-      <section className="py-8 sm:py-12 px-4 sm:px-6 bg-gradient-to-r from-slate-50 to-blue-50">
+      {/* Enhanced Filter Section - CONTINUIDADE VISUAL */}
+      <section className="py-4 sm:py-6 px-4 sm:px-6 bg-gradient-to-r from-slate-50 to-blue-50">
         <div className="container mx-auto">
           <div className="flex flex-wrap justify-center gap-3 sm:gap-6">
             {[
@@ -563,8 +563,11 @@ export default function PbdSuplemedStore() {
         </div>
       </section>
 
-      {/* Enhanced Products Section */}
-      <section id="produtos" className="py-16 sm:py-24 px-4 sm:px-6">
+      {/* Enhanced Products Section - CONTINUIDADE VISUAL */}
+      <section
+        id="produtos"
+        className="py-8 sm:py-12 px-4 sm:px-6 bg-gradient-to-br from-slate-50 via-white to-blue-50"
+      >
         <div className="container mx-auto">
           <div className="text-center mb-16 sm:mb-20 space-y-4 sm:space-y-6">
             <Badge className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 sm:px-8 py-2 sm:py-3 text-base sm:text-lg font-semibold shadow-2xl">
@@ -671,10 +674,10 @@ export default function PbdSuplemedStore() {
         </div>
       </section>
 
-      {/* Enhanced About Section with New Image */}
+      {/* Enhanced About Section - CONTINUIDADE VISUAL */}
       <section
         id="sobre"
-        className="py-16 sm:py-24 px-4 sm:px-6 bg-gradient-to-br from-slate-50 to-blue-50 relative overflow-hidden"
+        className="py-8 sm:py-12 px-4 sm:px-6 bg-gradient-to-br from-blue-50 to-slate-50 relative overflow-hidden"
       >
         <div className="absolute inset-0">
           <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
@@ -753,7 +756,7 @@ export default function PbdSuplemedStore() {
 
       <section
         id="contato"
-        className="py-20 sm:py-32 px-4 sm:px-6 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 relative overflow-hidden"
+        className="py-12 sm:py-16 px-4 sm:px-6 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 relative overflow-hidden"
       >
         {/* Background Effects */}
         <div className="absolute inset-0">
@@ -964,20 +967,20 @@ export default function PbdSuplemedStore() {
         </div>
       </section>
 
-      {/* Premium Guarantees Section */}
-      <section className="py-16 sm:py-24 px-4 sm:px-6 bg-gradient-to-br from-slate-50 to-blue-50">
+      {/* Premium Guarantees Section - CONTINUIDADE VISUAL */}
+      <section className="py-8 sm:py-12 px-4 sm:px-6 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-50">
         <div className="container mx-auto">
           <div className="text-center mb-12 sm:mb-16 space-y-4 sm:space-y-6">
             <Badge className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-6 sm:px-8 py-2 sm:py-3 text-base sm:text-lg font-semibold shadow-2xl">
               GARANTIAS PREMIUM
             </Badge>
-            <h3 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900">
+            <h3 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white">
               Compromisso com a{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
                 Excelência
               </span>
             </h3>
-            <p className="text-lg sm:text-xl lg:text-2xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl lg:text-2xl text-slate-300 max-w-3xl mx-auto">
               Garantias exclusivas que demonstram nossa confiança total na qualidade e eficácia dos nossos produtos
               premium
             </p>
@@ -1026,8 +1029,8 @@ export default function PbdSuplemedStore() {
         </div>
       </section>
 
-      {/* Enhanced Footer */}
-      <footer className="bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900 text-white py-16 sm:py-20 px-4 sm:px-6 relative overflow-hidden">
+      {/* Enhanced Footer - CONTINUIDADE VISUAL */}
+      <footer className="bg-gradient-to-br from-slate-50 via-gray-900 to-slate-900 text-white py-8 sm:py-12 px-4 sm:px-6 relative overflow-hidden">
         {/* Background Effects */}
         <div className="absolute inset-0">
           <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
