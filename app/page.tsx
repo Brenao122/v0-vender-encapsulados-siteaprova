@@ -230,8 +230,8 @@ export default function PbdSuplemedStore() {
         </div>
       </header>
 
-      {/* Premium Carousel - OTIMIZADO PARA IPHONE 12 */}
-      <section className="relative h-[80vh] sm:h-[85vh] md:h-[625px] overflow-hidden">
+      {/* Premium Carousel - COMPLETAMENTE REDESENHADO PARA MOBILE */}
+      <section className="relative h-auto md:h-[625px] overflow-hidden">
         <div className="relative h-full">
           {products.map((product, index) => {
             // Background personalizado para cada produto
@@ -253,93 +253,94 @@ export default function PbdSuplemedStore() {
             return (
               <div
                 key={product.id}
-                className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
-                  index === currentSlide ? "opacity-100 scale-100" : "opacity-0 scale-105"
+                className={`transition-all duration-1000 ease-in-out ${
+                  index === currentSlide ? "opacity-100 scale-100" : "opacity-0 scale-105 absolute inset-0"
                 }`}
               >
                 {/* Background personalizado para cada produto */}
-                <div className={`absolute inset-0 ${getProductBackground(product.name)} z-0`}>
+                <div className={`${getProductBackground(product.name)} z-0`}>
                   {/* Efeitos de luz animados */}
                   <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
                   <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
                   {/* Overlay sutil */}
                   <div className="absolute inset-0 bg-black/10"></div>
-                </div>
 
-                {/* Content Container */}
-                <div className="relative z-20 container mx-auto px-4 sm:px-6 h-full">
-                  {/* LAYOUT MOBILE (até md) - CORRIGIDO PARA NÃO CORTAR */}
-                  <div className="md:hidden flex flex-col items-center justify-center h-[90vh] sm:h-auto min-h-[85vh] py-4 px-4">
-                    {/* Imagem do produto - TOPO - COM OBJECT-FIT CONTAIN */}
-                    <div className="flex justify-center mb-4 relative z-50 w-full">
-                      <div className="relative group w-full max-w-[240px] sm:max-w-[280px]">
-                        <div className="w-full h-[180px] sm:h-[200px] relative flex items-center justify-center">
-                          <Image
-                            src={product.image || "/placeholder.svg"}
-                            alt={product.name}
-                            fill
-                            className="object-contain group-hover:scale-105 transition-all duration-700 relative z-50"
-                            style={{
-                              filter:
-                                "drop-shadow(0 15px 30px rgba(0, 0, 0, 0.5)) brightness(1.05) contrast(1.05) saturate(1.0)",
-                            }}
-                            priority={index === currentSlide}
-                            quality={100}
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Conteúdo de texto - CENTRO - COM FLEX-WRAP */}
-                    <div className="text-center space-y-2 flex-1 flex flex-col justify-center px-2 max-w-sm mx-auto">
-                      <Badge className={`text-xs px-3 py-1 shadow-xl mx-auto w-fit ${getBadgeColor(product.badge)}`}>
+                  {/* LAYOUT MOBILE (até md) - COMPLETAMENTE REDESENHADO */}
+                  <div className="md:hidden flex flex-col">
+                    {/* Imagem do produto - Agora em tamanho completo no topo */}
+                    <div className="w-full h-[40vh] relative">
+                      <Image
+                        src={product.image || "/placeholder.svg"}
+                        alt={product.name}
+                        fill
+                        className="object-cover"
+                        style={{
+                          filter: "brightness(0.9) contrast(1.1)",
+                        }}
+                        priority={index === currentSlide}
+                        quality={100}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70"></div>
+                      
+                      {/* Badge posicionada no canto superior */}
+                      <Badge
+                        className={`absolute top-4 left-4 text-xs px-3 py-1 shadow-xl ${getBadgeColor(product.badge)}`}
+                      >
                         {product.badge}
                       </Badge>
+                    </div>
 
-                      <h3 className="text-2xl sm:text-xl font-black text-white leading-tight drop-shadow-2xl break-words">
+                    {/* Conteúdo de texto - Agora em card flutuante sobre a imagem */}
+                    <div className="bg-white/10 backdrop-blur-xl rounded-t-3xl -mt-6 relative z-10 px-5 pt-6 pb-8 flex flex-col items-center">
+                      <h3 className="text-2xl font-black text-white mb-2 text-center">
                         {product.name}
                       </h3>
-
-                      <p className="text-sm sm:text-xs text-white/95 leading-snug drop-shadow-lg break-words max-w-xs mx-auto">
-                        {product.description.length > 80
-                          ? product.description.substring(0, 80) + "..."
+                      
+                      <p className="text-sm text-white/90 mb-4 text-center max-w-xs">
+                        {product.description.length > 100
+                          ? product.description.substring(0, 100) + "..."
                           : product.description}
                       </p>
 
-                      <div className="flex flex-wrap gap-2 justify-center mt-2">
-                        <span className="text-xs bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-white border border-white/30 shadow-lg w-fit max-w-[140px] break-words text-center">
-                          {product.benefits[0]}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Preços e botão - PARTE INFERIOR - COM PADDING ADEQUADO */}
-                    <div className="text-center space-y-3 pb-4 px-4 w-full max-w-sm mx-auto">
-                      <div className="flex items-center gap-2 justify-center flex-wrap">
-                        <span className="text-xl sm:text-lg font-black text-white drop-shadow-xl">
-                          R$ {product.price.toFixed(2)}
-                        </span>
-                        {product.originalPrice > product.price && (
-                          <span className="text-base sm:text-sm text-white/60 line-through drop-shadow-lg">
-                            R$ {product.originalPrice.toFixed(2)}
+                      {/* Benefícios em chips horizontais */}
+                      <div className="flex flex-wrap gap-2 justify-center mb-5">
+                        {product.benefits.slice(0, 2).map((benefit, idx) => (
+                          <span
+                            key={idx}
+                            className="text-xs bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-white border border-white/30 shadow-lg"
+                          >
+                            {benefit}
                           </span>
-                        )}
+                        ))}
                       </div>
 
-                      <Button
-                        onClick={() => buyProduct(product.id)}
-                        size="sm"
-                        className="bg-white/20 backdrop-blur-md hover:bg-white/30 text-white border border-white/30 px-4 py-2 text-sm font-black transition-all duration-500 hover:scale-105 shadow-2xl group w-full max-w-[200px] mx-auto"
-                      >
-                        <ShoppingCart className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
-                        <span className="truncate">COMPRAR AGORA</span>
-                        <ChevronRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform flex-shrink-0" />
-                      </Button>
+                      {/* Preço e botão em layout horizontal */}
+                      <div className="flex items-center justify-between w-full max-w-xs">
+                        <div className="flex flex-col">
+                          <span className="text-xl font-black text-white">
+                            R$ {product.price.toFixed(2)}
+                          </span>
+                          {product.originalPrice > product.price && (
+                            <span className="text-sm text-white/60 line-through">
+                              R$ {product.originalPrice.toFixed(2)}
+                            </span>
+                          )}
+                        </div>
+
+                        <Button
+                          onClick={() => buyProduct(product.id)}
+                          size="sm"
+                          className="bg-white/20 backdrop-blur-md hover:bg-white/30 text-white border border-white/30 px-4 py-2 text-sm font-bold transition-all duration-300 hover:scale-105 shadow-xl"
+                        >
+                          <ShoppingCart className="w-4 h-4 mr-2" />
+                          COMPRAR
+                        </Button>
+                      </div>
                     </div>
                   </div>
 
                   {/* LAYOUT DESKTOP (md+) - MANTIDO ORIGINAL */}
-                  <div className="hidden md:grid md:grid-cols-2 gap-16 items-center w-full h-full">
+                  <div className="hidden md:grid md:grid-cols-2 gap-16 items-center w-full h-full container mx-auto px-4 sm:px-6">
                     {/* Texto - Lado Esquerdo */}
                     <div className="text-center lg:text-left space-y-6 lg:space-y-8 flex flex-col justify-center">
                       <div className="space-y-4 lg:space-y-6">
@@ -387,7 +388,7 @@ export default function PbdSuplemedStore() {
                       </Button>
                     </div>
 
-                    {/* Imagem do produto - Lado Direito - COM CLASSES RESPONSIVAS */}
+                    {/* Imagem do produto - Lado Direito */}
                     <div className="flex justify-center relative z-50 w-full overflow-hidden">
                       <div className="relative group w-full max-w-[320px] lg:max-w-[400px] xl:max-w-[450px] 2xl:max-w-[500px]">
                         <div className="w-full aspect-square relative flex items-center justify-center">
@@ -436,10 +437,27 @@ export default function PbdSuplemedStore() {
           })}
         </div>
 
-        {/* Enhanced Navigation */}
+        {/* Navegação simplificada para mobile */}
+        <div className="absolute bottom-24 md:bottom-8 left-1/2 -translate-x-1/2 flex space-x-2 z-50">
+          {products.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                index === currentSlide
+                  ? "bg-white scale-125 shadow-lg"
+                  : "bg-white/50 hover:bg-white/80"
+              }`}
+              aria-label={`Ir para slide ${index + 1}`}
+            />
+          ))}
+        </div>
+
+        {/* Botões de navegação - Visíveis apenas em desktop */}
         <button
           onClick={prevSlide}
-          className="absolute left-2 sm:left-4 lg:left-6 top-1/2 -translate-y-1/2 bg-white/15 backdrop-blur-md hover:bg-white/25 p-2 sm:p-3 lg:p-4 rounded-xl lg:rounded-2xl shadow-2xl transition-all duration-300 border border-white/30 group hover:scale-110 z-60"
+          className="absolute left-2 sm:left-4 lg:left-6 top-1/2 -translate-y-1/2 bg-white/15 backdrop-blur-md hover:bg-white/25 p-2 sm:p-3 lg:p-4 rounded-xl lg:rounded-2xl shadow-2xl transition-all duration-300 border border-white/30 group hover:scale-110 z-60 hidden md:block"
+          aria-label="Slide anterior"
         >
           <svg
             className="w-5 sm:w-6 lg:w-8 h-5 sm:h-6 lg:h-8 text-white group-hover:scale-110 transition-transform"
@@ -452,7 +470,8 @@ export default function PbdSuplemedStore() {
         </button>
         <button
           onClick={nextSlide}
-          className="absolute right-2 sm:right-4 lg:right-6 top-1/2 -translate-y-1/2 bg-white/15 backdrop-blur-md hover:bg-white/25 p-2 sm:p-3 lg:p-4 rounded-xl lg:rounded-2xl shadow-2xl transition-all duration-300 border border-white/30 group hover:scale-110 z-60"
+          className="absolute right-2 sm:right-4 lg:right-6 top-1/2 -translate-y-1/2 bg-white/15 backdrop-blur-md hover:bg-white/25 p-2 sm:p-3 lg:p-4 rounded-xl lg:rounded-2xl shadow-2xl transition-all duration-300 border border-white/30 group hover:scale-110 z-60 hidden md:block"
+          aria-label="Próximo slide"
         >
           <svg
             className="w-5 sm:w-6 lg:w-8 h-5 sm:h-6 lg:h-8 text-white group-hover:scale-110 transition-transform"
@@ -463,29 +482,6 @@ export default function PbdSuplemedStore() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
           </svg>
         </button>
-
-        {/* Enhanced Indicators */}
-        <div className="absolute bottom-4 sm:bottom-6 lg:bottom-8 left-1/2 -translate-x-1/2 flex space-x-2 sm:space-x-3 lg:space-x-4 z-60">
-          {products.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`w-2 sm:w-3 lg:w-4 h-2 sm:h-3 lg:h-4 rounded-full transition-all duration-500 ${
-                index === currentSlide
-                  ? "bg-white scale-125 lg:scale-150 shadow-2xl"
-                  : "bg-white/50 hover:bg-white/80 hover:scale-110 lg:hover:scale-125"
-              }`}
-            />
-          ))}
-        </div>
-
-        {/* Enhanced Progress Bar */}
-        <div className="absolute bottom-0 left-0 w-full h-1 lg:h-2 bg-white/10 z-60">
-          <div
-            className="h-full bg-gradient-to-r from-white/70 via-white/90 to-white/70 transition-all duration-5000 ease-linear shadow-lg"
-            style={{ width: `${((currentSlide + 1) / products.length) * 100}%` }}
-          ></div>
-        </div>
       </section>
 
       {/* Enhanced Hero Section */}
@@ -1000,230 +996,4 @@ export default function PbdSuplemedStore() {
                 title: "Garantia de Resultados",
                 description:
                   "30 dias para experimentar. Não ficou satisfeito? Devolvemos 100% do seu investimento sem questionamentos.",
-                color: "from-emerald-500 to-teal-500",
-              },
-              {
-                icon: Award,
-                title: "Pureza Certificada",
-                description:
-                  "Produtos testados em laboratório internacional com certificação de pureza e potência garantidas.",
-                color: "from-blue-500 to-cyan-500",
-              },
-              {
-                icon: Heart,
-                title: "Suporte Vitalício",
-                description:
-                  "Acompanhamento personalizado e suporte nutricional durante toda sua jornada de transformação.",
-                color: "from-purple-500 to-pink-500",
-              },
-            ].map((guarantee, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-10 shadow-2xl border border-slate-100 hover:shadow-3xl transition-all duration-500 group hover:scale-105"
-              >
-                <div className="text-center space-y-4 sm:space-y-6">
-                  <div
-                    className={`w-16 sm:w-20 h-16 sm:h-20 bg-gradient-to-r ${guarantee.color} rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:scale-110 transition-transform shadow-2xl`}
-                  >
-                    <guarantee.icon className="w-8 sm:w-10 h-8 sm:h-10 text-white" />
-                  </div>
-                  <h4 className="text-xl sm:text-2xl font-bold text-slate-900">{guarantee.title}</h4>
-                  <p className="text-slate-600 leading-relaxed text-base sm:text-lg">{guarantee.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Enhanced Footer */}
-      <footer className="bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900 text-white py-16 sm:py-20 px-4 sm:px-6 relative overflow-hidden">
-        {/* Background Effects */}
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl"></div>
-        </div>
-
-        <div className="container mx-auto relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 sm:gap-12 mb-12 sm:mb-16">
-            <div className="md:col-span-2 space-y-6 sm:space-y-8">
-              <div className="flex items-center space-x-4">
-                <Image
-                  src="/images/pbd-logo.png"
-                  alt="PBD SUPLEMED"
-                  width={120}
-                  height={40}
-                  className="h-10 sm:h-12 w-auto brightness-0 invert"
-                />
-              </div>
-              <div className="space-y-3 sm:space-y-4">
-                <h4 className="text-2xl sm:text-3xl font-bold">PBD SUPLEMED</h4>
-                <p className="text-slate-300 text-base sm:text-lg leading-relaxed max-w-lg">
-                  Referência em suplementos premium no Brasil. Transformando vidas através da ciência nutricional
-                  avançada e atendimento personalizado de excelência mundial.
-                </p>
-              </div>
-              <div className="flex space-x-3 sm:space-x-4">
-                {[
-                  { platform: "Instagram", color: "from-pink-500 to-purple-500" },
-                  { platform: "Facebook", color: "from-blue-500 to-cyan-500" },
-                  { platform: "YouTube", color: "from-red-500 to-pink-500" },
-                  { platform: "LinkedIn", color: "from-blue-600 to-blue-700" },
-                ].map((social, index) => (
-                  <div
-                    key={index}
-                    className={`w-12 sm:w-14 h-12 sm:h-14 bg-gradient-to-r ${social.color} rounded-xl sm:rounded-2xl flex items-center justify-center hover:scale-110 transition-transform cursor-pointer shadow-xl`}
-                  >
-                    <span className="text-white font-bold text-base sm:text-lg">{social.platform[0]}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="space-y-4 sm:space-y-6">
-              <h4 className="font-bold text-xl sm:text-2xl">Linha Premium</h4>
-              <ul className="space-y-3 sm:space-y-4 text-slate-300">
-                {[
-                  { name: "Imunidade Avançada", color: "bg-emerald-400" },
-                  { name: "Termogênicos Elite", color: "bg-amber-400" },
-                  { name: "Energia Performance", color: "bg-cyan-400" },
-                  { name: "Antioxidantes Pro", color: "bg-purple-400" },
-                ].map((product, index) => (
-                  <li key={index}>
-                    <a
-                      href="#"
-                      className="hover:text-blue-400 transition-colors flex items-center group text-sm sm:text-base"
-                    >
-                      <span
-                        className={`w-3 h-3 ${product.color} rounded-full mr-3 sm:mr-4 group-hover:scale-125 transition-transform`}
-                      ></span>
-                      {product.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="space-y-4 sm:space-y-6">
-              <h4 className="font-bold text-xl sm:text-2xl">Contato VIP</h4>
-              <div className="space-y-4 sm:space-y-6 text-slate-300">
-                {[
-                  { name: "Alessandro - Consultor", phone: "(62) 9 9611-4758", color: "bg-blue-500" },
-                  { name: "Breno - Especialista", phone: "(62) 9 8191-2294", color: "bg-emerald-500" },
-                ].map((contact, index) => (
-                  <div key={index} className="flex items-start space-x-3 sm:space-x-4">
-                    <div
-                      className={`w-6 sm:w-8 h-6 sm:h-8 ${contact.color} rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0 mt-1 shadow-lg`}
-                    >
-                      <svg
-                        className="w-4 sm:w-5 h-4 sm:h-5 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <p className="font-semibold text-white text-base sm:text-lg">{contact.name}</p>
-                      <a
-                        href={`tel:+55${contact.phone.replace(/\D/g, "")}`}
-                        className="hover:text-blue-400 transition-colors text-sm sm:text-base"
-                      >
-                        {contact.phone}
-                      </a>
-                    </div>
-                  </div>
-                ))}
-
-                <div className="flex items-start space-x-3 sm:space-x-4">
-                  <div className="w-6 sm:w-8 h-6 sm:h-8 bg-purple-500 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0 mt-1 shadow-lg">
-                    <svg
-                      className="w-4 sm:w-5 h-4 sm:h-5 text-white"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-white text-base sm:text-lg">Suporte Premium</p>
-                    <a
-                      href="mailto:contatosuplemed@gmail.com"
-                      className="hover:text-blue-400 transition-colors text-xs sm:text-sm"
-                    >
-                      contatosuplemed@gmail.com
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-3 sm:space-x-4">
-                  <div className="w-6 sm:w-8 h-6 sm:h-8 bg-cyan-500 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0 mt-1 shadow-lg">
-                    <svg
-                      className="w-4 sm:w-5 h-4 sm:h-5 text-white"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-white text-base sm:text-lg">Sede Premium</p>
-                    <p className="text-xs sm:text-sm">Goiânia, GO - Brasil</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="border-t border-slate-700 pt-8 sm:pt-10">
-            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 sm:space-y-6 md:space-y-0">
-              <div className="text-center md:text-left">
-                <p className="text-slate-400 text-base sm:text-lg">
-                  &copy; 2024 PBD SUPLEMED. Todos os direitos reservados.
-                </p>
-                <p className="text-xs sm:text-sm text-slate-500 mt-2">
-                  Produtos premium com certificação internacional. Este produto não é um medicamento.
-                </p>
-              </div>
-              <div className="flex space-x-6 sm:space-x-8 text-xs sm:text-sm text-slate-400">
-                <a href="#" className="hover:text-white transition-colors">
-                  Política de Privacidade
-                </a>
-                <a href="#" className="hover:text-white transition-colors">
-                  Termos de Uso
-                </a>
-                <a href="#" className="hover:text-white transition-colors">
-                  Certificações
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </div>
-  )
-}
+                color: "from-emerald-500 to-teal\
