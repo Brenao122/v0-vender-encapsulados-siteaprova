@@ -366,60 +366,29 @@ export default function PbdSuplemedStore() {
           <div className="absolute inset-0 bg-black/10"></div>
         </div>
 
-        {/* Barra de Loading */}
-        <div className="w-full px-4 md:px-16 pb-8">
-          <div className="mx-auto max-w-3xl">
-            {/* Borda externa com efeito neon */}
-            <div
-              className={`p-1 rounded-lg ${
-                products[currentSlide].name === "GLUTA IMUNITY"
-                  ? "bg-gradient-to-r from-emerald-500/50 to-green-500/50 shadow-lg shadow-emerald-500/25"
-                  : products[currentSlide].name === "LARANJA MORO"
-                    ? "bg-gradient-to-r from-orange-500/50 to-amber-500/50 shadow-lg shadow-orange-500/25"
-                    : products[currentSlide].name === "RED SIZE"
-                      ? "bg-gradient-to-r from-red-500/50 to-rose-500/50 shadow-lg shadow-red-500/25"
-                      : "bg-gradient-to-r from-blue-500/50 to-cyan-500/50 shadow-lg shadow-blue-500/25"
-              }`}
-            >
-              {/* Background da barra */}
-              <div className="h-3 bg-black/40 backdrop-blur-sm rounded-md overflow-hidden relative">
-                {/* Barra de progresso com efeito de brilho */}
-                <div
-                  className={`h-full transition-all duration-1000 ease-out relative overflow-hidden ${
-                    products[currentSlide].name === "GLUTA IMUNITY"
-                      ? "bg-gradient-to-r from-emerald-400 to-green-400"
-                      : products[currentSlide].name === "LARANJA MORO"
-                        ? "bg-gradient-to-r from-orange-400 to-amber-400"
-                        : products[currentSlide].name === "RED SIZE"
-                          ? "bg-gradient-to-r from-red-400 to-rose-400"
-                          : "bg-gradient-to-r from-blue-400 to-cyan-400"
-                  }`}
-                  style={{
-                    width: `${((currentSlide + 1) / products.length) * 100}%`,
-                  }}
-                >
-                  {/* Efeito de brilho animado */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse"></div>
-                  {/* Linha de brilho que se move */}
-                  <div className="absolute top-0 right-0 w-1 h-full bg-white/60 shadow-lg"></div>
-                </div>
-
-                {/* Efeito de scanline estilo videogame */}
-                <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-black/20 pointer-events-none"></div>
+        {/* Barra de Loading Discreta */}
+        <div className="w-full px-4 md:px-16 pb-6">
+          <div className="mx-auto max-w-2xl">
+            {/* Barra simples e discreta */}
+            <div className="h-1 bg-black/20 backdrop-blur-sm rounded-full overflow-hidden">
+              {/* Barra de progresso minimalista */}
+              <div
+                className={`h-full transition-all duration-1000 ease-out ${
+                  products[currentSlide].name === "GLUTA IMUNITY"
+                    ? "bg-gradient-to-r from-emerald-400/80 to-green-400/80"
+                    : products[currentSlide].name === "LARANJA MORO"
+                      ? "bg-gradient-to-r from-orange-400/80 to-amber-400/80"
+                      : products[currentSlide].name === "RED SIZE"
+                        ? "bg-gradient-to-r from-red-400/80 to-rose-400/80"
+                        : "bg-gradient-to-r from-blue-400/80 to-cyan-400/80"
+                }`}
+                style={{
+                  width: `${((currentSlide + 1) / products.length) * 100}%`,
+                }}
+              >
+                {/* Sutil efeito de brilho */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
               </div>
-            </div>
-
-            {/* Indicador de progresso estilo videogame */}
-            <div className="flex justify-between items-center mt-3 px-2">
-              <span className="text-white/80 text-xs font-mono bg-black/30 px-2 py-1 rounded backdrop-blur-sm">
-                LOADING...
-              </span>
-              <span className="text-white font-mono text-sm bg-black/30 px-3 py-1 rounded backdrop-blur-sm">
-                {currentSlide + 1}/{products.length}
-              </span>
-              <span className="text-white/80 text-xs font-mono bg-black/30 px-2 py-1 rounded backdrop-blur-sm">
-                {Math.round(((currentSlide + 1) / products.length) * 100)}%
-              </span>
             </div>
           </div>
         </div>
