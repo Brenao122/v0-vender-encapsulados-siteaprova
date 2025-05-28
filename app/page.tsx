@@ -231,7 +231,7 @@ export default function PbdSuplemedStore() {
       </header>
 
       {/* Premium Carousel - OTIMIZADO PARA IPHONE 12 */}
-      <section className="relative h-[750px] sm:h-[800px] md:h-[625px] overflow-hidden">
+      <section className="relative h-[80vh] sm:h-[85vh] md:h-[625px] overflow-hidden">
         <div className="relative h-full">
           {products.map((product, index) => {
             // Background personalizado para cada produto
@@ -268,17 +268,17 @@ export default function PbdSuplemedStore() {
 
                 {/* Content Container */}
                 <div className="relative z-20 container mx-auto px-4 sm:px-6 h-full">
-                  {/* LAYOUT MOBILE (até md) - COMPACTO PARA IPHONE 12 */}
-                  <div className="md:hidden flex flex-col h-full py-2">
-                    {/* Imagem do produto - TOPO - COM CLASSES RESPONSIVAS */}
-                    <div className="flex justify-center mb-2 relative z-50 w-full overflow-hidden">
-                      <div className="relative group w-full max-w-[200px] sm:max-w-[220px]">
-                        <div className="w-full aspect-square relative flex items-center justify-center">
+                  {/* LAYOUT MOBILE (até md) - CORRIGIDO PARA NÃO CORTAR */}
+                  <div className="md:hidden flex flex-col h-full py-4 px-4">
+                    {/* Imagem do produto - TOPO - COM OBJECT-FIT CONTAIN */}
+                    <div className="flex justify-center mb-4 relative z-50 w-full overflow-hidden">
+                      <div className="relative group w-full max-w-[280px] sm:max-w-[320px]">
+                        <div className="w-full h-[200px] sm:h-[240px] relative flex items-center justify-center">
                           <Image
                             src={product.image || "/placeholder.svg"}
                             alt={product.name}
                             fill
-                            className="object-cover group-hover:scale-105 transition-all duration-700 relative z-50 rounded-2xl"
+                            className="object-contain group-hover:scale-105 transition-all duration-700 relative z-50"
                             style={{
                               filter:
                                 "drop-shadow(0 15px 30px rgba(0, 0, 0, 0.5)) brightness(1.05) contrast(1.05) saturate(1.0)",
@@ -302,38 +302,40 @@ export default function PbdSuplemedStore() {
                       </div>
                     </div>
 
-                    {/* Conteúdo de texto - CENTRO - COMPACTO */}
-                    <div className="text-center space-y-1 flex-1 flex flex-col justify-center px-3">
-                      <Badge className={`text-xs px-3 py-1 shadow-xl mx-auto ${getBadgeColor(product.badge)}`}>
+                    {/* Conteúdo de texto - CENTRO - COM FLEX-WRAP */}
+                    <div className="text-center space-y-2 flex-1 flex flex-col justify-center px-2">
+                      <Badge
+                        className={`text-xs px-3 py-1 shadow-xl mx-auto max-w-full ${getBadgeColor(product.badge)}`}
+                      >
                         {product.badge}
                       </Badge>
 
-                      <h3 className="text-xl sm:text-2xl font-black text-white leading-tight drop-shadow-2xl">
+                      <h3 className="text-lg sm:text-xl font-black text-white leading-tight drop-shadow-2xl max-w-full break-words">
                         {product.name}
                       </h3>
 
-                      <p className="text-xs sm:text-sm text-white/95 leading-snug drop-shadow-lg max-w-xs mx-auto">
-                        {product.description.length > 100
-                          ? product.description.substring(0, 100) + "..."
+                      <p className="text-xs sm:text-sm text-white/95 leading-snug drop-shadow-lg max-w-full mx-auto px-2 break-words">
+                        {product.description.length > 80
+                          ? product.description.substring(0, 80) + "..."
                           : product.description}
                       </p>
 
-                      {/* Apenas 1 benefício no mobile */}
-                      <div className="flex justify-center">
-                        <span className="text-xs bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-white border border-white/30 shadow-lg">
+                      {/* Apenas 1 benefício no mobile - COM FLEX-WRAP */}
+                      <div className="flex justify-center flex-wrap">
+                        <span className="text-xs bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-white border border-white/30 shadow-lg max-w-full break-words">
                           {product.benefits[0]}
                         </span>
                       </div>
                     </div>
 
-                    {/* Preços e botão - PARTE INFERIOR - COMPACTO */}
-                    <div className="text-center space-y-3 pb-4">
-                      <div className="flex items-center gap-3 justify-center">
-                        <span className="text-xl sm:text-2xl font-black text-white drop-shadow-xl">
+                    {/* Preços e botão - PARTE INFERIOR - COM PADDING ADEQUADO */}
+                    <div className="text-center space-y-3 pb-4 px-4">
+                      <div className="flex items-center gap-2 justify-center flex-wrap">
+                        <span className="text-lg sm:text-xl font-black text-white drop-shadow-xl">
                           R$ {product.price.toFixed(2)}
                         </span>
                         {product.originalPrice > product.price && (
-                          <span className="text-lg text-white/60 line-through drop-shadow-lg">
+                          <span className="text-base text-white/60 line-through drop-shadow-lg">
                             R$ {product.originalPrice.toFixed(2)}
                           </span>
                         )}
@@ -342,9 +344,9 @@ export default function PbdSuplemedStore() {
                       <Button
                         onClick={() => buyProduct(product.id)}
                         size="sm"
-                        className="bg-white/20 backdrop-blur-md hover:bg-white/30 text-white border border-white/30 px-6 py-3 text-base font-black transition-all duration-500 hover:scale-105 shadow-2xl group w-full max-w-xs mx-auto"
+                        className="bg-white/20 backdrop-blur-md hover:bg-white/30 text-white border border-white/30 px-4 py-2 text-sm font-black transition-all duration-500 hover:scale-105 shadow-2xl group w-full max-w-[280px] mx-auto"
                       >
-                        <ShoppingCart className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
+                        <ShoppingCart className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
                         COMPRAR AGORA
                         <ChevronRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                       </Button>
