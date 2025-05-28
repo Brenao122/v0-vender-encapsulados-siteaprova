@@ -231,7 +231,7 @@ export default function PbdSuplemedStore() {
       </header>
 
       {/* Premium Carousel - OTIMIZADO PARA IPHONE 12 */}
-      <section className="relative h-[800px] sm:h-[850px] md:h-[700px] overflow-hidden">
+      <section className="relative h-[600px] sm:h-[650px] md:h-[500px] overflow-hidden">
         <div className="relative h-full">
           {products.map((product, index) => {
             // Background personalizado para cada produto
@@ -269,9 +269,9 @@ export default function PbdSuplemedStore() {
                 {/* Content Container */}
                 <div className="relative z-20 container mx-auto px-4 sm:px-6 h-full">
                   {/* LAYOUT MOBILE (até md) - COMPACTO PARA IPHONE 12 */}
-                  <div className="md:hidden flex flex-col h-full py-4">
+                  <div className="md:hidden flex flex-col h-full py-2">
                     {/* Imagem do produto - TOPO - REDUZIDA */}
-                    <div className="flex justify-center mb-3 relative z-50">
+                    <div className="flex justify-center mb-2 relative z-50">
                       <div className="relative group">
                         <div className="w-[200px] h-[200px] sm:w-[220px] sm:h-[220px] relative flex items-center justify-center">
                           <Image
@@ -303,7 +303,7 @@ export default function PbdSuplemedStore() {
                     </div>
 
                     {/* Conteúdo de texto - CENTRO - COMPACTO */}
-                    <div className="text-center space-y-2 flex-1 flex flex-col justify-center px-3">
+                    <div className="text-center space-y-1 flex-1 flex flex-col justify-center px-3">
                       <Badge className={`text-xs px-3 py-1 shadow-xl mx-auto ${getBadgeColor(product.badge)}`}>
                         {product.badge}
                       </Badge>
