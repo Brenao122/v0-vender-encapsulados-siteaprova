@@ -432,35 +432,73 @@ export default function PbdSuplemedStore() {
           })}
         </div>
 
-        {/* Barra de Progresso Moderna */}
-        <div className="absolute bottom-0 left-0 right-0 z-50">
-          {/* Background da barra */}
-          <div className="h-1 bg-black/20 backdrop-blur-sm">
-            {/* Barra de progresso ativa */}
+        {/* Barra de Loading Estilo Videogame */}
+        <div className="absolute bottom-0 left-0 right-0 z-50 p-4">
+          {/* Container da barra com bordas estilo videogame */}
+          <div className="mx-auto max-w-md">
+            {/* Borda externa com efeito neon */}
             <div
-              className="h-full bg-gradient-to-r from-white/80 to-white transition-all duration-1000 ease-out shadow-lg"
-              style={{
-                width: `${((currentSlide + 1) / products.length) * 100}%`,
-              }}
-            />
-          </div>
+              className={`p-1 rounded-lg ${
+                products[currentSlide].name === "GLUTA IMUNITY"
+                  ? "bg-gradient-to-r from-emerald-500/50 to-green-500/50 shadow-lg shadow-emerald-500/25"
+                  : products[currentSlide].name === "LARANJA MORO"
+                    ? "bg-gradient-to-r from-orange-500/50 to-amber-500/50 shadow-lg shadow-orange-500/25"
+                    : products[currentSlide].name === "RED SIZE"
+                      ? "bg-gradient-to-r from-red-500/50 to-rose-500/50 shadow-lg shadow-red-500/25"
+                      : "bg-gradient-to-r from-blue-500/50 to-cyan-500/50 shadow-lg shadow-blue-500/25"
+              }`}
+            >
+              {/* Background da barra */}
+              <div className="h-3 bg-black/40 backdrop-blur-sm rounded-md overflow-hidden relative">
+                {/* Barra de progresso com efeito de brilho */}
+                <div
+                  className={`h-full transition-all duration-1000 ease-out relative overflow-hidden ${
+                    products[currentSlide].name === "GLUTA IMUNITY"
+                      ? "bg-gradient-to-r from-emerald-400 to-green-400"
+                      : products[currentSlide].name === "LARANJA MORO"
+                        ? "bg-gradient-to-r from-orange-400 to-amber-400"
+                        : products[currentSlide].name === "RED SIZE"
+                          ? "bg-gradient-to-r from-red-400 to-rose-400"
+                          : "bg-gradient-to-r from-blue-400 to-cyan-400"
+                  }`}
+                  style={{
+                    width: `${((currentSlide + 1) / products.length) * 100}%`,
+                  }}
+                >
+                  {/* Efeito de brilho animado */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse"></div>
+                  {/* Linha de brilho que se move */}
+                  <div className="absolute top-0 right-0 w-1 h-full bg-white/60 shadow-lg"></div>
+                </div>
 
-          {/* Indicador de slide atual (opcional) */}
-          <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-black/30 backdrop-blur-md px-3 py-1 rounded-full">
-            <span className="text-white text-xs font-medium">
-              {currentSlide + 1} / {products.length}
-            </span>
+                {/* Efeito de scanline estilo videogame */}
+                <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-black/20 pointer-events-none"></div>
+              </div>
+            </div>
+
+            {/* Indicador de progresso estilo videogame */}
+            <div className="flex justify-between items-center mt-2 px-2">
+              <span className="text-white/80 text-xs font-mono bg-black/30 px-2 py-1 rounded backdrop-blur-sm">
+                LOADING...
+              </span>
+              <span className="text-white font-mono text-sm bg-black/30 px-3 py-1 rounded backdrop-blur-sm">
+                {currentSlide + 1}/{products.length}
+              </span>
+              <span className="text-white/80 text-xs font-mono bg-black/30 px-2 py-1 rounded backdrop-blur-sm">
+                {Math.round(((currentSlide + 1) / products.length) * 100)}%
+              </span>
+            </div>
           </div>
         </div>
 
-        {/* Botões de navegação - Visíveis apenas em desktop */}
+        {/* Botões de navegação - Aumentados em 15% */}
         <button
           onClick={prevSlide}
-          className="absolute left-2 sm:left-4 lg:left-6 top-1/2 -translate-y-1/2 bg-white/15 backdrop-blur-md hover:bg-white/25 p-2 sm:p-3 lg:p-4 rounded-xl lg:rounded-2xl shadow-2xl transition-all duration-300 border border-white/30 group hover:scale-110 z-60 hidden md:block"
+          className="absolute left-2 sm:left-4 lg:left-6 top-1/2 -translate-y-1/2 bg-white/15 backdrop-blur-md hover:bg-white/25 p-3 sm:p-4 lg:p-5 rounded-xl lg:rounded-2xl shadow-2xl transition-all duration-300 border border-white/30 group hover:scale-110 z-60 hidden md:block"
           aria-label="Slide anterior"
         >
           <svg
-            className="w-5 sm:w-6 lg:w-8 h-5 sm:h-6 lg:h-8 text-white group-hover:scale-110 transition-transform"
+            className="w-6 sm:w-7 lg:w-9 h-6 sm:h-7 lg:h-9 text-white group-hover:scale-110 transition-transform"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -470,11 +508,11 @@ export default function PbdSuplemedStore() {
         </button>
         <button
           onClick={nextSlide}
-          className="absolute right-2 sm:right-4 lg:right-6 top-1/2 -translate-y-1/2 bg-white/15 backdrop-blur-md hover:bg-white/25 p-2 sm:p-3 lg:p-4 rounded-xl lg:rounded-2xl shadow-2xl transition-all duration-300 border border-white/30 group hover:scale-110 z-60 hidden md:block"
+          className="absolute right-2 sm:right-4 lg:right-6 top-1/2 -translate-y-1/2 bg-white/15 backdrop-blur-md hover:bg-white/25 p-3 sm:p-4 lg:p-5 rounded-xl lg:rounded-2xl shadow-2xl transition-all duration-300 border border-white/30 group hover:scale-110 z-60 hidden md:block"
           aria-label="Próximo slide"
         >
           <svg
-            className="w-5 sm:w-6 lg:w-8 h-5 sm:h-6 lg:h-8 text-white group-hover:scale-110 transition-transform"
+            className="w-6 sm:w-7 lg:w-9 h-6 sm:h-7 lg:h-9 text-white group-hover:scale-110 transition-transform"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
