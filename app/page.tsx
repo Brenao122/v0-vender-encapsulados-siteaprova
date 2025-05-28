@@ -7,6 +7,9 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 
+// Atualizar as imagens dos produtos para usar as mesmas do carrossel
+// Modificar o array de produtos para usar as imagens corretas
+
 const products = [
   {
     id: 1,
@@ -627,10 +630,10 @@ export default function PbdSuplemedStore() {
                   />
                 </button>
 
-                {/* Imagem do Produto */}
+                {/* Imagem do Produto - Usando a mesma imagem do carrossel */}
                 <div className="relative h-64 overflow-hidden bg-gradient-to-br from-slate-100 to-slate-50">
                   <Image
-                    src={product.cleanImage || product.image || "/placeholder.svg"}
+                    src={product.image || "/placeholder.svg"}
                     alt={product.name}
                     fill
                     className="object-contain p-4 group-hover:scale-110 transition-all duration-700"
