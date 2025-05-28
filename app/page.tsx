@@ -231,7 +231,7 @@ export default function PbdSuplemedStore() {
       </header>
 
       {/* Premium Carousel - OTIMIZADO PARA IPHONE 12 */}
-      <section className="relative h-[600px] sm:h-[650px] md:h-[500px] overflow-hidden">
+      <section className="relative h-[750px] sm:h-[800px] md:h-[625px] overflow-hidden">
         <div className="relative h-full">
           {products.map((product, index) => {
             // Background personalizado para cada produto
@@ -273,7 +273,7 @@ export default function PbdSuplemedStore() {
                     {/* Imagem do produto - TOPO - REDUZIDA */}
                     <div className="flex justify-center mb-2 relative z-50">
                       <div className="relative group">
-                        <div className="w-[200px] h-[200px] sm:w-[220px] sm:h-[220px] relative flex items-center justify-center">
+                        <div className="w-[160px] h-[160px] sm:w-[180px] sm:h-[180px] relative flex items-center justify-center">
                           <Image
                             src={product.image || "/placeholder.svg"}
                             alt={product.name}
@@ -308,11 +308,11 @@ export default function PbdSuplemedStore() {
                         {product.badge}
                       </Badge>
 
-                      <h3 className="text-2xl sm:text-3xl font-black text-white leading-tight drop-shadow-2xl">
+                      <h3 className="text-xl sm:text-2xl font-black text-white leading-tight drop-shadow-2xl">
                         {product.name}
                       </h3>
 
-                      <p className="text-sm sm:text-base text-white/95 leading-snug drop-shadow-lg max-w-xs mx-auto">
+                      <p className="text-xs sm:text-sm text-white/95 leading-snug drop-shadow-lg max-w-xs mx-auto">
                         {product.description.length > 100
                           ? product.description.substring(0, 100) + "..."
                           : product.description}
@@ -329,7 +329,7 @@ export default function PbdSuplemedStore() {
                     {/* Preços e botão - PARTE INFERIOR - COMPACTO */}
                     <div className="text-center space-y-3 pb-4">
                       <div className="flex items-center gap-3 justify-center">
-                        <span className="text-2xl sm:text-3xl font-black text-white drop-shadow-xl">
+                        <span className="text-xl sm:text-2xl font-black text-white drop-shadow-xl">
                           R$ {product.price.toFixed(2)}
                         </span>
                         {product.originalPrice > product.price && (
@@ -359,10 +359,10 @@ export default function PbdSuplemedStore() {
                         <Badge className={`text-base px-6 py-3 shadow-2xl ${getBadgeColor(product.badge)}`}>
                           {product.badge}
                         </Badge>
-                        <h3 className="text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-black text-white leading-tight drop-shadow-2xl">
+                        <h3 className="text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black text-white leading-tight drop-shadow-2xl">
                           {product.name}
                         </h3>
-                        <p className="text-lg lg:text-xl xl:text-2xl text-white/95 leading-relaxed drop-shadow-lg max-w-2xl">
+                        <p className="text-base lg:text-lg xl:text-xl text-white/95 leading-relaxed drop-shadow-lg max-w-2xl">
                           {product.description}
                         </p>
                       </div>
@@ -379,7 +379,7 @@ export default function PbdSuplemedStore() {
                       </div>
 
                       <div className="flex items-center gap-6 lg:gap-8 justify-center lg:justify-start">
-                        <span className="text-4xl lg:text-5xl font-black text-white drop-shadow-xl">
+                        <span className="text-3xl lg:text-4xl font-black text-white drop-shadow-xl">
                           R$ {product.price.toFixed(2)}
                         </span>
                         {product.originalPrice > product.price && (
@@ -403,7 +403,7 @@ export default function PbdSuplemedStore() {
                     {/* Imagem do produto - Lado Direito */}
                     <div className="flex justify-center relative z-50">
                       <div className="relative group">
-                        <div className="w-[400px] h-[400px] lg:w-[500px] lg:h-[500px] xl:w-[550px] xl:h-[550px] 2xl:w-[600px] 2xl:h-[600px] relative flex items-center justify-center">
+                        <div className="w-[320px] h-[320px] lg:w-[400px] lg:h-[400px] xl:w-[450px] xl:h-[450px] 2xl:w-[500px] 2xl:h-[500px] relative flex items-center justify-center">
                           <Image
                             src={product.image || "/placeholder.svg"}
                             alt={product.name}
