@@ -245,7 +245,7 @@ export default function PbdSuplemedStore() {
         </div>
       </header>
 
-      {/* Premium Carousel - COM TRANSIÇÃO DE SLIDES */}
+      {/* Premium Carousel - VERSÃO MOBILE OTIMIZADA */}
       <section className="relative overflow-hidden">
         <div
           className="flex transition-transform duration-1000 ease-in-out"
@@ -253,99 +253,39 @@ export default function PbdSuplemedStore() {
         >
           {products.map((product, index) => (
             <div key={product.id} className={`w-full flex-shrink-0 ${getProductBackground(product.name)}`}>
-              <div className="container mx-auto px-4 md:px-16 py-8 md:py-12 relative">
-                {/* Conteúdo do Carrossel */}
-                <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
-                  {/* Lado Esquerdo - Texto */}
-                  <div className="w-full md:w-1/2 text-center md:text-left space-y-4 md:space-y-6 z-10">
-                    <Badge className={`text-sm px-4 py-2 shadow-2xl ${getBadgeColor(product.badge)}`}>
-                      {product.badge}
-                    </Badge>
-
-                    <h3 className="text-xl md:text-3xl lg:text-4xl font-black text-white leading-tight drop-shadow-2xl">
-                      {product.name}
-                    </h3>
-
-                    <p className="text-sm md:text-base text-white/95 leading-relaxed drop-shadow-lg max-w-xl">
-                      {product.description}
-                    </p>
-
-                    <div className="flex flex-wrap gap-2 justify-center md:justify-start">
-                      {product.benefits.slice(0, 3).map((benefit, idx) => (
-                        <span
-                          key={idx}
-                          className="text-xs md:text-sm bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-white border border-white/30 shadow-xl"
-                        >
-                          {benefit}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div className="flex items-center gap-4 justify-center md:justify-start">
-                      <span className="text-xl md:text-2xl font-black text-white drop-shadow-xl">
-                        R$ {product.price.toFixed(2)}
-                      </span>
-                      {product.originalPrice > product.price && (
-                        <span className="text-sm md:text-base text-white/60 line-through drop-shadow-lg">
-                          R$ {product.originalPrice.toFixed(2)}
-                        </span>
-                      )}
-                    </div>
-
-                    <Button
-                      onClick={() => buyProduct(product.id)}
-                      size="lg"
-                      className="bg-white/20 backdrop-blur-md hover:bg-white/30 text-white border border-white/30 px-6 py-3 text-sm font-bold transition-all duration-300 hover:scale-105 shadow-xl group"
-                    >
-                      <ShoppingCart className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
-                      COMPRAR AGORA
-                      <ChevronRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </div>
-
-                  {/* Lado Direito - Imagem */}
-                  <div className="w-full md:w-1/2 flex justify-center z-10">
-                    <div className="relative w-full max-w-sm">
-                      {/* Container da imagem com efeito flutuante */}
+              {/* LAYOUT MOBILE OTIMIZADO */}
+              <div className="md:hidden">
+                <div className="relative min-h-screen flex flex-col">
+                  {/* Seção da Imagem - Parte Superior */}
+                  <div className="relative h-[55vh] flex items-center justify-center">
+                    {/* Container da imagem com efeito flutuante */}
+                    <div className="relative w-full max-w-xs px-4">
                       <div className="relative group">
                         {/* Sombra principal - mais distante */}
                         <div
-                          className={`absolute inset-0 rounded-2xl blur-3xl opacity-60 transform translate-y-8 scale-110 transition-all duration-700 group-hover:translate-y-12 group-hover:scale-125 ${
+                          className={`absolute inset-0 rounded-2xl blur-2xl opacity-50 transform translate-y-6 scale-110 transition-all duration-700 ${
                             product.name === "GLUTA IMUNITY"
-                              ? "bg-gradient-to-br from-emerald-500/40 via-green-500/30 to-teal-500/40"
+                              ? "bg-gradient-to-br from-emerald-500/30 via-green-500/20 to-teal-500/30"
                               : product.name === "LARANJA MORO"
-                                ? "bg-gradient-to-br from-orange-500/40 via-amber-500/30 to-yellow-500/40"
+                                ? "bg-gradient-to-br from-orange-500/30 via-amber-500/20 to-yellow-500/30"
                                 : product.name === "RED SIZE"
-                                  ? "bg-gradient-to-br from-red-500/40 via-rose-500/30 to-pink-500/40"
-                                  : "bg-gradient-to-br from-blue-500/40 via-cyan-500/30 to-indigo-500/40"
+                                  ? "bg-gradient-to-br from-red-500/30 via-rose-500/20 to-pink-500/30"
+                                  : "bg-gradient-to-br from-blue-500/30 via-cyan-500/20 to-indigo-500/30"
                           }`}
                         ></div>
 
-                        {/* Sombra secundária - mais próxima */}
-                        <div
-                          className={`absolute inset-0 rounded-2xl blur-xl opacity-40 transform translate-y-4 scale-105 transition-all duration-500 group-hover:translate-y-6 group-hover:scale-110 ${
-                            product.name === "GLUTA IMUNITY"
-                              ? "bg-gradient-to-br from-emerald-600/50 to-green-600/50"
-                              : product.name === "LARANJA MORO"
-                                ? "bg-gradient-to-br from-orange-600/50 to-amber-600/50"
-                                : product.name === "RED SIZE"
-                                  ? "bg-gradient-to-br from-red-600/50 to-rose-600/50"
-                                  : "bg-gradient-to-br from-blue-600/50 to-cyan-600/50"
-                          }`}
-                        ></div>
+                        {/* Sombra de contato */}
+                        <div className="absolute inset-0 rounded-2xl bg-black/15 blur-lg transform translate-y-3 scale-102"></div>
 
-                        {/* Sombra de contato - mais próxima da imagem */}
-                        <div className="absolute inset-0 rounded-2xl bg-black/20 blur-lg transform translate-y-2 scale-102 transition-all duration-300 group-hover:translate-y-3"></div>
-
-                        {/* Container da imagem com animação de flutuação */}
-                        <div className="aspect-square relative transform transition-all duration-700 group-hover:-translate-y-2 group-hover:scale-105 animate-float">
+                        {/* Container da imagem */}
+                        <div className="aspect-square relative transform animate-float">
                           <Image
                             src={product.image || "/placeholder.svg"}
                             alt={product.name}
                             fill
                             className="object-cover rounded-2xl shadow-2xl relative z-10"
                             style={{
-                              filter: "drop-shadow(0 25px 50px rgba(0, 0, 0, 0.3)) brightness(1.05) contrast(1.05)",
+                              filter: "drop-shadow(0 20px 40px rgba(0, 0, 0, 0.25)) brightness(1.05) contrast(1.05)",
                             }}
                             priority={index === currentSlide}
                             quality={100}
@@ -353,24 +293,196 @@ export default function PbdSuplemedStore() {
 
                           {/* Brilho interno da imagem */}
                           <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-transparent via-transparent to-white/10 pointer-events-none"></div>
-
-                          {/* Reflexo sutil */}
-                          <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/20 via-transparent to-transparent opacity-30 pointer-events-none"></div>
                         </div>
+                      </div>
+                    </div>
 
-                        {/* Partículas flutuantes ao redor */}
-                        <div className="absolute -top-4 -left-4 w-2 h-2 bg-white/40 rounded-full animate-ping"></div>
-                        <div className="absolute -top-2 -right-6 w-1 h-1 bg-white/60 rounded-full animate-pulse"></div>
-                        <div className="absolute -bottom-3 -left-2 w-1.5 h-1.5 bg-white/30 rounded-full animate-bounce"></div>
+                    {/* Badge flutuante */}
+                    <Badge
+                      className={`absolute top-8 left-1/2 transform -translate-x-1/2 text-sm px-4 py-2 shadow-2xl z-20 ${getBadgeColor(product.badge)}`}
+                    >
+                      {product.badge}
+                    </Badge>
+
+                    {/* Efeitos de luz de fundo */}
+                    <div className="absolute top-0 left-1/4 w-64 h-64 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
+                    <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
+                  </div>
+
+                  {/* Seção do Conteúdo - Parte Inferior */}
+                  <div className="flex-1 bg-gradient-to-t from-black/20 to-transparent backdrop-blur-sm">
+                    <div className="px-6 py-8 text-center space-y-4">
+                      <h3 className="text-2xl font-black text-white leading-tight drop-shadow-2xl">{product.name}</h3>
+
+                      <p className="text-sm text-white/90 leading-relaxed drop-shadow-lg max-w-sm mx-auto">
+                        {product.description.length > 80
+                          ? product.description.substring(0, 80) + "..."
+                          : product.description}
+                      </p>
+
+                      {/* Benefícios em grid compacto */}
+                      <div className="grid grid-cols-2 gap-2 max-w-sm mx-auto">
+                        {product.benefits.slice(0, 4).map((benefit, idx) => (
+                          <span
+                            key={idx}
+                            className="text-xs bg-white/15 backdrop-blur-md px-3 py-2 rounded-full text-white border border-white/20 shadow-lg"
+                          >
+                            {benefit.length > 20 ? benefit.substring(0, 20) + "..." : benefit}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Preço destacado */}
+                      <div className="flex items-center justify-center gap-3 py-2">
+                        <span className="text-3xl font-black text-white drop-shadow-xl">
+                          R$ {product.price.toFixed(2)}
+                        </span>
+                        {product.originalPrice > product.price && (
+                          <span className="text-lg text-white/60 line-through drop-shadow-lg">
+                            R$ {product.originalPrice.toFixed(2)}
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Botão de compra otimizado */}
+                      <Button
+                        onClick={() => buyProduct(product.id)}
+                        size="lg"
+                        className="w-full max-w-sm bg-white/20 backdrop-blur-md hover:bg-white/30 text-white border border-white/30 px-6 py-4 text-base font-bold transition-all duration-300 hover:scale-105 shadow-xl group"
+                      >
+                        <ShoppingCart className="w-5 h-5 mr-3 group-hover:rotate-12 transition-transform" />
+                        COMPRAR AGORA
+                        <ChevronRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                      </Button>
+                    </div>
+                  </div>
+
+                  {/* Overlay sutil */}
+                  <div className="absolute inset-0 bg-black/10 pointer-events-none"></div>
+                </div>
+              </div>
+
+              {/* LAYOUT DESKTOP - Mantido igual */}
+              <div className="hidden md:block">
+                <div className="container mx-auto px-4 md:px-16 py-8 md:py-12 relative">
+                  {/* Conteúdo do Carrossel */}
+                  <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
+                    {/* Lado Esquerdo - Texto */}
+                    <div className="w-full md:w-1/2 text-center md:text-left space-y-4 md:space-y-6 z-10">
+                      <Badge className={`text-sm px-4 py-2 shadow-2xl ${getBadgeColor(product.badge)}`}>
+                        {product.badge}
+                      </Badge>
+
+                      <h3 className="text-xl md:text-3xl lg:text-4xl font-black text-white leading-tight drop-shadow-2xl">
+                        {product.name}
+                      </h3>
+
+                      <p className="text-sm md:text-base text-white/95 leading-relaxed drop-shadow-lg max-w-xl">
+                        {product.description}
+                      </p>
+
+                      <div className="flex flex-wrap gap-2 justify-center md:justify-start">
+                        {product.benefits.slice(0, 3).map((benefit, idx) => (
+                          <span
+                            key={idx}
+                            className="text-xs md:text-sm bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-white border border-white/30 shadow-xl"
+                          >
+                            {benefit}
+                          </span>
+                        ))}
+                      </div>
+
+                      <div className="flex items-center gap-4 justify-center md:justify-start">
+                        <span className="text-xl md:text-2xl font-black text-white drop-shadow-xl">
+                          R$ {product.price.toFixed(2)}
+                        </span>
+                        {product.originalPrice > product.price && (
+                          <span className="text-sm md:text-base text-white/60 line-through drop-shadow-lg">
+                            R$ {product.originalPrice.toFixed(2)}
+                          </span>
+                        )}
+                      </div>
+
+                      <Button
+                        onClick={() => buyProduct(product.id)}
+                        size="lg"
+                        className="bg-white/20 backdrop-blur-md hover:bg-white/30 text-white border border-white/30 px-6 py-3 text-sm font-bold transition-all duration-300 hover:scale-105 shadow-xl group"
+                      >
+                        <ShoppingCart className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
+                        COMPRAR AGORA
+                        <ChevronRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
+                      </Button>
+                    </div>
+
+                    {/* Lado Direito - Imagem */}
+                    <div className="w-full md:w-1/2 flex justify-center z-10">
+                      <div className="relative w-full max-w-sm">
+                        {/* Container da imagem com efeito flutuante */}
+                        <div className="relative group">
+                          {/* Sombra principal - mais distante */}
+                          <div
+                            className={`absolute inset-0 rounded-2xl blur-3xl opacity-60 transform translate-y-8 scale-110 transition-all duration-700 group-hover:translate-y-12 group-hover:scale-125 ${
+                              product.name === "GLUTA IMUNITY"
+                                ? "bg-gradient-to-br from-emerald-500/40 via-green-500/30 to-teal-500/40"
+                                : product.name === "LARANJA MORO"
+                                  ? "bg-gradient-to-br from-orange-500/40 via-amber-500/30 to-yellow-500/40"
+                                  : product.name === "RED SIZE"
+                                    ? "bg-gradient-to-br from-red-500/40 via-rose-500/30 to-pink-500/40"
+                                    : "bg-gradient-to-br from-blue-500/40 via-cyan-500/30 to-indigo-500/40"
+                            }`}
+                          ></div>
+
+                          {/* Sombra secundária - mais próxima */}
+                          <div
+                            className={`absolute inset-0 rounded-2xl blur-xl opacity-40 transform translate-y-4 scale-105 transition-all duration-500 group-hover:translate-y-6 group-hover:scale-110 ${
+                              product.name === "GLUTA IMUNITY"
+                                ? "bg-gradient-to-br from-emerald-600/50 to-green-600/50"
+                                : product.name === "LARANJA MORO"
+                                  ? "bg-gradient-to-br from-orange-600/50 to-amber-600/50"
+                                  : product.name === "RED SIZE"
+                                    ? "bg-gradient-to-br from-red-600/50 to-rose-600/50"
+                                    : "bg-gradient-to-br from-blue-600/50 to-cyan-600/50"
+                            }`}
+                          ></div>
+
+                          {/* Sombra de contato - mais próxima da imagem */}
+                          <div className="absolute inset-0 rounded-2xl bg-black/20 blur-lg transform translate-y-2 scale-102 transition-all duration-300 group-hover:translate-y-3"></div>
+
+                          {/* Container da imagem com animação de flutuação */}
+                          <div className="aspect-square relative transform transition-all duration-700 group-hover:-translate-y-2 group-hover:scale-105 animate-float">
+                            <Image
+                              src={product.image || "/placeholder.svg"}
+                              alt={product.name}
+                              fill
+                              className="object-cover rounded-2xl shadow-2xl relative z-10"
+                              style={{
+                                filter: "drop-shadow(0 25px 50px rgba(0, 0, 0, 0.3)) brightness(1.05) contrast(1.05)",
+                              }}
+                              priority={index === currentSlide}
+                              quality={100}
+                            />
+
+                            {/* Brilho interno da imagem */}
+                            <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-transparent via-transparent to-white/10 pointer-events-none"></div>
+
+                            {/* Reflexo sutil */}
+                            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/20 via-transparent to-transparent opacity-30 pointer-events-none"></div>
+                          </div>
+
+                          {/* Partículas flutuantes ao redor */}
+                          <div className="absolute -top-4 -left-4 w-2 h-2 bg-white/40 rounded-full animate-ping"></div>
+                          <div className="absolute -top-2 -right-6 w-1 h-1 bg-white/60 rounded-full animate-pulse"></div>
+                          <div className="absolute -bottom-3 -left-2 w-1.5 h-1.5 bg-white/30 rounded-full animate-bounce"></div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Efeitos de Luz */}
-                <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
-                <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
-                <div className="absolute inset-0 bg-black/10"></div>
+                  {/* Efeitos de Luz */}
+                  <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
+                  <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
+                  <div className="absolute inset-0 bg-black/10"></div>
+                </div>
               </div>
             </div>
           ))}
