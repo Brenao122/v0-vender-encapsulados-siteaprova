@@ -269,11 +269,11 @@ export default function PbdSuplemedStore() {
                 {/* Content Container */}
                 <div className="relative z-20 container mx-auto px-4 sm:px-6 h-full">
                   {/* LAYOUT MOBILE (até md) - CORRIGIDO PARA NÃO CORTAR */}
-                  <div className="md:hidden flex flex-col h-full py-4 px-4">
+                  <div className="md:hidden flex flex-col h-full py-3 px-3">
                     {/* Imagem do produto - TOPO - COM OBJECT-FIT CONTAIN */}
                     <div className="flex justify-center mb-4 relative z-50 w-full overflow-hidden">
-                      <div className="relative group w-full max-w-[280px] sm:max-w-[320px]">
-                        <div className="w-full h-[200px] sm:h-[240px] relative flex items-center justify-center">
+                      <div className="relative group w-full max-w-[200px] sm:max-w-[220px]">
+                        <div className="w-full h-[140px] sm:h-[170px] relative flex items-center justify-center">
                           <Image
                             src={product.image || "/placeholder.svg"}
                             alt={product.name}
@@ -303,20 +303,20 @@ export default function PbdSuplemedStore() {
                     </div>
 
                     {/* Conteúdo de texto - CENTRO - COM FLEX-WRAP */}
-                    <div className="text-center space-y-2 flex-1 flex flex-col justify-center px-2">
+                    <div className="text-center space-y-1 flex-1 flex flex-col justify-center px-2">
                       <Badge
                         className={`text-xs px-3 py-1 shadow-xl mx-auto max-w-full ${getBadgeColor(product.badge)}`}
                       >
                         {product.badge}
                       </Badge>
 
-                      <h3 className="text-lg sm:text-xl font-black text-white leading-tight drop-shadow-2xl max-w-full break-words">
+                      <h3 className="text-base sm:text-lg font-black text-white leading-tight drop-shadow-2xl max-w-full break-words">
                         {product.name}
                       </h3>
 
-                      <p className="text-xs sm:text-sm text-white/95 leading-snug drop-shadow-lg max-w-full mx-auto px-2 break-words">
-                        {product.description.length > 80
-                          ? product.description.substring(0, 80) + "..."
+                      <p className="text-xs text-white/95 leading-snug drop-shadow-lg max-w-full mx-auto px-2 break-words">
+                        {product.description.length > 60
+                          ? product.description.substring(0, 60) + "..."
                           : product.description}
                       </p>
 
@@ -331,7 +331,7 @@ export default function PbdSuplemedStore() {
                     {/* Preços e botão - PARTE INFERIOR - COM PADDING ADEQUADO */}
                     <div className="text-center space-y-3 pb-4 px-4">
                       <div className="flex items-center gap-2 justify-center flex-wrap">
-                        <span className="text-lg sm:text-xl font-black text-white drop-shadow-xl">
+                        <span className="text-base sm:text-lg font-black text-white drop-shadow-xl">
                           R$ {product.price.toFixed(2)}
                         </span>
                         {product.originalPrice > product.price && (
@@ -344,11 +344,11 @@ export default function PbdSuplemedStore() {
                       <Button
                         onClick={() => buyProduct(product.id)}
                         size="sm"
-                        className="bg-white/20 backdrop-blur-md hover:bg-white/30 text-white border border-white/30 px-4 py-2 text-sm font-black transition-all duration-500 hover:scale-105 shadow-2xl group w-full max-w-[280px] mx-auto"
+                        className="bg-white/20 backdrop-blur-md hover:bg-white/30 text-white border border-white/30 px-3 py-1.5 text-xs font-black transition-all duration-500 hover:scale-105 shadow-2xl group w-full max-w-[200px] mx-auto"
                       >
-                        <ShoppingCart className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
+                        <ShoppingCart className="w-3.5 h-3.5 mr-2 group-hover:rotate-12 transition-transform" />
                         COMPRAR AGORA
-                        <ChevronRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                        <ChevronRight className="w-3.5 h-3.5 ml-2 group-hover:translate-x-1 transition-transform" />
                       </Button>
                     </div>
                   </div>
