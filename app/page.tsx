@@ -159,6 +159,22 @@ export default function PbdSuplemedStore() {
     }
   }
 
+  // Função para obter o background do produto atual
+  const getProductBackground = (productName: string) => {
+    switch (productName) {
+      case "GLUTA IMUNITY":
+        return "bg-gradient-to-br from-emerald-900 via-green-800 to-teal-900"
+      case "LARANJA MORO":
+        return "bg-gradient-to-br from-orange-900 via-amber-800 to-yellow-900"
+      case "RED SIZE":
+        return "bg-gradient-to-br from-red-900 via-rose-800 to-pink-900"
+      case "RED ONE ENERGY DRINK":
+        return "bg-gradient-to-br from-blue-900 via-cyan-800 to-indigo-900"
+      default:
+        return "bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900"
+    }
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
       {/* Header Premium */}
@@ -229,235 +245,130 @@ export default function PbdSuplemedStore() {
         </div>
       </header>
 
-      {/* Premium Carousel - CENTRALIZADO COM SETAS EXTERNAS */}
-      <section className="relative h-auto md:h-[700px] overflow-hidden bg-slate-900">
-        <div className="relative h-full flex items-center">
-          {/* Seta Esquerda - EXTERNA */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 bg-white/15 backdrop-blur-md hover:bg-white/25 p-3 sm:p-4 lg:p-5 rounded-xl lg:rounded-2xl shadow-2xl transition-all duration-300 border border-white/30 group hover:scale-110 z-60"
-            aria-label="Slide anterior"
-          >
-            <svg
-              className="w-6 sm:w-7 lg:w-9 h-6 sm:h-7 lg:h-9 text-white group-hover:scale-110 transition-transform"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
+      {/* Premium Carousel - VERSÃO CORRIGIDA */}
+      <section className={`relative ${getProductBackground(products[currentSlide].name)}`}>
+        <div className="container mx-auto px-4 md:px-16 py-8 md:py-12 relative">
+          {/* Conteúdo do Carrossel */}
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
+            {/* Lado Esquerdo - Texto */}
+            <div className="w-full md:w-1/2 text-center md:text-left space-y-4 md:space-y-6 z-10">
+              <Badge className={`text-sm px-4 py-2 shadow-2xl ${getBadgeColor(products[currentSlide].badge)}`}>
+                {products[currentSlide].badge}
+              </Badge>
 
-          {/* Container Central do Carrossel */}
-          <div className="flex-1 mx-16 lg:mx-24 relative h-full">
-            {products.map((product, index) => {
-              // Background personalizado para cada produto
-              const getProductBackground = (productName: string) => {
-                switch (productName) {
-                  case "GLUTA IMUNITY":
-                    return "bg-gradient-to-br from-emerald-900 via-green-800 to-teal-900"
-                  case "LARANJA MORO":
-                    return "bg-gradient-to-br from-orange-900 via-amber-800 to-yellow-900"
-                  case "RED SIZE":
-                    return "bg-gradient-to-br from-red-900 via-rose-800 to-pink-900"
-                  case "RED ONE ENERGY DRINK":
-                    return "bg-gradient-to-br from-blue-900 via-cyan-800 to-indigo-900"
-                  default:
-                    return "bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900"
-                }
-              }
+              <h3 className="text-xl md:text-3xl lg:text-4xl font-black text-white leading-tight drop-shadow-2xl">
+                {products[currentSlide].name}
+              </h3>
 
-              return (
-                <div
-                  key={product.id}
-                  className={`transition-all duration-1000 ease-in-out rounded-2xl overflow-hidden ${
-                    index === currentSlide ? "opacity-100 scale-100" : "opacity-0 scale-105 absolute inset-0"
-                  }`}
-                >
-                  {/* Background personalizado para cada produto */}
-                  <div className={`${getProductBackground(product.name)} h-full relative`}>
-                    {/* Efeitos de luz animados */}
-                    <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
-                    <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
-                    {/* Overlay sutil */}
-                    <div className="absolute inset-0 bg-black/10"></div>
+              <p className="text-sm md:text-base text-white/95 leading-relaxed drop-shadow-lg max-w-xl">
+                {products[currentSlide].description}
+              </p>
 
-                    {/* LAYOUT MOBILE (até md) */}
-                    <div className="md:hidden flex flex-col h-full">
-                      {/* Imagem do produto */}
-                      <div className="w-full h-[45vh] relative">
-                        <Image
-                          src={product.image || "/placeholder.svg"}
-                          alt={product.name}
-                          fill
-                          className="object-cover"
-                          style={{
-                            filter: "brightness(0.9) contrast(1.1)",
-                          }}
-                          priority={index === currentSlide}
-                          quality={100}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70"></div>
+              <div className="flex flex-wrap gap-2 justify-center md:justify-start">
+                {products[currentSlide].benefits.slice(0, 3).map((benefit, idx) => (
+                  <span
+                    key={idx}
+                    className="text-xs md:text-sm bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-white border border-white/30 shadow-xl"
+                  >
+                    {benefit}
+                  </span>
+                ))}
+              </div>
 
-                        {/* Badge */}
-                        <Badge
-                          className={`absolute top-4 left-4 text-[7px] px-2 py-0.5 shadow-xl ${getBadgeColor(product.badge)}`}
-                        >
-                          {product.badge}
-                        </Badge>
-                      </div>
+              <div className="flex items-center gap-4 justify-center md:justify-start">
+                <span className="text-xl md:text-2xl font-black text-white drop-shadow-xl">
+                  R$ {products[currentSlide].price.toFixed(2)}
+                </span>
+                {products[currentSlide].originalPrice > products[currentSlide].price && (
+                  <span className="text-sm md:text-base text-white/60 line-through drop-shadow-lg">
+                    R$ {products[currentSlide].originalPrice.toFixed(2)}
+                  </span>
+                )}
+              </div>
 
-                      {/* Conteúdo de texto */}
-                      <div className="bg-white/10 backdrop-blur-xl flex-1 relative z-10 px-4 py-6 flex flex-col items-center justify-center">
-                        <h3 className="text-sm font-black text-white mb-2 text-center">{product.name}</h3>
+              <Button
+                onClick={() => buyProduct(products[currentSlide].id)}
+                size="lg"
+                className="bg-white/20 backdrop-blur-md hover:bg-white/30 text-white border border-white/30 px-6 py-3 text-sm font-bold transition-all duration-300 hover:scale-105 shadow-xl group"
+              >
+                <ShoppingCart className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
+                COMPRAR AGORA
+                <ChevronRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </div>
 
-                        <p className="text-[8px] text-white/90 mb-3 text-center max-w-xs">
-                          {product.description.length > 60
-                            ? product.description.substring(0, 60) + "..."
-                            : product.description}
-                        </p>
-
-                        {/* Benefícios */}
-                        <div className="flex flex-wrap gap-1 justify-center mb-4">
-                          {product.benefits.slice(0, 2).map((benefit, idx) => (
-                            <span
-                              key={idx}
-                              className="text-[7px] bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full text-white border border-white/30 shadow-lg"
-                            >
-                              {benefit}
-                            </span>
-                          ))}
-                        </div>
-
-                        {/* Preço e botão */}
-                        <div className="flex items-center justify-between w-full max-w-xs">
-                          <div className="flex flex-col">
-                            <span className="text-sm font-black text-white">R$ {product.price.toFixed(2)}</span>
-                            {product.originalPrice > product.price && (
-                              <span className="text-[8px] text-white/60 line-through">
-                                R$ {product.originalPrice.toFixed(2)}
-                              </span>
-                            )}
-                          </div>
-
-                          <Button
-                            onClick={() => buyProduct(product.id)}
-                            size="sm"
-                            className="bg-white/20 backdrop-blur-md hover:bg-white/30 text-white border border-white/30 px-2 py-1 text-[8px] font-bold transition-all duration-300 hover:scale-105 shadow-xl"
-                          >
-                            <ShoppingCart className="w-2.5 h-2.5 mr-1" />
-                            COMPRAR
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* LAYOUT DESKTOP (md+) */}
-                    <div className="hidden md:grid md:grid-cols-2 gap-8 items-center w-full h-full px-8">
-                      {/* Texto - Lado Esquerdo */}
-                      <div className="text-center lg:text-left space-y-6 flex flex-col justify-center">
-                        <div className="space-y-4">
-                          <Badge className={`text-sm px-4 py-2 shadow-2xl ${getBadgeColor(product.badge)}`}>
-                            {product.badge}
-                          </Badge>
-                          <h3 className="text-2xl lg:text-3xl xl:text-4xl font-black text-white leading-tight drop-shadow-2xl">
-                            {product.name}
-                          </h3>
-                          <p className="text-sm lg:text-base text-white/95 leading-relaxed drop-shadow-lg">
-                            {product.description}
-                          </p>
-                        </div>
-
-                        <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
-                          {product.benefits.slice(0, 3).map((benefit, idx) => (
-                            <span
-                              key={idx}
-                              className="text-xs bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-white border border-white/30 shadow-xl hover:bg-white/30 transition-all duration-300"
-                            >
-                              {benefit}
-                            </span>
-                          ))}
-                        </div>
-
-                        <div className="flex items-center gap-4 justify-center lg:justify-start">
-                          <span className="text-xl lg:text-2xl font-black text-white drop-shadow-xl">
-                            R$ {product.price.toFixed(2)}
-                          </span>
-                          {product.originalPrice > product.price && (
-                            <span className="text-sm lg:text-base text-white/60 line-through drop-shadow-lg">
-                              R$ {product.originalPrice.toFixed(2)}
-                            </span>
-                          )}
-                        </div>
-
-                        <Button
-                          onClick={() => buyProduct(product.id)}
-                          size="lg"
-                          className="bg-white/20 backdrop-blur-md hover:bg-white/30 text-white border border-white/30 px-6 py-3 text-sm font-black transition-all duration-500 hover:scale-105 shadow-2xl group w-full lg:w-auto"
-                        >
-                          <ShoppingCart className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
-                          COMPRAR AGORA
-                          <ChevronRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
-                        </Button>
-                      </div>
-
-                      {/* Imagem do produto - Lado Direito */}
-                      <div className="flex justify-center relative">
-                        <div className="relative group w-full max-w-[350px]">
-                          <div className="w-full aspect-square relative flex items-center justify-center">
-                            <Image
-                              src={product.image || "/placeholder.svg"}
-                              alt={product.name}
-                              fill
-                              className="object-cover group-hover:scale-105 transition-all duration-700 relative z-50 rounded-2xl"
-                              style={{
-                                filter: "drop-shadow(0 20px 40px rgba(0, 0, 0, 0.7)) brightness(1.05) contrast(1.05)",
-                              }}
-                              priority={index === currentSlide}
-                              quality={100}
-                            />
-                          </div>
-                          {/* Efeitos de brilho */}
-                          <div
-                            className={`absolute inset-0 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-700 ${
-                              product.name === "GLUTA IMUNITY"
-                                ? "bg-gradient-to-r from-emerald-400/30 to-green-400/30"
-                                : product.name === "LARANJA MORO"
-                                  ? "bg-gradient-to-r from-orange-400/30 to-amber-400/30"
-                                  : product.name === "RED SIZE"
-                                    ? "bg-gradient-to-r from-red-400/30 to-rose-400/30"
-                                    : "bg-gradient-to-r from-blue-400/30 to-cyan-400/30"
-                            }`}
-                          ></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+            {/* Lado Direito - Imagem */}
+            <div className="w-full md:w-1/2 flex justify-center z-10">
+              <div className="relative w-full max-w-sm">
+                <div className="aspect-square relative">
+                  <Image
+                    src={products[currentSlide].image || "/placeholder.svg"}
+                    alt={products[currentSlide].name}
+                    fill
+                    className="object-cover rounded-2xl shadow-2xl"
+                    priority
+                    quality={100}
+                  />
                 </div>
-              )
-            })}
+
+                {/* Efeito de brilho */}
+                <div
+                  className={`absolute inset-0 -z-10 rounded-2xl blur-2xl opacity-50 ${
+                    products[currentSlide].name === "GLUTA IMUNITY"
+                      ? "bg-emerald-400/30"
+                      : products[currentSlide].name === "LARANJA MORO"
+                        ? "bg-orange-400/30"
+                        : products[currentSlide].name === "RED SIZE"
+                          ? "bg-red-400/30"
+                          : "bg-blue-400/30"
+                  }`}
+                ></div>
+              </div>
+            </div>
           </div>
 
-          {/* Seta Direita - EXTERNA */}
-          <button
-            onClick={nextSlide}
-            className="absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 bg-white/15 backdrop-blur-md hover:bg-white/25 p-3 sm:p-4 lg:p-5 rounded-xl lg:rounded-2xl shadow-2xl transition-all duration-300 border border-white/30 group hover:scale-110 z-60"
-            aria-label="Próximo slide"
-          >
-            <svg
-              className="w-6 sm:w-7 lg:w-9 h-6 sm:h-7 lg:h-9 text-white group-hover:scale-110 transition-transform"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+          {/* Botões de Navegação */}
+          <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between px-2 md:px-4 z-20">
+            <button
+              onClick={prevSlide}
+              className="bg-white/15 backdrop-blur-md hover:bg-white/25 p-3 rounded-xl shadow-xl border border-white/30 group hover:scale-110 transition-all duration-300"
+              aria-label="Slide anterior"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
+              <svg
+                className="w-6 h-6 text-white group-hover:scale-110 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+
+            <button
+              onClick={nextSlide}
+              className="bg-white/15 backdrop-blur-md hover:bg-white/25 p-3 rounded-xl shadow-xl border border-white/30 group hover:scale-110 transition-all duration-300"
+              aria-label="Próximo slide"
+            >
+              <svg
+                className="w-6 h-6 text-white group-hover:scale-110 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Efeitos de Luz */}
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute inset-0 bg-black/10"></div>
         </div>
 
-        {/* Barra de Loading Estilo Videogame - INCLUÍDA NO CARROSSEL */}
-        <div className="absolute bottom-0 left-0 right-0 z-50 p-6">
-          <div className="mx-auto max-w-md">
+        {/* Barra de Loading */}
+        <div className="w-full px-4 md:px-16 pb-8">
+          <div className="mx-auto max-w-3xl">
             {/* Borda externa com efeito neon */}
             <div
               className={`p-1 rounded-lg ${
