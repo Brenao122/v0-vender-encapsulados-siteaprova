@@ -269,11 +269,11 @@ export default function PbdSuplemedStore() {
                 {/* Content Container */}
                 <div className="relative z-20 container mx-auto px-4 sm:px-6 h-full">
                   {/* LAYOUT MOBILE (até md) - CORRIGIDO PARA NÃO CORTAR */}
-                  <div className="md:hidden flex flex-col h-full py-3 px-3">
+                  <div className="md:hidden flex flex-col items-center justify-center h-[90vh] sm:h-auto min-h-[85vh] py-4 px-4">
                     {/* Imagem do produto - TOPO - COM OBJECT-FIT CONTAIN */}
-                    <div className="flex justify-center mb-4 relative z-50 w-full overflow-hidden">
-                      <div className="relative group w-full max-w-[200px] sm:max-w-[220px]">
-                        <div className="w-full h-[140px] sm:h-[170px] relative flex items-center justify-center">
+                    <div className="flex justify-center mb-4 relative z-50 w-full">
+                      <div className="relative group w-full max-w-[240px] sm:max-w-[280px]">
+                        <div className="w-full h-[180px] sm:h-[200px] relative flex items-center justify-center">
                           <Image
                             src={product.image || "/placeholder.svg"}
                             alt={product.name}
@@ -287,55 +287,40 @@ export default function PbdSuplemedStore() {
                             quality={100}
                           />
                         </div>
-                        {/* Efeitos de brilho reduzidos */}
-                        <div
-                          className={`absolute inset-0 rounded-2xl blur-xl transition-all duration-700 z-40 ${
-                            product.name === "GLUTA IMUNITY"
-                              ? "bg-gradient-to-r from-emerald-400/30 to-green-400/30"
-                              : product.name === "LARANJA MORO"
-                                ? "bg-gradient-to-r from-orange-400/30 to-amber-400/30"
-                                : product.name === "RED SIZE"
-                                  ? "bg-gradient-to-r from-red-400/30 to-rose-400/30"
-                                  : "bg-gradient-to-r from-blue-400/30 to-cyan-400/30"
-                          }`}
-                        ></div>
                       </div>
                     </div>
 
                     {/* Conteúdo de texto - CENTRO - COM FLEX-WRAP */}
-                    <div className="text-center space-y-1 flex-1 flex flex-col justify-center px-2">
-                      <Badge
-                        className={`text-xs px-3 py-1 shadow-xl mx-auto max-w-full ${getBadgeColor(product.badge)}`}
-                      >
+                    <div className="text-center space-y-2 flex-1 flex flex-col justify-center px-2 max-w-sm mx-auto">
+                      <Badge className={`text-xs px-3 py-1 shadow-xl mx-auto w-fit ${getBadgeColor(product.badge)}`}>
                         {product.badge}
                       </Badge>
 
-                      <h3 className="text-base sm:text-lg font-black text-white leading-tight drop-shadow-2xl max-w-full break-words">
+                      <h3 className="text-2xl sm:text-xl font-black text-white leading-tight drop-shadow-2xl break-words">
                         {product.name}
                       </h3>
 
-                      <p className="text-xs text-white/95 leading-snug drop-shadow-lg max-w-full mx-auto px-2 break-words">
-                        {product.description.length > 60
-                          ? product.description.substring(0, 60) + "..."
+                      <p className="text-sm sm:text-xs text-white/95 leading-snug drop-shadow-lg break-words max-w-xs mx-auto">
+                        {product.description.length > 80
+                          ? product.description.substring(0, 80) + "..."
                           : product.description}
                       </p>
 
-                      {/* Apenas 1 benefício no mobile - COM FLEX-WRAP */}
-                      <div className="flex justify-center flex-wrap">
-                        <span className="text-xs bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-white border border-white/30 shadow-lg max-w-full break-words">
+                      <div className="flex flex-wrap gap-2 justify-center mt-2">
+                        <span className="text-xs bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-white border border-white/30 shadow-lg w-fit max-w-[140px] break-words text-center">
                           {product.benefits[0]}
                         </span>
                       </div>
                     </div>
 
                     {/* Preços e botão - PARTE INFERIOR - COM PADDING ADEQUADO */}
-                    <div className="text-center space-y-3 pb-4 px-4">
+                    <div className="text-center space-y-3 pb-4 px-4 w-full max-w-sm mx-auto">
                       <div className="flex items-center gap-2 justify-center flex-wrap">
-                        <span className="text-base sm:text-lg font-black text-white drop-shadow-xl">
+                        <span className="text-xl sm:text-lg font-black text-white drop-shadow-xl">
                           R$ {product.price.toFixed(2)}
                         </span>
                         {product.originalPrice > product.price && (
-                          <span className="text-base text-white/60 line-through drop-shadow-lg">
+                          <span className="text-base sm:text-sm text-white/60 line-through drop-shadow-lg">
                             R$ {product.originalPrice.toFixed(2)}
                           </span>
                         )}
@@ -344,11 +329,11 @@ export default function PbdSuplemedStore() {
                       <Button
                         onClick={() => buyProduct(product.id)}
                         size="sm"
-                        className="bg-white/20 backdrop-blur-md hover:bg-white/30 text-white border border-white/30 px-3 py-1.5 text-xs font-black transition-all duration-500 hover:scale-105 shadow-2xl group w-full max-w-[200px] mx-auto"
+                        className="bg-white/20 backdrop-blur-md hover:bg-white/30 text-white border border-white/30 px-4 py-2 text-sm font-black transition-all duration-500 hover:scale-105 shadow-2xl group w-full max-w-[200px] mx-auto"
                       >
-                        <ShoppingCart className="w-3.5 h-3.5 mr-2 group-hover:rotate-12 transition-transform" />
-                        COMPRAR AGORA
-                        <ChevronRight className="w-3.5 h-3.5 ml-2 group-hover:translate-x-1 transition-transform" />
+                        <ShoppingCart className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
+                        <span className="truncate">COMPRAR AGORA</span>
+                        <ChevronRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform flex-shrink-0" />
                       </Button>
                     </div>
                   </div>
