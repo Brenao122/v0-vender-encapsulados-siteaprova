@@ -270,15 +270,15 @@ export default function PbdSuplemedStore() {
                 <div className="relative z-20 container mx-auto px-4 sm:px-6 h-full">
                   {/* LAYOUT MOBILE (até md) - COMPACTO PARA IPHONE 12 */}
                   <div className="md:hidden flex flex-col h-full py-2">
-                    {/* Imagem do produto - TOPO - REDUZIDA */}
-                    <div className="flex justify-center mb-2 relative z-50">
-                      <div className="relative group">
-                        <div className="w-[160px] h-[160px] sm:w-[180px] sm:h-[180px] relative flex items-center justify-center">
+                    {/* Imagem do produto - TOPO - COM CLASSES RESPONSIVAS */}
+                    <div className="flex justify-center mb-2 relative z-50 w-full overflow-hidden">
+                      <div className="relative group w-full max-w-[200px] sm:max-w-[220px]">
+                        <div className="w-full aspect-square relative flex items-center justify-center">
                           <Image
                             src={product.image || "/placeholder.svg"}
                             alt={product.name}
                             fill
-                            className="object-contain group-hover:scale-105 transition-all duration-700 relative z-50"
+                            className="object-cover group-hover:scale-105 transition-all duration-700 relative z-50 rounded-2xl"
                             style={{
                               filter:
                                 "drop-shadow(0 15px 30px rgba(0, 0, 0, 0.5)) brightness(1.05) contrast(1.05) saturate(1.0)",
@@ -400,15 +400,15 @@ export default function PbdSuplemedStore() {
                       </Button>
                     </div>
 
-                    {/* Imagem do produto - Lado Direito */}
-                    <div className="flex justify-center relative z-50">
-                      <div className="relative group">
-                        <div className="w-[320px] h-[320px] lg:w-[400px] lg:h-[400px] xl:w-[450px] xl:h-[450px] 2xl:w-[500px] 2xl:h-[500px] relative flex items-center justify-center">
+                    {/* Imagem do produto - Lado Direito - COM CLASSES RESPONSIVAS */}
+                    <div className="flex justify-center relative z-50 w-full overflow-hidden">
+                      <div className="relative group w-full max-w-[320px] lg:max-w-[400px] xl:max-w-[450px] 2xl:max-w-[500px]">
+                        <div className="w-full aspect-square relative flex items-center justify-center">
                           <Image
                             src={product.image || "/placeholder.svg"}
                             alt={product.name}
                             fill
-                            className="object-contain group-hover:scale-105 transition-all duration-700 relative z-50"
+                            className="object-cover group-hover:scale-105 transition-all duration-700 relative z-50 rounded-3xl"
                             style={{
                               filter:
                                 "drop-shadow(0 30px 60px rgba(0, 0, 0, 0.7)) brightness(1.05) contrast(1.05) saturate(1.0)",
