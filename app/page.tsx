@@ -245,129 +245,138 @@ export default function PbdSuplemedStore() {
         </div>
       </header>
 
-      {/* Premium Carousel - VERSÃO CORRIGIDA */}
-      <section className={`relative ${getProductBackground(products[currentSlide].name)}`}>
-        <div className="container mx-auto px-4 md:px-16 py-8 md:py-12 relative">
-          {/* Conteúdo do Carrossel */}
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
-            {/* Lado Esquerdo - Texto */}
-            <div className="w-full md:w-1/2 text-center md:text-left space-y-4 md:space-y-6 z-10">
-              <Badge className={`text-sm px-4 py-2 shadow-2xl ${getBadgeColor(products[currentSlide].badge)}`}>
-                {products[currentSlide].badge}
-              </Badge>
+      {/* Premium Carousel - COM TRANSIÇÃO DE SLIDES */}
+      <section className="relative overflow-hidden">
+        <div
+          className="flex transition-transform duration-1000 ease-in-out"
+          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+        >
+          {products.map((product, index) => (
+            <div key={product.id} className={`w-full flex-shrink-0 ${getProductBackground(product.name)}`}>
+              <div className="container mx-auto px-4 md:px-16 py-8 md:py-12 relative">
+                {/* Conteúdo do Carrossel */}
+                <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
+                  {/* Lado Esquerdo - Texto */}
+                  <div className="w-full md:w-1/2 text-center md:text-left space-y-4 md:space-y-6 z-10">
+                    <Badge className={`text-sm px-4 py-2 shadow-2xl ${getBadgeColor(product.badge)}`}>
+                      {product.badge}
+                    </Badge>
 
-              <h3 className="text-xl md:text-3xl lg:text-4xl font-black text-white leading-tight drop-shadow-2xl">
-                {products[currentSlide].name}
-              </h3>
+                    <h3 className="text-xl md:text-3xl lg:text-4xl font-black text-white leading-tight drop-shadow-2xl">
+                      {product.name}
+                    </h3>
 
-              <p className="text-sm md:text-base text-white/95 leading-relaxed drop-shadow-lg max-w-xl">
-                {products[currentSlide].description}
-              </p>
+                    <p className="text-sm md:text-base text-white/95 leading-relaxed drop-shadow-lg max-w-xl">
+                      {product.description}
+                    </p>
 
-              <div className="flex flex-wrap gap-2 justify-center md:justify-start">
-                {products[currentSlide].benefits.slice(0, 3).map((benefit, idx) => (
-                  <span
-                    key={idx}
-                    className="text-xs md:text-sm bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-white border border-white/30 shadow-xl"
-                  >
-                    {benefit}
-                  </span>
-                ))}
-              </div>
+                    <div className="flex flex-wrap gap-2 justify-center md:justify-start">
+                      {product.benefits.slice(0, 3).map((benefit, idx) => (
+                        <span
+                          key={idx}
+                          className="text-xs md:text-sm bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-white border border-white/30 shadow-xl"
+                        >
+                          {benefit}
+                        </span>
+                      ))}
+                    </div>
 
-              <div className="flex items-center gap-4 justify-center md:justify-start">
-                <span className="text-xl md:text-2xl font-black text-white drop-shadow-xl">
-                  R$ {products[currentSlide].price.toFixed(2)}
-                </span>
-                {products[currentSlide].originalPrice > products[currentSlide].price && (
-                  <span className="text-sm md:text-base text-white/60 line-through drop-shadow-lg">
-                    R$ {products[currentSlide].originalPrice.toFixed(2)}
-                  </span>
-                )}
-              </div>
+                    <div className="flex items-center gap-4 justify-center md:justify-start">
+                      <span className="text-xl md:text-2xl font-black text-white drop-shadow-xl">
+                        R$ {product.price.toFixed(2)}
+                      </span>
+                      {product.originalPrice > product.price && (
+                        <span className="text-sm md:text-base text-white/60 line-through drop-shadow-lg">
+                          R$ {product.originalPrice.toFixed(2)}
+                        </span>
+                      )}
+                    </div>
 
-              <Button
-                onClick={() => buyProduct(products[currentSlide].id)}
-                size="lg"
-                className="bg-white/20 backdrop-blur-md hover:bg-white/30 text-white border border-white/30 px-6 py-3 text-sm font-bold transition-all duration-300 hover:scale-105 shadow-xl group"
-              >
-                <ShoppingCart className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
-                COMPRAR AGORA
-                <ChevronRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </div>
+                    <Button
+                      onClick={() => buyProduct(product.id)}
+                      size="lg"
+                      className="bg-white/20 backdrop-blur-md hover:bg-white/30 text-white border border-white/30 px-6 py-3 text-sm font-bold transition-all duration-300 hover:scale-105 shadow-xl group"
+                    >
+                      <ShoppingCart className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
+                      COMPRAR AGORA
+                      <ChevronRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </div>
 
-            {/* Lado Direito - Imagem */}
-            <div className="w-full md:w-1/2 flex justify-center z-10">
-              <div className="relative w-full max-w-sm">
-                <div className="aspect-square relative">
-                  <Image
-                    src={products[currentSlide].image || "/placeholder.svg"}
-                    alt={products[currentSlide].name}
-                    fill
-                    className="object-cover rounded-2xl shadow-2xl"
-                    priority
-                    quality={100}
-                  />
+                  {/* Lado Direito - Imagem */}
+                  <div className="w-full md:w-1/2 flex justify-center z-10">
+                    <div className="relative w-full max-w-sm">
+                      <div className="aspect-square relative">
+                        <Image
+                          src={product.image || "/placeholder.svg"}
+                          alt={product.name}
+                          fill
+                          className="object-cover rounded-2xl shadow-2xl transition-transform duration-700 hover:scale-105"
+                          priority={index === currentSlide}
+                          quality={100}
+                        />
+                      </div>
+
+                      {/* Efeito de brilho */}
+                      <div
+                        className={`absolute inset-0 -z-10 rounded-2xl blur-2xl opacity-50 transition-all duration-700 ${
+                          product.name === "GLUTA IMUNITY"
+                            ? "bg-emerald-400/30"
+                            : product.name === "LARANJA MORO"
+                              ? "bg-orange-400/30"
+                              : product.name === "RED SIZE"
+                                ? "bg-red-400/30"
+                                : "bg-blue-400/30"
+                        }`}
+                      ></div>
+                    </div>
+                  </div>
                 </div>
 
-                {/* Efeito de brilho */}
-                <div
-                  className={`absolute inset-0 -z-10 rounded-2xl blur-2xl opacity-50 ${
-                    products[currentSlide].name === "GLUTA IMUNITY"
-                      ? "bg-emerald-400/30"
-                      : products[currentSlide].name === "LARANJA MORO"
-                        ? "bg-orange-400/30"
-                        : products[currentSlide].name === "RED SIZE"
-                          ? "bg-red-400/30"
-                          : "bg-blue-400/30"
-                  }`}
-                ></div>
+                {/* Efeitos de Luz */}
+                <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
+                <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
+                <div className="absolute inset-0 bg-black/10"></div>
               </div>
             </div>
-          </div>
+          ))}
+        </div>
 
-          {/* Botões de Navegação */}
-          <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between px-2 md:px-4 z-20">
-            <button
-              onClick={prevSlide}
-              className="bg-white/15 backdrop-blur-md hover:bg-white/25 p-3 rounded-xl shadow-xl border border-white/30 group hover:scale-110 transition-all duration-300"
-              aria-label="Slide anterior"
+        {/* Botões de Navegação */}
+        <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between px-2 md:px-4 z-20">
+          <button
+            onClick={prevSlide}
+            className="bg-white/15 backdrop-blur-md hover:bg-white/25 p-3 rounded-xl shadow-xl border border-white/30 group hover:scale-110 transition-all duration-300"
+            aria-label="Slide anterior"
+          >
+            <svg
+              className="w-6 h-6 text-white group-hover:scale-110 transition-transform"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
             >
-              <svg
-                className="w-6 h-6 text-white group-hover:scale-110 transition-transform"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
 
-            <button
-              onClick={nextSlide}
-              className="bg-white/15 backdrop-blur-md hover:bg-white/25 p-3 rounded-xl shadow-xl border border-white/30 group hover:scale-110 transition-all duration-300"
-              aria-label="Próximo slide"
+          <button
+            onClick={nextSlide}
+            className="bg-white/15 backdrop-blur-md hover:bg-white/25 p-3 rounded-xl shadow-xl border border-white/30 group hover:scale-110 transition-all duration-300"
+            aria-label="Próximo slide"
+          >
+            <svg
+              className="w-6 h-6 text-white group-hover:scale-110 transition-transform"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
             >
-              <svg
-                className="w-6 h-6 text-white group-hover:scale-110 transition-transform"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
-
-          {/* Efeitos de Luz */}
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute inset-0 bg-black/10"></div>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
         </div>
 
         {/* Barra de Loading Discreta */}
-        <div className="w-full px-4 md:px-16 pb-6">
+        <div className="absolute bottom-0 w-full px-4 md:px-16 pb-6 z-10">
           <div className="mx-auto max-w-2xl">
             {/* Barra simples e discreta */}
             <div className="h-1 bg-black/20 backdrop-blur-sm rounded-full overflow-hidden">
