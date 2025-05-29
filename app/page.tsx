@@ -337,7 +337,7 @@ export default function PbdSuplemedStore() {
 
                 {/* Imagem - Lado Direito */}
                 <div className="w-1/2 flex justify-center z-10">
-                  <div className="relative w-full max-w-md">
+                  <div className="relative w-full max-w-lg">
                     <div className="relative group">
                       {/* Sombras para efeito flutuante */}
                       <div
@@ -352,7 +352,7 @@ export default function PbdSuplemedStore() {
                         }`}
                       ></div>
 
-                      <div className="aspect-square relative transform animate-float">
+                      <div className="aspect-square relative transform animate-float scale-110">
                         <Image
                           src={products[currentSlide].image || "/placeholder.svg"}
                           alt={products[currentSlide].name}
@@ -382,7 +382,7 @@ export default function PbdSuplemedStore() {
             <div className="relative min-h-screen flex flex-col">
               {/* Imagem - Parte Superior */}
               <div className="relative h-[55vh] flex items-center justify-center">
-                <div className="relative w-full max-w-xs px-4">
+                <div className="relative w-full max-w-sm px-4">
                   <div className="relative group">
                     <div
                       className={`absolute inset-0 rounded-2xl blur-2xl opacity-50 transform translate-y-6 scale-110 ${
@@ -396,7 +396,7 @@ export default function PbdSuplemedStore() {
                       }`}
                     ></div>
 
-                    <div className="aspect-square relative transform animate-float">
+                    <div className="aspect-square relative transform animate-float scale-110">
                       <Image
                         src={products[currentSlide].image || "/placeholder.svg"}
                         alt={products[currentSlide].name}
@@ -1173,7 +1173,7 @@ export default function PbdSuplemedStore() {
         }
 
         .product-image-container {
-          height: 350px; /* Aumentado em aproximadamente 35% */
+          height: 455px; /* Aumentado em 30% adicional */
           position: relative;
           overflow: hidden;
         }
@@ -1190,7 +1190,7 @@ export default function PbdSuplemedStore() {
         @media (max-width: 768px) {
           
           .product-image-container {
-            height: 280px;
+            height: 364px; /* Aumentado em 30% adicional */
           }
         }
       `}</style>
