@@ -337,7 +337,7 @@ export default function PbdSuplemedStore() {
 
                 {/* Imagem - Lado Direito */}
                 <div className="w-1/2 flex justify-center z-10">
-                  <div className="relative w-full max-w-lg">
+                  <div className="relative w-full max-w-md">
                     <div className="relative group">
                       {/* Sombras para efeito flutuante */}
                       <div
@@ -352,12 +352,12 @@ export default function PbdSuplemedStore() {
                         }`}
                       ></div>
 
-                      <div className="aspect-square relative transform animate-float scale-110">
+                      <div className="aspect-square relative transform animate-float">
                         <Image
                           src={products[currentSlide].image || "/placeholder.svg"}
                           alt={products[currentSlide].name}
                           fill
-                          className="object-contain p-2 group-hover:scale-110 transition-all duration-700"
+                          className="object-contain p-0 scale-130 group-hover:scale-[1.4] transition-all duration-700"
                           style={{
                             filter: "drop-shadow(0 25px 50px rgba(0, 0, 0, 0.3)) brightness(1.05) contrast(1.05)",
                           }}
@@ -382,7 +382,7 @@ export default function PbdSuplemedStore() {
             <div className="relative min-h-screen flex flex-col">
               {/* Imagem - Parte Superior */}
               <div className="relative h-[55vh] flex items-center justify-center">
-                <div className="relative w-full max-w-sm px-4">
+                <div className="relative w-full max-w-xs px-4">
                   <div className="relative group">
                     <div
                       className={`absolute inset-0 rounded-2xl blur-2xl opacity-50 transform translate-y-6 scale-110 ${
@@ -396,12 +396,12 @@ export default function PbdSuplemedStore() {
                       }`}
                     ></div>
 
-                    <div className="aspect-square relative transform animate-float scale-110">
+                    <div className="aspect-square relative transform animate-float">
                       <Image
                         src={products[currentSlide].image || "/placeholder.svg"}
                         alt={products[currentSlide].name}
                         fill
-                        className="object-cover rounded-2xl shadow-2xl relative z-10"
+                        className="object-cover rounded-2xl shadow-2xl relative z-10 scale-130"
                         style={{
                           filter: "drop-shadow(0 20px 40px rgba(0, 0, 0, 0.25)) brightness(1.05) contrast(1.05)",
                         }}
@@ -646,7 +646,7 @@ export default function PbdSuplemedStore() {
                     src={product.image || "/placeholder.svg"}
                     alt={product.name}
                     fill
-                    className="object-contain p-4 group-hover:scale-110 transition-all duration-700"
+                    className="object-contain p-0 scale-130 group-hover:scale-[1.4] transition-all duration-700"
                     quality={90}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
@@ -1173,7 +1173,7 @@ export default function PbdSuplemedStore() {
         }
 
         .product-image-container {
-          height: 455px; /* Aumentado em 30% adicional */
+          height: 350px; /* Voltando ao tamanho original */
           position: relative;
           overflow: hidden;
         }
@@ -1190,8 +1190,13 @@ export default function PbdSuplemedStore() {
         @media (max-width: 768px) {
           
           .product-image-container {
-            height: 364px; /* Aumentado em 30% adicional */
+            height: 280px; /* Voltando ao tamanho original para mobile */
           }
+        }
+
+        /* Adicionando a classe scale-130 que usamos acima */
+        .scale-130 {
+          transform: scale(1.3);
         }
       `}</style>
     </div>
