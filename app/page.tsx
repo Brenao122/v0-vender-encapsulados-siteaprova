@@ -41,8 +41,8 @@ const products = [
     subtitle: "Suplemento Alimentar de Glutamina em Pó",
     description:
       "Fórmula exclusiva composta por glutamina, cúrcuma e limão com propriedades imunomoduladoras, anti-inflamatórias e antioxidantes.",
-    price: 89.9,
-    originalPrice: 119.9,
+    price: 127.93,
+    originalPrice: 169.9,
     image: "/images/gluta-imunity-promo.jpg",
     cleanImage: "/images/gluta-imunity-clean.png",
     rating: 4.9,
@@ -66,8 +66,8 @@ const products = [
     subtitle: "Suplemento Alimentar em Cápsulas",
     description:
       "Extrato de laranja moro rica em polifenóis e flavonoides, especialmente antocianinas, com propriedades anti-inflamatórias e antioxidantes.",
-    price: 65.9,
-    originalPrice: 89.9,
+    price: 49.76,
+    originalPrice: 79.9,
     image: "/images/laranja-moro-promo.jpg",
     cleanImage: "/images/laranja-moro-clean.png",
     rating: 4.8,
@@ -91,8 +91,8 @@ const products = [
     name: "RED SIZE",
     subtitle: "Termogênico com Quitosana, Cafeína, Vitamina C e Cromo",
     description: "Termogênico auxiliar no processo de emagrecimento e mecanismos da fome e saciedade.",
-    price: 75.9,
-    originalPrice: 99.9,
+    price: 121.0,
+    originalPrice: 210.0,
     image: "/images/red-size-promo.jpg",
     cleanImage: "/images/red-size-clean.png",
     rating: 4.7,
@@ -117,8 +117,8 @@ const products = [
     subtitle: "Energético em Comprimidos Efervescentes",
     description:
       "Energético composto por cafeína, taurina e vitaminas do complexo B para rápida absorção e fácil preparo.",
-    price: 42.9,
-    originalPrice: 59.9,
+    price: 35.1,
+    originalPrice: 54.9,
     image: "/images/red-one-promo.jpg",
     cleanImage: "/images/red-one-clean.png",
     rating: 4.6,
@@ -315,7 +315,7 @@ export default function PbdSuplemedStore() {
 
                   <div className="flex items-center gap-4">
                     <span className="text-2xl font-black text-white drop-shadow-xl">
-                      R$ {products[currentSlide].price.toFixed(2)}
+                      A partir de R$ {products[currentSlide].price.toFixed(2)}
                     </span>
                     {products[currentSlide].originalPrice > products[currentSlide].price && (
                       <span className="text-base text-white/60 line-through drop-shadow-lg">
@@ -692,7 +692,9 @@ export default function PbdSuplemedStore() {
                   <div className="space-y-3 pt-2">
                     <div className="flex items-center justify-between">
                       <div>
-                        <span className="text-2xl font-black text-white">R$ {product.price.toFixed(2)}</span>
+                        <span className="text-2xl font-black text-white">
+                          A partir de R$ {product.price.toFixed(2)}
+                        </span>
                         {product.originalPrice > product.price && (
                           <span className="text-sm text-slate-500 line-through ml-2">
                             R$ {product.originalPrice.toFixed(2)}
