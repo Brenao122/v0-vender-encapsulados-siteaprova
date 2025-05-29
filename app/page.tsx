@@ -214,8 +214,8 @@ export default function PbdSuplemedStore() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
       {/* Header Premium */}
-      <header className="bg-slate-900/80 backdrop-blur-xl shadow-xl border-b border-slate-800/50 sticky top-0 z-50 h-16 md:h-20 flex items-center">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <header className="bg-slate-900/90 backdrop-blur-xl shadow-xl border-b border-slate-800/50 sticky top-0 z-50 transition-all duration-300">
+        <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-5">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2 sm:space-x-4">
               <Image
@@ -337,7 +337,7 @@ export default function PbdSuplemedStore() {
 
                 {/* Imagem - Lado Direito */}
                 <div className="w-1/2 flex justify-center z-10">
-                  <div className="relative w-full max-w-sm">
+                  <div className="relative w-full max-w-md">
                     <div className="relative group">
                       {/* Sombras para efeito flutuante */}
                       <div
@@ -357,7 +357,7 @@ export default function PbdSuplemedStore() {
                           src={products[currentSlide].image || "/placeholder.svg"}
                           alt={products[currentSlide].name}
                           fill
-                          className="object-cover rounded-2xl shadow-2xl relative z-10"
+                          className="object-contain p-2 group-hover:scale-110 transition-all duration-700"
                           style={{
                             filter: "drop-shadow(0 25px 50px rgba(0, 0, 0, 0.3)) brightness(1.05) contrast(1.05)",
                           }}
@@ -529,8 +529,15 @@ export default function PbdSuplemedStore() {
         </div>
       </section>
 
+      {/* Divisor de seção curvo */}
+      <div className="section-divider text-slate-900">
+        <svg className="section-divider-curve" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M600,112.77C268.63,112.77,0,65.52,0,7.23V120H1200V7.23C1200,65.52,931.37,112.77,600,112.77Z"></path>
+        </svg>
+      </div>
+
       {/* Enhanced Hero Section */}
-      <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      <section className="py-16 sm:py-20 px-4 sm:px-6 relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl"></div>
@@ -542,12 +549,12 @@ export default function PbdSuplemedStore() {
               COLEÇÃO PREMIUM
             </Badge>
 
-            <h2 className="text-4xl sm:text-5xl lg:text-[clamp(2.25rem,5vw,3.75rem)] font-black text-white leading-tight">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-tight">
               Linha PBD{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">SUPLEMED</span>
             </h2>
 
-            <p className="text-lg md:text-xl lg:text-[clamp(1rem,2.5vw,1.25rem)] text-slate-300 leading-relaxed max-w-4xl mx-auto">
+            <p className="text-lg sm:text-xl lg:text-2xl text-slate-300 leading-relaxed max-w-4xl mx-auto">
               Suplementos desenvolvidos com <span className="font-bold text-blue-400">tecnologia avançada</span> e{" "}
               <span className="font-bold text-cyan-400">ingredientes premium</span> para resultados superiores.
             </p>
@@ -570,7 +577,7 @@ export default function PbdSuplemedStore() {
 
           <Button
             size="lg"
-            className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white px-8 sm:px-10 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-xl shadow-lg hover:scale-105 transition-all duration-300 group min-h-[44px]"
+            className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-8 sm:px-12 py-4 sm:py-6 text-lg sm:text-xl font-bold rounded-xl sm:rounded-2xl shadow-2xl hover:scale-105 transition-all duration-300 group"
             onClick={() => document.getElementById("produtos")?.scrollIntoView({ behavior: "smooth" })}
           >
             Explorar Produtos Premium
@@ -579,8 +586,15 @@ export default function PbdSuplemedStore() {
         </div>
       </section>
 
+      {/* Divisor de seção curvo */}
+      <div className="section-divider text-slate-800">
+        <svg className="section-divider-curve" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1145.71,118.92,1081.15,113,985.66,92.83Z"></path>
+        </svg>
+      </div>
+
       {/* Enhanced Filter Section */}
-      <section className="py-8 sm:py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-slate-900 to-slate-800">
+      <section className="py-4 sm:py-6 px-4 sm:px-6 bg-gradient-to-r from-slate-900 to-slate-800">
         <div className="container mx-auto">
           <div className="flex flex-wrap justify-center gap-3 sm:gap-6">
             {[
@@ -593,7 +607,7 @@ export default function PbdSuplemedStore() {
                 key={category.key}
                 variant={selectedCategory === category.key ? "default" : "outline"}
                 onClick={() => setSelectedCategory(category.key)}
-                className={`px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-medium rounded-lg transition-all duration-300 hover:scale-105 shadow-lg min-h-[44px] ${
+                className={`px-4 sm:px-8 py-3 sm:py-4 text-sm sm:text-lg font-semibold rounded-xl sm:rounded-2xl transition-all duration-300 hover:scale-105 shadow-lg ${
                   selectedCategory === category.key
                     ? `${category.color} hover:${category.color.replace("600", "700")} text-white shadow-2xl`
                     : "bg-slate-800/80 backdrop-blur-sm border-slate-700 hover:bg-slate-700 text-slate-300"
@@ -611,17 +625,14 @@ export default function PbdSuplemedStore() {
       {/* SEÇÃO DE PRODUTOS COMPLETA */}
       <section
         id="produtos"
-        className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
+        className="py-16 sm:py-20 px-4 sm:px-6 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
       >
         <div className="container mx-auto">
-          <h3 className="text-3xl sm:text-4xl lg:text-[clamp(2rem,4vw,3rem)] font-black text-white mb-12 sm:mb-16 text-center">
-            Linha PBD SUPLEMED
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {filteredProducts.map((product) => (
               <Card
                 key={product.id}
-                className="group relative overflow-hidden bg-slate-800/80 backdrop-blur-sm border-slate-700 hover:border-slate-600 transition-all duration-500 hover:scale-105 hover:shadow-2xl"
+                className="product-card group relative overflow-hidden bg-slate-800/80 backdrop-blur-sm border-slate-700 hover:border-slate-600 transition-all duration-500 hover:shadow-2xl"
               >
                 {/* Badge do Produto */}
                 <Badge
@@ -644,12 +655,12 @@ export default function PbdSuplemedStore() {
                 </button>
 
                 {/* Imagem do Produto - Usando a mesma imagem do carrossel */}
-                <div className="relative h-auto aspect-[5/7] overflow-hidden bg-gradient-to-br from-slate-900 to-slate-800 rounded-t-xl">
+                <div className="product-image-container bg-gradient-to-br from-slate-900 to-slate-800">
                   <Image
                     src={product.image || "/placeholder.svg"}
                     alt={product.name}
                     fill
-                    className="object-cover w-full h-full group-hover:scale-105 transition-all duration-700"
+                    className="object-contain p-4 group-hover:scale-110 transition-all duration-700"
                     quality={90}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
@@ -658,8 +669,8 @@ export default function PbdSuplemedStore() {
                 <CardContent className="p-6 space-y-4">
                   {/* Nome e Avaliação */}
                   <div>
-                    <h4 className="text-lg md:text-xl font-bold text-white mb-1">{product.name}</h4>
-                    <p className="text-xs md:text-sm text-slate-400 mb-2">{product.subtitle}</p>
+                    <h4 className="text-xl font-bold text-white mb-1">{product.name}</h4>
+                    <p className="text-sm text-slate-400 mb-2">{product.subtitle}</p>
                     <div className="flex items-center gap-2">
                       <div className="flex items-center">
                         {[...Array(5)].map((_, i) => (
@@ -686,7 +697,7 @@ export default function PbdSuplemedStore() {
                         <div className="mt-0.5">
                           <CheckCircle className="w-4 h-4 text-cyan-400" />
                         </div>
-                        <p className="text-sm md:text-base text-slate-300">{benefit}</p>
+                        <p className="text-sm text-slate-300">{benefit}</p>
                       </div>
                     ))}
                   </div>
@@ -711,7 +722,7 @@ export default function PbdSuplemedStore() {
 
                     <Button
                       onClick={() => buyProduct(product.id)}
-                      className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold py-2.5 px-5 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 group min-h-[44px] text-sm md:text-base"
+                      className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group"
                     >
                       <ShoppingCart className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
                       COMPRAR AGORA
@@ -724,8 +735,15 @@ export default function PbdSuplemedStore() {
         </div>
       </section>
 
+      {/* Divisor de seção curvo */}
+      <div className="section-divider text-blue-900">
+        <svg className="section-divider-curve" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+        </svg>
+      </div>
+
       {/* Seção Suporte Premium */}
-      <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white relative overflow-hidden">
+      <section className="section-overlap py-16 sm:py-20 px-4 sm:px-6 bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl"></div>
@@ -736,10 +754,10 @@ export default function PbdSuplemedStore() {
             <Badge className="bg-amber-500 text-white px-6 py-2 text-lg font-semibold shadow-xl mb-6">
               ATENDIMENTO VIP EXCLUSIVO
             </Badge>
-            <h3 className="text-3xl sm:text-4xl lg:text-[clamp(2.25rem,5vw,3.75rem)] font-black mb-4">
+            <h3 className="text-4xl sm:text-5xl lg:text-6xl font-black mb-4">
               Suporte <span className="text-cyan-400">Premium</span> Personalizado
             </h3>
-            <p className="text-lg md:text-xl lg:text-[clamp(1rem,2.5vw,1.25rem)] text-white/80 max-w-3xl mx-auto">
+            <p className="text-xl text-white/80 max-w-3xl mx-auto">
               Consultoria nutricional personalizada com nossos especialistas certificados. Atendimento diferenciado para
               resultados excepcionais e transformação garantida.
             </p>
@@ -757,7 +775,7 @@ export default function PbdSuplemedStore() {
                 Especialista em suplementação esportiva e performance. Atendimento personalizado para atletas e
                 entusiastas fitness com mais de 10 anos de experiência.
               </p>
-              <Button className="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-2.5 px-5 rounded-lg min-h-[44px] text-sm md:text-base">
+              <Button className="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 rounded-xl">
                 <MessageCircle className="w-4 h-4 mr-2" />
                 (62) 9 9611-4736
               </Button>
@@ -774,7 +792,7 @@ export default function PbdSuplemedStore() {
                 Expert em formulações e desenvolvimento de produtos. Orientação técnica sobre composição, benefícios e
                 protocolos de uso personalizados.
               </p>
-              <Button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-2.5 px-5 rounded-lg min-h-[44px] text-sm md:text-base">
+              <Button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 rounded-xl">
                 <MessageCircle className="w-4 h-4 mr-2" />
                 (62) 9 8191-2294
               </Button>
@@ -791,7 +809,7 @@ export default function PbdSuplemedStore() {
                 Canal direto para dúvidas, pedidos especiais e suporte técnico. Resposta garantida em até 2 horas com
                 nossa equipe especializada.
               </p>
-              <Button className="w-full bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2.5 px-5 rounded-lg min-h-[44px] text-sm md:text-base">
+              <Button className="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 rounded-xl">
                 <MessageCircle className="w-4 h-4 mr-2" />
                 contatosuplemed@gmail.com
               </Button>
@@ -832,8 +850,23 @@ export default function PbdSuplemedStore() {
         </div>
       </section>
 
+      {/* Divisor de seção curvo */}
+      <div className="section-divider text-slate-900">
+        <svg className="section-divider-curve" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path
+            d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+            opacity=".25"
+          ></path>
+          <path
+            d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+            opacity=".5"
+          ></path>
+          <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path>
+        </svg>
+      </div>
+
       {/* Seção Compromisso com a Excelência */}
-      <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-900 to-slate-800 text-white relative overflow-hidden">
+      <section className="section-overlap py-16 sm:py-20 px-4 sm:px-6 bg-gradient-to-br from-slate-900 to-slate-800 text-white relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
@@ -844,10 +877,10 @@ export default function PbdSuplemedStore() {
             <Badge className="bg-emerald-500 text-white px-6 py-2 text-lg font-semibold shadow-xl mb-6">
               GARANTIAS PREMIUM
             </Badge>
-            <h3 className="text-3xl sm:text-4xl lg:text-[clamp(2.25rem,5vw,3.75rem)] font-black mb-4">
+            <h3 className="text-4xl sm:text-5xl lg:text-6xl font-black mb-4">
               Compromisso com a <span className="text-blue-400">Excelência</span>
             </h3>
-            <p className="text-lg md:text-xl lg:text-[clamp(1rem,2.5vw,1.25rem)] text-white/80 max-w-3xl mx-auto">
+            <p className="text-xl text-white/80 max-w-3xl mx-auto">
               Garantias exclusivas que demonstram nossa confiança total na qualidade e eficácia dos nossos produtos
               premium.
             </p>
@@ -959,7 +992,7 @@ export default function PbdSuplemedStore() {
       {/* Seção Sobre */}
       <section
         id="sobre"
-        className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800"
+        className="py-16 sm:py-20 px-4 sm:px-6 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800"
       >
         <div className="container mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -967,13 +1000,13 @@ export default function PbdSuplemedStore() {
               <Badge className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 py-2 text-lg font-semibold shadow-xl">
                 SOBRE NÓS
               </Badge>
-              <h3 className="text-3xl sm:text-4xl lg:text-[clamp(2.25rem,5vw,3.75rem)] font-black text-white">
+              <h3 className="text-4xl sm:text-5xl font-black text-white">
                 Excelência em{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
                   Suplementação
                 </span>
               </h3>
-              <p className="text-lg md:text-xl lg:text-[clamp(1rem,2.5vw,1.25rem)] text-slate-300 leading-relaxed">
+              <p className="text-lg text-slate-300 leading-relaxed">
                 A PBD SUPLEMED é líder no mercado de suplementos premium, comprometida com a qualidade e inovação.
                 Nossos produtos são desenvolvidos com tecnologia de ponta e ingredientes selecionados para proporcionar
                 os melhores resultados.
@@ -989,13 +1022,13 @@ export default function PbdSuplemedStore() {
                 </div>
               </div>
             </div>
-            <div className="relative">
+            <div className="relative w-full h-[400px] overflow-hidden rounded-2xl shadow-2xl">
               <Image
                 src="/images/pbd-about-lab.png"
                 alt="Laboratório PBD SUPLEMED"
-                width={600}
-                height={400}
-                className="rounded-2xl shadow-2xl"
+                fill
+                className="object-cover"
+                quality={90}
               />
               <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 rounded-2xl"></div>
             </div>
@@ -1006,16 +1039,14 @@ export default function PbdSuplemedStore() {
       {/* Seção Contato */}
       <section
         id="contato"
-        className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-900 to-slate-800 text-white"
+        className="py-16 sm:py-20 px-4 sm:px-6 bg-gradient-to-br from-slate-900 to-slate-800 text-white"
       >
         <div className="container mx-auto text-center">
           <Badge className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 py-2 text-lg font-semibold shadow-xl mb-8">
             FALE CONOSCO
           </Badge>
-          <h3 className="text-3xl sm:text-4xl lg:text-[clamp(2.25rem,5vw,3.75rem)] font-black mb-6">
-            Entre em Contato
-          </h3>
-          <p className="text-lg md:text-xl lg:text-[clamp(1rem,2.5vw,1.25rem)] text-white/80 mb-12 max-w-2xl mx-auto">
+          <h3 className="text-4xl sm:text-5xl font-black mb-6">Entre em Contato</h3>
+          <p className="text-xl text-white/80 mb-12 max-w-2xl mx-auto">
             Estamos aqui para ajudar você a alcançar seus objetivos. Entre em contato com nossa equipe especializada.
           </p>
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
@@ -1045,7 +1076,7 @@ export default function PbdSuplemedStore() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-slate-950 text-white py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
+      <footer className="bg-slate-950 text-white py-12 px-4">
         <div className="container mx-auto">
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div>
@@ -1142,8 +1173,8 @@ export default function PbdSuplemedStore() {
             </div>
           </div>
           <div className="border-t border-slate-800 pt-8 text-center">
-            <p className="text-sm text-slate-500 mb-2">© 2024 PBD SUPLEMED. Todos os direitos reservados.</p>
-            <p className="text-sm text-slate-600">
+            <p className="text-slate-500 mb-2">© 2024 PBD SUPLEMED. Todos os direitos reservados.</p>
+            <p className="text-slate-600 text-sm">
               Produtos premium com certificação internacional. Este produto não é um medicamento.
             </p>
             <div className="flex justify-center space-x-4 mt-4 text-sm text-slate-500">
@@ -1173,6 +1204,61 @@ export default function PbdSuplemedStore() {
         
         .animate-float {
           animation: float 6s ease-in-out infinite;
+        }
+
+        .section-divider {
+          position: relative;
+          height: 80px;
+          margin-top: -40px;
+          margin-bottom: -40px;
+          z-index: 10;
+          pointer-events: none;
+        }
+
+        .section-divider-curve {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          fill: currentColor;
+        }
+
+        .section-overlap {
+          position: relative;
+          z-index: 1;
+          margin-top: -80px;
+          padding-top: 120px;
+        }
+
+        .product-image-container {
+          height: 350px; /* Aumentado em aproximadamente 35% */
+          position: relative;
+          overflow: hidden;
+        }
+
+        .product-card {
+          transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .product-card:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        @media (max-width: 768px) {
+          .section-divider {
+            height: 60px;
+            margin-top: -30px;
+            margin-bottom: -30px;
+          }
+          
+          .section-overlap {
+            margin-top: -60px;
+            padding-top: 90px;
+          }
+          
+          .product-image-container {
+            height: 280px;
+          }
         }
       `}</style>
     </div>
